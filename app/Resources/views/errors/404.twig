@@ -1,0 +1,16 @@
+{% extends "layouts/default.twig" %}
+
+{% block content %}
+    <section class="container error-page">
+
+        <article class="mx-auto lg:w-6/12">
+
+            <h1 class="text-3xl font-bold">404</h1>
+
+            <p>Page not found</p>
+
+            {{ fn('get_search_form') }}
+
+        </article>
+    </section>
+{% endblock %}

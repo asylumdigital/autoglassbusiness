@@ -1,0 +1,7 @@
+<div class="categories-labels">
+    {% for category in post.categories %}
+        {% if category.slug not in exclude %}
+            <span class="category-label">{{ category.name }}</span>
+        {% endif %}
+    {% endfor %}
+</div>

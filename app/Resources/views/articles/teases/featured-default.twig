@@ -1,0 +1,16 @@
+<a href="{{ post.link }}" title="{{ post.title }}">
+    {% if type == 'large' %}
+        {% set image = post.thumbnail.src|resize(730, 555) %}
+    {% else %}
+        {% set image = post.thumbnail.src|resize(360, 165) %}
+    {% endif %}
+    <article class="tease featured featured-{{ type }}" style="background-image: url({{ image }});">
+        <div class="overlay">
+            {% include "components/category-labels.twig" %}
+            <h2 class="article-title">{{ post.title }}</h2>
+            <div class="article-meta">
+                <time datetime="{{ post.post_date }}">{{ post.date }}</time> | <span class="article-author">{{ post.author }}</span>
+            </div>
+        </div>
+    </article>
+</a>

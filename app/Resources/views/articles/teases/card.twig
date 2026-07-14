@@ -1,0 +1,10 @@
+<div class="thumbnail">
+  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="{{ post.thumbnail.src|resize(350, 150) }}" alt="" class="lazyload" />
+  {% include "components/category-labels.twig" %}
+</div>
+
+<h2 class="article-title"><a href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+
+{{ post.preview.length(17).force.read_more(false)|wpautop }}
+
+<p><a href="{{ post.link }}" title="{{ post.title }}" class="read-more">Read more <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>

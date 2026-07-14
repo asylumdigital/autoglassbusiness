@@ -1,0 +1,7 @@
+<nav class="global-nav">
+    {% include 'components/nav.twig' with {
+        nav: menus.global.get_items,
+        multilevel: true,
+        class: 'dropdown'
+    } only %}
+</nav>

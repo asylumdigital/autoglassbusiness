@@ -1,0 +1,14 @@
+<article class="row tease tease-{{post.post_type}}">
+  {% if post.thumbnail.src %}
+  <div class="col-sm-3">
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="{{ post.thumbnail.src|resize(118, 118) }}" alt="{{ post.title }}" class="thumbnail lazyload" />
+  </div>
+  {% endif %}
+  <div class="col-sm-{{ post.thumbnail.src ? '9' : '12' }}">
+    <h2 class="article-title">{{ post.title }}</h2>
+
+    {{ post.preview.length(17).force.read_more(false)|wpautop }}
+
+    <p><a href="{{ post.link }}" class="button small">Read more <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+  </div>
+</article>

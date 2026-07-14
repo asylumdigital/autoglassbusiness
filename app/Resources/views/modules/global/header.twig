@@ -1,0 +1,28 @@
+{% set logo = theme.theme_mod('custom_logo') %}
+<header class="w-full absolute top-0 pt-12 z-50">
+    <div class="container flex">
+        <input id="menu-toggle" type="checkbox" class="sr-only">
+        <div class="flex justify-between items-center">
+            <a href="/" title="" class="w-33 mr-16">
+                <img src="{{ 'autoglass.svg'|theme }}" alt="{{ site.name }}" />
+            </a>
+            {% include 'components/menu-icon.twig' %}
+        </div>
+        <div class="flex grow items-center">
+            {% include "modules/global/nav.twig" %}
+
+            <div class="flex gap-6 ml-auto">
+                {% include "components/atoms/button.twig" with {
+                    url: '#',
+                    text: 'Open an account',
+                } %}
+
+                {% include "components/atoms/button.twig" with {
+                    url: '#',
+                    text: 'Make an enquiry',
+                    secondary: true,
+                } %}
+            </div>
+        </div>
+    </div>
+</header>

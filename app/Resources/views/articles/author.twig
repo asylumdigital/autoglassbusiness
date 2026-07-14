@@ -1,0 +1,17 @@
+{% extends "layouts/default.twig" %}
+
+{% block hero %}
+<div class="module hero author">
+	<div class="row">
+		{{ title }}
+	</div>
+</div>
+
+{% include 'components/breadcrumb.twig' %}
+{% endblock %}
+
+{% block content %}
+	{% for post in posts %}
+		{% include ["articles/tease-"~post.post_type~".twig", "articles/tease.twig"] %}
+	{% endfor %}
+{% endblock %}

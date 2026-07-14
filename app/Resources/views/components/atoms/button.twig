@@ -1,0 +1,25 @@
+{% set classList = (secondary ? 'bg-button-secondary' : 'bg-button text-white') ~ ' gap-5 flex items-center shadow-md transition-shadow hover:shadow-lg cursor-pointer rounded-sm font-condensed font-bold text-xl py-4 px-6 leading-none tracking-wide' %}
+
+{% if url %}
+    <a href="{{ url }}" class="{{ classList }}">
+        {{ text|default('Click') }}
+
+        {% if arrow %}
+            <span class="size-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 11h20M11 1l10 10-10 10"/></svg>
+            </span>
+        {% endif %}
+    </a>
+{% else %}
+    <button type="{{ type|default('button') }}" class="{{ classList }}">
+        {{ text|default('Click') }}
+
+        {% if arrow %}
+            <span class="size-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 11h20M11 1l10 10-10 10"/></svg>
+            </span>
+        {% endif %}
+    </button>
+{% endif %}
+
+

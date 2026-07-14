@@ -1,0 +1,47 @@
+{% set children = false %}
+
+{% if nav %}
+    <ul class="{{ not isChild ? 'flex gap-9' : 'space-y-1.5' }}">
+        {% for item in nav %}
+            {% set children = item.children ?: false %}
+            {% set megaClass = '' %}
+
+            {% set megaClass = ' menu-item-mega-menu' %}
+            <li class="level-{{ item.level }} menu-item{{ children ? ' has-children' }}{{ megaClass }}{{ item.current ? ' active border-b-4' }}{{ not isChild ? ' py-3' }}"{{ children ? ' x-data="{ open: false }"' }}>
+                <a {% if item.target %}target="{{ item.target }}" {% endif %}href="{{ item.link }}" class="flex items-center gap-1"{{ children ? '@click.prevent="open = !open"' }}>
+                    {{ item.title }}
+                    {% if children %}
+                        <span class="w-2.5" :class="{ '-scale-y-100': open }">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 11 6"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M9.571.5 5.036 5.036.5.5"/></svg>
+                        </span>
+                    {% endif %}
+                </a>
+
+                {% if children and item.level == 0 %}
+                    <div class="sub-menu-wrapper mega-menu bg-white shadow-2xl absolute top-full left-0 w-full font-semibold py-12" x-show="open" @click.outside="open = false">
+                        <div class="container grid grid-cols-4">
+                            <div>
+                                <p class="text-3xl mb-4">{{ item.title }}</p>
+
+                                {% if item.link != '#' %}
+                                    <p>
+                                        <a {% if item.target %}target="{{ item.target }}" {% endif %}href="{{ item.link }}" class="font-light text-sm underline">View all →</a>
+                                    </p>
+                                {% endif %}
+                            </div>
+                {% endif %}
+
+                {% include multilevel ? "components/nav.twig" ignore missing with {
+                    nav: item.children,
+                    class: 'submenu',
+                    isChild: true
+                }  %}
+
+                {# closing for mega/super menu #}
+                {% if item.level == 0 and children %}
+                    </div></div>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

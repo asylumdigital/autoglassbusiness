@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="{{ site.language }}" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        {{ fn('wp_head') }}
+    </head>
+    <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+        {% do action('wp_body_open') %}
+        {% block header %}
+            {% include 'modules/global/header.twig' %}
+        {% endblock %}
+        <main>
+            {% block breadcrumb %}
+                {% include 'components/breadcrumb.twig' %}
+            {% endblock %}
+
+            {% block content %}
+                CONTENT
+            {% endblock %}
+        </main>
+
+        {% block footer %}
+            {% include "modules/global/footer.twig" %}
+        {% endblock %}
+        {{ fn('wp_footer') }}
+    </body>
+</html>

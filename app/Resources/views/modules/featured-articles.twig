@@ -1,0 +1,16 @@
+<div class="featured-articles">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        {% for post in hero %}
+          {% include "articles/teases/featured-default.twig" with { type: 'large' } %}
+        {% endfor %}
+      </div>
+      <div class="col-lg-4">
+        {% for post in subFeatures %}
+          {% include "articles/teases/featured-default.twig" with { type: 'small' } %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

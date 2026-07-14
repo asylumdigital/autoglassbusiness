@@ -1,0 +1,16 @@
+{% set items = menus.social.get_items %}
+
+<ul class="social-nav">
+  {% for item in items %}
+    {% spaceless %}
+    <li>
+      <a href="{{ item.link }}">
+        {% if item.custom['menu-icons'] %}
+        <i class="fa {{ item.custom['menu-icons'].icon }}" aria-hidden="true"></i>
+        {% endif %}
+        <span class="nav-label{{ item.custom['menu-icons'].hide_label ? ' assistive-text' }}">{{ item.title }}</span>
+      </a>
+    </li>
+    {% endspaceless %}
+  {% endfor %}
+</ul>

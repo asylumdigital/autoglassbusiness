@@ -1,0 +1,20 @@
+{% extends 'layouts/default.twig' %}
+
+{% block content %}
+<div class="container">
+    <div class="flex gap-5">
+        <div class="w-full lg:w-8/12">
+            <h1 class="font-bold text-3xl">{{ term.name }}</h1>
+
+            {% for post in posts %}
+                {% include ["articles/tease-" ~ post.post_type ~ ".twig", "articles/tease.twig"] %}
+            {% endfor %}
+        </div>
+        <div class="w-full lg:w-4/12">
+            {% include "sidebar.twig" %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<section class="relative">
+    <div class="container flex items-center min-h-screen">
+        <div class="w-[43%] py-36">
+            {% include "components/atoms/accent-title.twig" with {
+                text: 'Nearly 50 years of great partnerships'
+            } %}
+
+
+            <h1 class="font-condensed font-black text-[96px] text-balance w-min text-[#4D4A47] leading-[.9] mb-20 uppercase">
+                {% for word in "Keeping your business moving"|split(' ') %}
+                    <span{{ loop.last ? ' class="text-brand"' }}>{{ word }}</span>
+                {% endfor %}
+            </h1>
+
+            <p class="mb-20 text-2xl text-[#4D4A47]">Great business relationships are all about teamwork. For nearly 50 years we’ve been working with Fleet and Insurance clients to deliver the market leading key-to-key service they need.</p>
+
+            <div class="flex gap-11 ml-auto">
+                {% include "components/atoms/button.twig" with {
+                    url: '#',
+                    text: 'Open an account',
+                    arrow: true,
+                } %}
+
+                {% include "components/atoms/button.twig" with {
+                    url: '#',
+                    text: 'Make an enquiry',
+                    secondary: true,
+                    arrow: true,
+                } %}
+            </div>
+        </div>
+        <div class="image ml-auto absolute right-0 w-1/2 h-full">
+            <img src="https://picsum.photos/662/975" class="object-cover w-full h-full" />
+        </div>
+    </div>
+</section>

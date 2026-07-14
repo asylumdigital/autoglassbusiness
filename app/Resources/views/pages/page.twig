@@ -1,0 +1,23 @@
+{% extends "layouts/default.twig" %}
+
+{% block content %}
+    <div class="container">
+        <div class="flex gap-5">
+            <div class="lg:w-8/12">
+                <div class="posts-container">
+                    <article class="article-full article-{{ post.post_type }}">
+
+                        <h1>{{ post.title }}</h1>
+
+                        {{ post.content }}
+                    </article>
+                </div>
+                {% include 'components/comments.twig' %}
+            </div>
+            <div class="lg:w-4/12">
+                {% include 'sidebar.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

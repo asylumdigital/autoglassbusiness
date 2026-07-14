@@ -1,0 +1,9 @@
+<div class="[&_a]:hover:text-brand [&_a]:text-stone-400 [&_a]:dark:text-stone-500">
+
+    {% if fn('function_exists', 'yoast_breadcrumb') %}
+        {{ fn('yoast_breadcrumb', '<p id="breadcrumbs">','</p>') }}
+    {% endif %}
+    {% if fn('function_exists', 'rank_math_the_breadcrumbs') %}
+        {{ fn('rank_math_the_breadcrumbs') }}
+    {% endif %}
+</div>

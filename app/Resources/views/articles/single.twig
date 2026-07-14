@@ -1,0 +1,29 @@
+{% extends "layouts/default.twig" %}
+
+{% block content %}
+    <div class="container">
+        <div class="flex gap-5">
+            <div class="lg:w-8/12">
+                <article class="article-full article-{{ post.post_type }}">
+                    {% if post.thumbnail.src %}
+                        <div class="thumbnail">
+                            <img src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt}}" width="{{ post.thumbnail.width }}" height="{{ post.thumbnail.height }}" loading="lazy" />
+                        </div>
+                    {% endif %}
+
+                    <h1>{{ post.title }}</h1>
+
+                    {% if post.post_excerpt %}
+                        <p><strong>{{ post.post_excerpt }}</strong></p>
+                    {% endif %}
+
+                    {{ post.content }}
+                </article>
+            {% include 'components/comments.twig' %}
+            </div>
+            <div class="lg:w-4/12">
+                {% include 'sidebar.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

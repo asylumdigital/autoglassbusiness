@@ -1,0 +1,32 @@
+{
+    "name": "wordpress-theme-boilerplate",
+    "version": "1.0.0",
+    "description": "A boilerplate for Wordpress theme/plugin development",
+    "main": "webpack.config.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "NODE_ENV=development vite build",
+        "watch": "NODE_ENV=development vite build --watch",
+        "build": "vite build --mode=prod",
+        "production": "npm run build"
+    },
+    "author": "Phil Baker",
+    "license": "ISC",
+    "dependencies": {
+        "@tailwindcss/postcss": "^4.3.2",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tailwindcss/vite": "^4.3.2",
+        "alpinejs": "^3.15.12",
+        "tailwindcss": "^4.3.2"
+    },
+    "devDependencies": {
+        "@vituum/vite-plugin-postcss": "^2.0.1",
+        "autoprefixer": "^10.5.2",
+        "laravel-vite-plugin": "^3.1.0",
+        "postcss": "^8.5.16",
+        "postcss-discard-comments": "^8.0.1",
+        "postcss-nested": "^7.0.2",
+        "postcss-nesting": "^14.0.0",
+        "sass-embedded": "^1.100.0"
+    }
+}

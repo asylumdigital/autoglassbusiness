@@ -1,0 +1,29 @@
+<section class="featured-hubs">
+  <div class="container">
+    <div class="row">
+      {% for k,col in articles %}
+      <div class="col-lg-6">
+        <h2 class="section-title">{{ post.meta(k ~ '_hubs_heading') }}</h2>
+        {% for hub in col %}
+        <div class="row">
+          {% if hub.thumbnail %}
+          <div class="col-sm-3">
+            <img data-src="{{ Image(hub.thumbnail).src|resize(100,100) }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="lazyload thumbnail" alt="{{ hub.name }}"/>
+          </div>
+          {% endif %}
+          <div class="col-sm-{{ hub.thumbnail ? 9 : 12 }}">
+            <h3 class="item-title h2">
+              <a href="{{ hub.link }}" title="">{{ hub.name }}</a>
+            </h3>
+
+            {{ hub.description|wpautop|replace({'<p>' : '<p class="description">'}) }}
+
+            <p><a href="{{ hub.link }}" title="{{ hub.name }}" class="read-more">Read more <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

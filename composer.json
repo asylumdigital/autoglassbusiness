@@ -1,0 +1,57 @@
+{
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": {
+        "asylum/theme": {
+            "type": "path",
+            "url": "/Users/phil/Sites/asylum/wordpress/packages/asylum/wp-theme-core"
+        },
+        "asylum/fields": {
+            "type": "path",
+            "url": "/Users/phil/Sites/asylum/wordpress/packages/asylum/asylum-fields"
+        },
+        "asylum/updater": {
+            "type": "vcs",
+            "url": "git@github.com:philsbury/asylum-updater.git"
+        },
+        "asylum/timber-integration-woocommerce": {
+            "type": "path",
+            "url": "/Users/phil/Sites/asylum/wordpress/packages/woocommerce/timber-integration-woocommerce"
+        },
+        "asylum/utility": {
+            "type": "path",
+            "url": "/Users/phil/Sites/asylum/wordpress/packages/asylum/asylum-utility"
+        },
+        "asylum/block": {
+            "type": "path",
+            "url": "/Users/phil/Sites/asylum/wordpress/packages/asylum/asylum-block"
+        },
+        "asylum/config": {
+            "type": "path",
+            "url": "/Users/phil/Sites/asylum/wordpress/packages/asylum/asylum-config"
+        }
+
+    },
+    "require": {
+        "asylum/theme": "@dev",
+        "asylum/fields": "@dev",
+        "stoutlogic/acf-builder": "^1.12",
+        "illuminate/collections": "^12.20",
+        "vlucas/phpdotenv": "5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Asylum\\Theme\\": "app"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "touch .env"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}
