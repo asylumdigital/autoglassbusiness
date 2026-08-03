@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         {{ fn('wp_head') }}
     </head>
-    <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+    <body class="overflow-x-clip {{ bodyClass }}" x-data="{ menu: false }">
         {% do action('wp_body_open') %}
         {% block header %}
             {% include 'modules/global/header.twig' %}

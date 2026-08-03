@@ -1,3 +1,9 @@
-<label class="nav-toggle-wrapper" for="menu-toggle" aria-label="Menu">
-    <span class="nav-toggle"></span>
-</label>
+
+<button class="group inline-flex md:hidden text-slate-800 bg-white text-center items-center justify-center rounded transition" @click="menu = !menu">
+    <span class="sr-only">Menu</span>
+    <svg class="w-6 h-6 fill-current pointer-events-none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <rect class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)]" y="7" width="9" height="2" rx="1" :class="menu ? 'translate-x-0 translate-y-0 rotate-315' : '-translate-y-1.25 translate-x-1.75'"></rect>
+        <rect class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)]" y="7" width="16" height="2" rx="1" :class="{'rotate-45': menu }"></rect>
+        <rect class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)]" :class="menu ? 'translate-y-0 rotate-135' : 'translate-y-1.25'" y="7" width="9" height="2" rx="1"></rect>
+    </svg>
+</button>

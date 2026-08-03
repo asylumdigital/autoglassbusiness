@@ -4,14 +4,14 @@
     <div class="container">
         <div class="flex gap-5">
             <div class="lg:w-8/12">
-                <article class="article-full article-{{ post.post_type }}">
+                <article class="article-full article-{{ post.post_type }} max-w-none prose lg:prose-lg">
                     {% if post.thumbnail.src %}
                         <div class="thumbnail">
-                            <img src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt}}" width="{{ post.thumbnail.width }}" height="{{ post.thumbnail.height }}" loading="lazy" />
+                            <img src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt}}" width="{{ post.thumbnail.width }}" height="{{ post.thumbnail.height }}" class="clipped" loading="lazy" />
                         </div>
                     {% endif %}
 
-                    <h1>{{ post.title }}</h1>
+                    <h1 class="font-condensed">{{ post.title }}</h1>
 
                     {% if post.post_excerpt %}
                         <p><strong>{{ post.post_excerpt }}</strong></p>
@@ -26,4 +26,9 @@
             </div>
         </div>
     </div>
+
+    {% for related in relatedPosts %}
+        <a href="{{ related.link }}">{{ related.title }}</a>
+    {% endfor %}
+    {{ dump() }}
 {% endblock %}

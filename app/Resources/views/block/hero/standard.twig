@@ -1,0 +1,36 @@
+<section class="py-28">
+    <div class="container">
+        <div class="flex justify-between">
+            <div class="space-y-20">
+
+                <h1 class="font-condensed font-black text-7xl uppercase flex flex-col">
+                    <span>Reliable.</span>
+                    <span>Resilient.</span>
+                    <span>Responsible.</span>
+                </h1>
+
+                <p class="text-2xl max-w-2xl">We structure our business to guarantee quality. First time, every time. We offer unrivalled operational scale with a service delivered by expertly trained technicians, whilst meeting a mutual duty of care with our partners through safe and sustainable ethics and practices.</p>
+
+
+                <div class="flex gap-11 ml-auto">
+                    {% include "components/atoms/button.twig" with {
+                        url: '#',
+                        text: 'Open an account',
+                        arrow: true,
+                    } %}
+
+                    {% include "components/atoms/button.twig" with {
+                        url: '#',
+                        text: 'Make an enquiry',
+                        secondary: true,
+                        arrow: true,
+                    } %}
+                </div>
+            </div>
+            <div class="self-end">
+                <img src="https://picsum.photos/850" class="clipped sticky top-0 max-w-112.5" />
+            </div>
+        </div>
+
+    </div>
+</section>

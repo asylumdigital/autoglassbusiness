@@ -1,0 +1,38 @@
+<section class="{{ block.style == 'dark' ? ' bg-default text-white py-16' : 'py-10' }}">
+    <div class="container">
+        <div class="grid grid-cols-12">
+            <div class="col-span-5{{ block.align == 'right' ? ' md:order-2 md:flex md:justify-end items-start' }}">
+                <img src="https://picsum.photos/850" class="clipped sticky top-0 max-w-112.5" />
+            </div>
+            <div class="col-span-7 space-y-10 text-sm lg:text-lg order-1">
+                {% include "components/atoms/accent-title.twig" with {
+                    text: 'xxx'
+                } %}
+
+                <h2 class="font-condensed text-6xl uppercase text-balance font-black">Worldwide leader. World class service.</h2>
+
+                <p>Voluptate consectetur do reprehenderit cillum Lorem tempor pariatur ullamco sit. Non pariatur excepteur laboris nisi. Amet dolore nisi excepteur ullamco laboris aute incididunt magna minim. Non laborum dolor magna proident laboris voluptate. Amet qui aliqua reprehenderit cillum aute ipsum do ea do.</p>
+
+                <p>Ullamco ad excepteur ex aliquip tempor proident ipsum esse. Aute aute sit labore proident adipisicing voluptate nostrud cupidatat nostrud sunt. Ex et nostrud eiusmod cillum irure id minim ut nisi tempor. Sint qui labore in reprehenderit aliquip consectetur id. Voluptate non laboris non nisi in adipisicing sunt sit exercitation amet fugiat ut ex. Sint id labore qui qui dolor quis ut anim sit laborum officia ullamco consectetur.</p>
+
+                <p>Dolor ut cupidatat laboris in sunt ullamco incididunt adipisicing sint. Cillum est nostrud irure nisi. Laboris elit Lorem aute exercitation excepteur adipisicing.</p>
+
+                <p>Tempor non incididunt aliqua laborum do sunt. Aliquip Lorem do cillum aliquip duis reprehenderit enim do magna eu. Laborum non dolore commodo ex exercitation incididunt duis cillum ullamco. Dolor in fugiat aute nisi sit aliqua dolore nisi consequat do laboris laborum veniam. Irure eiusmod voluptate officia dolore.</p>
+
+                <p>Et ad et proident sunt esse minim fugiat fugiat tempor laboris. Deserunt et Lorem reprehenderit nulla in cillum. Incididunt deserunt dolore veniam dolore occaecat dolore incididunt. Ullamco ullamco tempor laborum amet nulla. Ex mollit duis ad consectetur irure adipisicing. Nisi mollit incididunt eu minim esse deserunt consectetur eu. Exercitation enim sint Lorem aliqua consequat ipsum ex non commodo.</p>
+            </div>
+
+        </div>
+        <div class="flex items-center mt-6">
+            <div class="w-5/12 {{ block.style == 'dark' ? 'bg-brand-tertiary' : 'bg-brand' }} h-1" aria-hidden="true"></div>
+            <div class="w-7/12">
+                {% include "components/atoms/button.twig" with {
+                    url: '#',
+                    text: 'Open an account',
+                    arrow: true,
+                    tertiary: block.style == 'dark'
+                } %}
+            </div>
+        </div>
+    </div>
+</section>

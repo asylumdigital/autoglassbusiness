@@ -7,7 +7,7 @@
   <div class="col-sm-{{ post.thumbnail.src ? '9' : '12' }}">
     <h2 class="article-title">{{ post.title }}</h2>
 
-    {{ post.preview.length(17).force.read_more(false)|wpautop }}
+    {{ post.excerpt.length(17).force.read_more(false)|wpautop }}
 
     <p><a href="{{ post.link }}" class="button small">Read more <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
   </div>

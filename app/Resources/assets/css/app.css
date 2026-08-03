@@ -1,4 +1,16 @@
 @import "tailwindcss";
+@import "swiper/swiper.css";
+@plugin "@tailwindcss/typography";
+
+@view-transition {
+    navigation: auto;
+}
+
+@layer base {
+    body {
+        color: var(--color-body);
+    }
+}
 
 @utility container {
     margin-inline: auto;
@@ -12,11 +24,43 @@
 
     /* Colors */
     --color-brand: #C1002A;
+    --color-brand-secondary: #F8DC00;
+    --color-brand-tertiary: #94C43A;
+
     --color-button: #D01C23;
     --color-button-secondary: #F8DC00;
+
+    --color-default: #012233;
+
+    --color-body: #4D4A47;
+    --color-highlight: #F7F8FA;
 }
 
 
 .image {
-    clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+    /* clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%); */
+    clip-path: polygon(calc(100dvh * tan(20deg)) 0, 100% 0, 100% 100%, 0 100%);
+}
+
+img.clipped {
+    clip-path: polygon(100% 0, 100% 70%, 70% 100%, 0 100%, 0 0);
+}
+
+
+.partner .swiper-slide {
+    width: 12rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    svg,
+    img {
+        max-height: 88px;
+    }
+}
+
+.swiper--flow {
+
+    overflow: visible;
+    overflow-x: clip;
 }

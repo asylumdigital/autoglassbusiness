@@ -1,4 +1,5 @@
-{% set classList = (secondary ? 'bg-button-secondary' : 'bg-button text-white') ~ ' gap-5 flex items-center shadow-md transition-shadow hover:shadow-lg cursor-pointer rounded-sm font-condensed font-bold text-xl py-4 px-6 leading-none tracking-wide' %}
+
+{% set classList = (secondary ? 'bg-button-secondary' : (tertiary ? 'bg-brand-tertiary text-white' : 'bg-brand text-white')) ~ ' gap-5 flex items-center shadow-md transition-shadow hover:shadow-lg cursor-pointer rounded-sm font-condensed font-bold text-xl py-4 px-6 leading-none tracking-wide w-fit' %}
 
 {% if url %}
     <a href="{{ url }}" class="{{ classList }}">

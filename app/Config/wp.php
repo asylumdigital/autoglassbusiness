@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'post_label' => 'News',
+    'post_label' => 'Resources',
     'post_formats' => [
         'aside',
         'image',

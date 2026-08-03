@@ -1,7 +1,31 @@
 {% extends "layouts/default.twig" %}
 
 {% block content %}
+    {% include "block/hero/standard.twig" %}
     {% include "block/hero/image.twig" %}
+
+    {% include "block/slider/partner.twig" %}
+
+    {% include "block/content/sticky-image.twig" %}
+
+    {% include "block/content/sticky-image.twig" with {
+        block: {
+            style: 'dark',
+        }
+    } %}
+
+    {% include "block/article/list.twig" %}
+    {% include "block/article/list-2.twig" %}
+
+    {% include "block/slider/carousel.twig" %}
+
+    {% include "block/content/sticky-image.twig" with {
+        block: {
+            align: 'right',
+        }
+    } %}
+
+    {% include "block/content/bento.twig" %}
     <div class="container">
         {% include "components/atoms/button.twig" %}
     </div>
