@@ -1,16 +1,16 @@
 {% set logo = theme.theme_mod('custom_logo') %}
-<header class="w-full absolute top-0 py-8 md:pt-12 md:pb-0 z-50 bg-white md:bg-transparent">
+<header class="w-full absolute top-0 py-8 lg:pt-12 lg:pb-0 z-50 bg-white lg:bg-transparent">
     <div class="container flex">
-        <div class="flex justify-between items-center w-full md:w-fit">
-            <a href="/" title="" class="w-20 md:w-33 md:mr-16">
+        <div class="flex justify-between items-center w-full lg:w-fit">
+            <a href="/" title="" class="w-20 lg:w-33 lg:mr-16">
                 <img src="{{ 'autoglass.svg'|theme }}" alt="{{ site.name }}" />
             </a>
             {% include 'components/menu-icon.twig' %}
         </div>
-        <div class="flex flex-col md:flex-row grow md:items-center absolute bg-white md:bg-transparent md:static w-full -right-full top-22 h-[calc(100dvh-88px)] md:w-auto md:right-auto md:top-auto md:h-auto transition-all p-4 md:p-0" :class="{'right-0': menu}">
+        <div class="flex flex-col lg:flex-row grow lg:items-center absolute bg-white lg:bg-transparent lg:static w-full -right-full top-22 h-[calc(100dvh-88px)] lg:w-auto lg:right-auto lg:top-auto lg:h-auto transition-all p-4 lg:p-0" :class="{'right-0': menu}">
             {% include "modules/global/nav.twig" %}
 
-            <div class="flex flex-col md:flex-row gap-6 md:ml-auto mt-auto">
+            <div class="flex flex-col lg:flex-row gap-6 lg:ml-auto mt-auto">
                 {% include "components/atoms/button.twig" with {
                     url: '#',
                     text: 'Open an account',

@@ -1,7 +1,32 @@
 {% extends "layouts/default.twig" %}
 
 {% block content %}
-    {% include "block/hero/standard.twig" %}
+    {% include "block/content/content-section.twig" with {
+        block: {
+            align: 'left',
+        }
+    } %}
+
+    {% include "block/content/content-section.twig" with {
+        block: {
+            align: 'right',
+            style: 'highlight',
+        }
+    } %}
+
+    {% include "block/content/content-section.twig" with {
+        block: {
+            style: 'dark',
+            align: 'right',
+        }
+    } %}
+
+    {% include "block/content/content-section.twig" with {
+        block: {
+            style: 'highlight',
+        }
+    } %}
+    {# {% include "block/hero/standard.twig" %}
     {% include "block/hero/image.twig" %}
 
     {% include "block/slider/partner.twig" %}
@@ -28,5 +53,5 @@
     {% include "block/content/bento.twig" %}
     <div class="container">
         {% include "components/atoms/button.twig" %}
-    </div>
+    </div> #}
 {% endblock %}

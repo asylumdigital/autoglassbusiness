@@ -19,6 +19,8 @@ class Twig
             return str_replace(site_url(), "", $link);
         }));
 
+        $twig->addFilter(new TwigFilter('html_attributes', 'html_build_attributes'));
+
         return $twig;
     }
 }

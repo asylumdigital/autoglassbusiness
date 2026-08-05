@@ -1,14 +1,20 @@
 
-{% set classList = (secondary ? 'bg-button-secondary' : (tertiary ? 'bg-brand-tertiary text-white' : 'bg-brand text-white')) ~ ' gap-5 flex items-center shadow-md transition-shadow hover:shadow-lg cursor-pointer rounded-sm font-condensed font-bold text-xl py-4 px-6 leading-none tracking-wide w-fit' %}
+{% set classList = (secondary ? 'bg-secondary' : (tertiary ? 'bg-tertiary text-white' : 'bg-primary text-white')) ~ ' gap-5 flex items-center shadow-md transition-shadow hover:shadow-lg cursor-pointer rounded-sm font-condensed font-bold text-xl py-4 px-6 leading-none tracking-wide justify-between w-full sm:w-fit' %}
 
 {% if url %}
     <a href="{{ url }}" class="{{ classList }}">
         {{ text|default('Click') }}
 
         {% if arrow %}
-            <span class="size-4">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 11h20M11 1l10 10-10 10"/></svg>
-            </span>
+            {% if arrow_type != 'arrow' %}
+                <span class="w-2.5">
+                    {% include "components/atoms/icons/svg/chevron.svg" %}
+                </span>
+            {% else %}
+                <span class="size-4">
+                    {% include "components/atoms/icons/svg/arrow.svg" %}
+                </span>
+            {% endif %}
         {% endif %}
     </a>
 {% else %}
@@ -16,9 +22,15 @@
         {{ text|default('Click') }}
 
         {% if arrow %}
-            <span class="size-4">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 11h20M11 1l10 10-10 10"/></svg>
-            </span>
+            {% if arrow_type != 'arrow' %}
+                <span class="w-2.5">
+                    {% include "components/atoms/icons/svg/chevron.svg" %}
+                </span>
+            {% else %}
+                <span class="size-4">
+                    {% include "components/atoms/icons/svg/arrow.svg" %}
+                </span>
+            {% endif %}
         {% endif %}
     </button>
 {% endif %}

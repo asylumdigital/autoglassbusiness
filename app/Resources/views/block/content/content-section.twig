@@ -1,0 +1,55 @@
+{% extends "modules/block/wrapper.twig" %}
+
+{% set classes = {
+    image: '',
+    content: 'lg:col-start-6 xl:col-start-7 2xl:col-start-6',
+} %}
+
+{% if block.align == 'right' %}
+    {% set classes = {
+        image: 'md:flex md:justify-end lg:col-start-9 xl:col-start-8',
+        content: 'lg:col-start-2 lg:row-start-1 xl:col-start-2 2xl:col-start-2',
+    } %}
+{% endif %}
+
+
+{% block content %}
+    <div class="grid lg:grid-cols-12 gap-5">
+        <div class="mb-3 sm:mb-6 lg:col-span-4 xl:col-span-5 {{ classes.image }}">
+            <div class="2xl:w-11/12">
+                {% include "common/picture.twig" %}
+            </div>
+        </div>
+
+        <div class="w-10/12 mx-auto lg:w-full lg:col-span-6 xl:col-span-5 lg:mx-auto 2xl:col-span-6 lg:pt-5 {{ classes.content }}">
+            {% include "components/atoms/accent-title.twig" with {
+                text: 'XXXX'
+            } %}
+
+            <h2 class="font-black font-condensed text-2xl uppercase mb-3.5 sm:text-4xl md:text-5xl"><span class="block">Worldwide leader.</span> <span class="block">World class service.</span></h2>
+
+            <div class="prose-sm sm:prose md:prose-lg {{ block.style == 'dark' ? ' prose-invert sm:prose-invert md:prose-invert' }}">
+                <p>Autoglass® is the UK’s favourite vehicle glass repair, replacement and recalibration (VGRRR) specialist, with unrivalled expertise in Advanced Driver Assistance Systems (ADAS). We know that every minute off the road costs businesses and customers money, so it’s our priority to get your vehicles back on the road quickly and safely.</p>
+
+                <p>As part of the Belron Group, we’re proud to be the worldwide leader in VGRRR. We offer unrivalled operational scale with an expertly trained service delivered across both commercial and specialist sectors, including HGV, plant and agricultural vehicles.</p>
+
+                <ul>
+                    <li>List item</li>
+                    <li>List item</li>
+                    <li>List item</li>
+                    <li>List item</li>
+                    <li>List item</li>
+                    <li>List item</li>
+                    <li>List item</li>
+                    <li>List item</li>
+                    <li>List item</li>
+                </ul>
+            </div>
+
+            {% include "components/atoms/button.twig" with {
+                arrow: true,
+                text: "Find out more",
+            } %}
+        </div>
+    </div>
+{% endblock %}
