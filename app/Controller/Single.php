@@ -11,15 +11,9 @@ class Single extends CoreController
     {
         $current = get_the_ID();
 
-        dump(
-            collect(
-                get_the_terms($current, 'category')
-            )->map(fn($t) => $t->term_id)
-            ->toArray()
-        );
-
         return Timber::get_posts([
             'post__not_in' => [$current],
+            'posts_per_page' => 8,
             'tax_query' => [
                 [
                     'taxonomy' => 'category',

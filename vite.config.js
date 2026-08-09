@@ -42,9 +42,13 @@ export default defineConfig(({ command, mode, isSsrBuild }) => ({
         rollupOptions: {
             input: {
                 app: './app/Resources/assets/css/app.css',
+                carousel: './app/Resources/assets/css/components/carousel.css',
+                marquee: './app/Resources/assets/css/components/marquee.css',
                 main: './app/Resources/assets/js/public/main.js',
                 adminCss: './app/Resources/assets/scss/admin/admin.scss',
                 adminJs: './app/Resources/assets/js/admin/admin.js',
+                tinymceListStyles: './app/Resources/assets/js/admin/tinymce-list-styles.js',
+                blockListStyles: './app/Resources/assets/js/admin/block-list-styles.js',
             },
             output: {
                 assetFileNames: (assetInfo) => {

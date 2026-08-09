@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "swiper/swiper.css";
+@import './components/list.css';
 @plugin "@tailwindcss/typography";
 
 @view-transition {
@@ -9,6 +9,10 @@
 @layer base {
     body {
         color: var(--color-body);
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 }
 
@@ -16,7 +20,7 @@
     margin-inline: auto;
     padding-inline: 1rem;
 
-    @variant xl {
+    @variant lg {
         padding-inline: 2rem;
     }
 }
@@ -49,8 +53,22 @@
 
     /* Clip paths */
     --clip-square: polygon(100% 0, 100% 70%, 70% 100%, 0 100%, 0 0);
-    --clip-video: polygon(100% 0, 100% 70%, 70% 100%, 0 100%, 0 0);
+    /* 45° cut — x inset is derived from the 16:9 box so run == rise in px */
+    --clip-video: polygon(0% 0%, 100% 0, 100% 50%, calc(100% - 50% * 9 / 16) 100%, 0% 100%);
     --clip-hero: polygon(calc(100dvh * tan(20deg)) 0, 100% 0, 100% 100%, 0 100%);
+
+    --animate-marquee: marquee 15s linear infinite;
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
 }
 
 
@@ -59,45 +77,17 @@
     clip-path: var(--clip-hero);
 }
 
-img.clipped {
-    clip-path: polygon(100% 0, 100% 70%, 70% 100%, 0 100%, 0 0);
+@utility clip-square {
+    clip-path: var(--clip-square);
+}
+
+@utility clip-video {
+    clip-path: var(--clip-video);
 }
 
 
-.partner .swiper-slide {
-    width: 12rem;
-    display: flex;
-    align-items: center;
-    height: 100%;
-
-    svg,
-    img {
-        max-height: 88px;
-    }
+[class*="prose"] h2 {
+    @apply lg:scroll-m-20;
 }
 
-.swiper--flow {
 
-    overflow: visible;
-    overflow-x: clip;
-}
-
-[class*="prose"] ul {
-    padding-left: 0;
-}
-
-[class*="prose"] ul li {
-    list-style: none;
-    display: flex;
-    gap: 8px;
-    padding-left: 0;
-}
-[class*="prose"] ul li::before {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 22 22'%3E%3Cpath stroke='#000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 11h20M11 1l10 10-10 10'/%3E%3C/svg%3E");
-    width: 22px;
-    height: 22px;
-    background: var(--color-primary);
-    margin-top: 4px;
-    @apply rounded-full;
-
-}

@@ -13,7 +13,8 @@ class ContentSection extends BlockController
     {
         $fields
             ->addWysiwyg('content', [
-                'toolbar' => 'basic',
+                // Toolbar registered by Asylum\Theme\Editor\ListStyles
+                'toolbar' => 'content',
                 'media_upload' => false,
             ]);
         return $fields;

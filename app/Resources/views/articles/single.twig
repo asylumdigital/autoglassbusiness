@@ -1,34 +1,32 @@
 {% extends "layouts/default.twig" %}
 
 {% block content %}
-    <div class="container">
-        <div class="flex gap-5">
-            <div class="lg:w-8/12">
-                <article class="article-full article-{{ post.post_type }} max-w-none prose lg:prose-lg">
-                    {% if post.thumbnail.src %}
-                        <div class="thumbnail">
-                            <img src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt}}" width="{{ post.thumbnail.width }}" height="{{ post.thumbnail.height }}" class="clipped" loading="lazy" />
-                        </div>
-                    {% endif %}
-
-                    <h1 class="font-condensed">{{ post.title }}</h1>
-
-                    {% if post.post_excerpt %}
-                        <p><strong>{{ post.post_excerpt }}</strong></p>
-                    {% endif %}
-
+    <div class="container pb-12">
+        <div class="flex flex-col lg:flex-row gap-5">
+            <div class="lg:w-8/12 xl:w-7/12 pt-8">
+                <article class="max-w-none prose lg:prose-lg">
+                    <h1 class="font-condensed text-balance">{{ post.title }}</h1>
+                    {% include "articles/meta/single.twig" %}
                     {{ post.content }}
                 </article>
             {% include 'components/comments.twig' %}
             </div>
-            <div class="lg:w-4/12">
+            <aside class="lg:w-4/12 ml-auto">
                 {% include 'sidebar.twig' %}
-            </div>
+            </aside>
         </div>
     </div>
 
-    {% for related in relatedPosts %}
-        <a href="{{ related.link }}">{{ related.title }}</a>
-    {% endfor %}
-    {{ dump() }}
+    {% if relatedPosts %}
+        <div class="bg-highlight py-12">
+            <div class="container">
+                <h3 class="font-condensed font-bold text-3xl mb-4">Read more</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                    {% for post in relatedPosts %}
+                        {% include ["articles/teases/tease-" ~ post.post_type ~ ".twig", "articles/teases/tease.twig"] %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

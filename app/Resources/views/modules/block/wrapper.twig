@@ -1,5 +1,5 @@
-<section class="py-16{{ block.style == 'dark' ? ' bg-default text-white' }}{{ block.style == 'highlight' ? ' bg-highlight' }}" {{ block.section_id ? ' id="%s"'|format(block.section_id) }} {{ sectionAttributes ? sectionAttributes|html_attributes }}>
-    <div class="container">
+<section class="{{ padding|default('py-16') }} {{ block.style == 'dark' ? ' bg-default text-white' }}{{ block.style == 'highlight' ? ' bg-highlight' }}" {{ block.section_id ? ' id="%s"'|format(block.section_id) }} {{ sectionAttributes ? sectionAttributes|html_attributes }}>
+    <div class="{{ container|default('container') }}">
         {% block content %}{% endblock %}
     </div>
 </section>

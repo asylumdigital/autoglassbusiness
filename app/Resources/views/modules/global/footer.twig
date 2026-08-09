@@ -1,30 +1,36 @@
-<footer class="global-footer">
-  <div class="container">
-    <div class="row">
-      {% for i in 1..4 %}
-      <div class="col-md-6 col-xl-3">
-      {% set menu = 'footer_' ~ i %}
-      <h3 class="footer-menu-label">{{ fn('get_field', 'menu_title', menus[menu]) }}</h3>
+<footer class="bg-default text-white text-sm py-12 mt-auto">
+    <section class="container">
+        {% for i in 1..4 %}
+        {% set menu = 'footer_' ~ i %}
+            <h3 class="footer-menu-label">{{ fn('get_field', 'menu_title', menus[menu]) }}</h3>
 
-      {% include 'components/nav.twig' with {
-        nav: menus[menu].get_items,
-        multilevel: false,
-        class: 'footer-nav'
-      } only %}
+            {% include 'components/nav.twig' with {
+                nav: menus[menu].get_items,
+                multilevel: false,
+                class: 'footer-nav'
+            } only %}
 
-      </div>
-      {% endfor %}
-    </div>
-  </div>
+        {% endfor %}
+    </section>
+    <section class="boilerplate">
+        <div class="container space-y-8">
+            <div class="flex flex-col gap-4 md:flex-row md:gap-8">
+                {% for item in menus.legal.get_items %}
+                    {% set xfn = (item.xfn ~ (item.target == '_blank' ? ' noopener noreferer' : ''))|trim %}
+                    <a
+                        href="{{ item.link }}"
+                        {{ item.attr_title ? 'title="%s"'|format(item.attr_title) }}
+                        {{ xfn ? 'rel="%s"'|format(xfn) }}
+                        {{ item.target != '_self' ? 'target="%s"'|format(item.target) }}
+                        class="hover:underline">
+                        {{ item.title }}
+                    </a>
+                {% endfor %}
+            </div>
+
+            <p>Belron UK Limited t/a Autoglass<sup>&reg;</sup> is registered in England and Wales. Number: 00494648. Registered Office: 1 Priory Business Park, Cardington, Bedford, Bedfordshire MK44 3US.</p>
+
+            <p>AUTOGLASS<sup>&reg;</sup> and the logo are registered trademarks of Belron Group S.A. and its affiliated companies. &copy; Copyright {{ now|date('Y') }} Belron UK Limited. All rights reserved.</p>
+        </div>
+    </section>
 </footer>
-<section class="boilerplate">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <a href="/" class="footer-logo">
-          [logo]
-        </a>
-      </div>
-    </div>
-  </div>
-</section>

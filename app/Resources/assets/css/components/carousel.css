@@ -1,0 +1,6 @@
+@import "swiper/swiper.css";
+
+.swiper {
+    overflow: clip;
+    overflow-y: visible;
+}

@@ -1,0 +1,32 @@
+
+[class*="prose"] ul.list--ticks {
+    padding-left: 0;
+}
+
+[class*="prose"] ul.list--ticks li {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    padding-left: 0;
+}
+
+[class*="prose"] ul.list--ticks li::before {
+    content: "✓";
+    color: white;
+    background: var(--color-primary);
+    @apply size-4;
+    margin-top: 5px;
+
+    @variant lg {
+        margin-top: 4px;
+        width: 22px;
+        height: 22px;
+    }
+
+    @apply rounded-full flex items-center justify-center font-mono;
+}
+
+.bg-default [class*="prose"] ul li::before {
+    @apply bg-tertiary;
+}
+

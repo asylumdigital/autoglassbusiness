@@ -1,0 +1,17 @@
+<div class="mb-4 flex items-start not-prose gap-6">
+    <div class="flex flex-col">
+        <p class="text-xs">Written by</p>
+        <p class="text-sm font-bold">{{ post.author }}</p>
+    </div>
+    <div class="flex flex-col">
+        <p class="text-xs">{{ post.post_modified > post.post_date ? 'Updated on' : 'Published on' }}</p>
+        <span class="flex items-center gap-1">
+
+            {% if post.post_modified > post.post_date %}
+                <time class="text-sm font-bold" datetime="{{ post.post_modified }}">{{ post.modified_date }}</time>
+            {% else %}
+                <time class="text-sm font-bold" datetime="{{ post.post_date }}">{{ post.date }}</time>
+            {% endif %}
+        </span>
+    </div>
+</div>

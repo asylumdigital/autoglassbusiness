@@ -3,22 +3,21 @@
 return [
   'widgets' => [
     [
-        'name'          => esc_html__('CPT Archive Sidebar', 'bm'),
-        'id'            => 'sidebar-cpt',
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h4 class="widget-title">',
-        'after_title'   => '</h4>'
-    ],
-
-    [
-        'name'          => esc_html__('Post & Page Sidebar', 'bm'),
+        'name'          => 'Static items',
         'id'            => 'sidebar',
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</section>',
+        'before_widget' => '<div id="%1$s" class="pt-20 widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="widget-title">',
+        'after_title'   => '</h4>'
+    ],
+    [
+        'name'          => 'Sticky items',
+        'id'            => 'sticky-sidebar',
+        'before_widget' => '<div id="%1$s" class="sticky top-20 hidden md:block widget %2$s">',
+        'after_widget'  => '</div>',
         'before_title'  => '<h4 class="widget-title">',
         'after_title'   => '</h4>'
     ],
 
-  ]
+    ]
 ];

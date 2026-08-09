@@ -26,8 +26,71 @@
             style: 'highlight',
         }
     } %}
-    {# {% include "block/hero/standard.twig" %}
-    {% include "block/hero/image.twig" %}
+
+    {% include "block/content/info-grid.twig" with {
+        block: {
+            style: 'highlight',
+        }
+    } %}
+    {% include "block/content/info-cards.twig" with {
+        block: {
+
+        }
+    } %}
+
+    {% include "block/slider/partner.twig" with {
+        block: {
+            background: 'bg-highlight',
+        }
+    } %}
+
+    {% include "block/slider/partner.twig" with {
+        block: {
+            background: 'bg-default',
+            reverse: true
+        }
+    } %}
+
+    {% include "block/slider/partner.twig" with {
+        block: {
+            background: 'bg-primary',
+
+        }
+    } %}
+
+
+    <div class="image-test mx-auto w-fit mb-10">
+        <div class="relative aspect-square w-fit overflow-hidden group clip-square">
+            <div class="h-[200%] absolute opacity-25 w-30 flex right-0 rotate-45 translate-x-[-145%] z-50">
+                <div class="bg-secondary w-[50px] transition-all translate-x-full opacity-0 group-hover:opacity-100 group-hover:translate-0  delay-75"></div>
+                <div class="bg-primary w-[70px] transition-all translate-x-full opacity-0 group-hover:opacity-100 group-hover:translate-0"></div>
+            </div>
+            <img src="https://picsum.photos/493/493" class="group-hover:scale-105 transition-all duration-700" />
+        </div>
+    </div>
+
+    <div class="image-test mx-auto w-fit mb-10">
+        <div class="relative aspect-video w-fit overflow-hidden group clip-video">
+            <div class="h-[200%] absolute opacity-25 w-30 flex right-0 rotate-45 translate-x-[-145%] z-50">
+                <div class="bg-secondary w-[50px] transition-all translate-x-full opacity-0 group-hover:opacity-100 group-hover:translate-0  delay-75"></div>
+                <div class="bg-primary w-[70px] transition-all translate-x-full opacity-0 group-hover:opacity-100 group-hover:translate-0"></div>
+            </div>
+            <img src="https://picsum.photos/493/493" class="group-hover:scale-105 transition-all duration-700" />
+        </div>
+    </div>
+    {% include "block/hero/standard.twig" %}
+
+    {% include "block/slider/carousel.twig" with {
+        block: {}
+    } %}
+
+    {% include "block/slider/carousel.twig" with {
+        block: {
+            style: 'dark'
+        }
+    } %}
+
+    {# {% include "block/hero/image.twig" %}
 
     {% include "block/slider/partner.twig" %}
 
@@ -42,7 +105,6 @@
     {% include "block/article/list.twig" %}
     {% include "block/article/list-2.twig" %}
 
-    {% include "block/slider/carousel.twig" %}
 
     {% include "block/content/sticky-image.twig" with {
         block: {
@@ -54,4 +116,5 @@
     <div class="container">
         {% include "components/atoms/button.twig" %}
     </div> #}
+
 {% endblock %}

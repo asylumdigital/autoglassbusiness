@@ -1,35 +1,62 @@
-<section class="bg-default" x-data="carousel">
-    <div class="container">
-        <!-- Slider main container -->
-        <div class="swiper swiper--flow" x-ref="carousel">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                <div class="swiper-slide">
-                    <div class="flex">
-                        <img src="https://picsum.photos/608" class="clipped scale-105 origin-left" />
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="flex">
-                        <img src="https://picsum.photos/608" class="clipped scale-105 origin-left" />
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="flex">
-                        <img src="https://picsum.photos/608" class="clipped scale-105 origin-left" />
-                    </div>
-                </div>
-            </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
+{% extends "modules/block/wrapper.twig" %}
 
-            <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+{% set container = 'max-w-none' %}
 
-            <!-- If we need scrollbar -->
-            <div class="swiper-scrollbar"></div>
-        </div>
+{% set sectionAttributes = {
+    'x-data': "carousel",
+} %}
+
+{% set blockStyle = block.style %}
+
+{% set block = block|merge({'style': 'value'}) %}
+
+{% do addCss('carousel') %}
+{% do addJs('demo') %}
+
+{% block content %}
+    <div class="container text-center">
+        {% include "components/atoms/accent-title.twig" with {
+            text: 'WHAT DO OUR CLIENTS SAY',
+        } %}
+
+        <h2 class="font-condensed uppercase text-2xl sm:text-4xl lg:text-5xl font-black">Quality guaranteed.</h2>
+
+        <p class="text-balance lg:max-w-1/2 mx-auto">Deserunt cillum Lorem cupidatat id Lorem elit sint deserunt esse magna fugiat excepteur esse minim. Fugiat enim excepteur minim mollit pariatur ea velit dolor elit. Esse in irure aute ea. Consectetur consectetur aute esse est. Laborum anim labore proident ea sunt occaecat qui enim. Mollit reprehenderit velit pariatur eu eiusmod aliqua eiusmod officia ut proident reprehenderit veniam.</p>
     </div>
-</section>
+    <div class="{{ blockStyle == 'dark' ? 'bg-default text-white' : 'bg-highlight' }}">
+
+            <!-- Slider main container -->
+            <div class="swiper swiper--flow" x-ref="carousel">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    {% for item in 1..5 %}
+                        <div class="swiper-slide">
+                            <div class="container grid lg:grid-cols-12 lg:items-center">
+                                <div class="lg:col-span-5 lg:col-start-2">
+                                    <img src="https://picsum.photos/608" class="clipped lg:scale-105 origin-left w-full -translate-y-7" />
+                                </div>
+                                <div class="lg:col-span-4 lg:col-start-8 text-sm lg:text-2xl">
+                                    <p>We require a supplier that offers excellent and reliable service levels to our vehicles up and down the UK. Autoglass® fulfils this brief and provides us with a skilled, unique support hub dedicated to managing our day-to-day requirements ensuring that we receive and outstanding level of service.</p>
+
+                                    <div class="mt-9 w-fit mx-auto max-w-1/2 [&>svg]:w-full">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="373" height="71" fill="none" viewBox="0 0 373 71"><path fill="currentColor" d="M39.964 21.009V.714a29.95 29.95 0 0 0-12.998 0v20.295zM26.966 49.866V70.16q6.499 1.426 12.998 0V50.024H26.966zM51.468 21.009v7.452l10.457-11.1a35.5 35.5 0 0 0-8.814-10.305L39.964 21.009h11.504M51.468 49.866H40.113L53.26 63.819c3.586-2.854 6.424-6.343 8.815-10.306l-10.458-11.1v7.453zM15.313 40.828V28.62H.673a35.7 35.7 0 0 0 0 13.795h14.64zM23.829 49.866c-4.034 0-7.62-3.171-8.366-7.294L4.855 53.83c2.241 3.964 5.23 7.452 8.815 10.147l13.296-14.111H23.83M13.67 6.897c-3.586 2.696-6.574 6.184-8.815 10.148l10.608 11.257c.747-4.28 4.332-7.293 8.366-7.293h2.988z"/><path fill="currentColor" d="M66.109 28.46H22.335v13.795h43.624a35.7 35.7 0 0 0 0-13.794M202.957 40.828c0 5.074-3.885 9.038-8.516 9.038h-21.065c-4.781 0-8.516-4.123-8.516-9.038V30.205c0-5.074 3.885-9.038 8.516-9.038h21.065c4.781 0 8.516 4.123 8.516 9.038zm-7.022-12.367h-24.053v13.794h24.053zM245.535 40.828c0 5.074-3.884 9.038-8.516 9.038h-29.73V11.02h7.171v9.989h22.559c4.781 0 8.516 4.122 8.516 9.037v10.782m-7.022-12.367H214.46v13.794h24.053zM288.113 49.866h-30.925c-4.781 0-8.516-4.123-8.516-9.038 0-5.074 3.885-9.038 8.516-9.038h23.904v-3.17h-31.224v-7.611h29.73c4.78 0 8.515 4.122 8.515 9.037zm-7.021-10.624h-25.398v3.172h25.398zM330.99 36.706h-7.171v-8.087h-24.202v21.405h-7.171V21.01h29.879c4.781 0 8.516 4.122 8.516 9.037v6.66zM119.443 38.925c0 6.026-4.631 10.94-10.308 10.94H82.393v-7.61h29.431V35.28H91.506c-5.677 0-10.308-4.916-10.308-10.94 0-6.026 4.63-10.941 10.308-10.941h26.742v7.61H88.966v6.977h20.318c5.677 0 10.309 4.915 10.309 10.94zM160.378 49.866h-28.236c-4.781 0-8.516-4.123-8.516-9.038v-27.43l7.172-2.378v9.989h29.73v7.61h-29.73v13.795h29.73v7.61zM372.075 49.866h-28.237c-4.78 0-8.515-4.123-8.515-9.038v-27.43l7.171-2.378v9.989h29.73v7.61h-29.73v13.795h29.73v7.61z"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+    </div>
+{% endblock %}

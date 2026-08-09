@@ -1,0 +1,50 @@
+@reference "../app.css";
+:root {
+    --marquee-gap: 2.5rem;
+}
+
+.marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--marquee-gap);
+}
+
+.marquee__content {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: var(--marquee-gap);
+    animation: scroll 30s linear infinite;
+}
+
+.marquee--reverse .marquee__content {
+    animation-direction: reverse;
+}
+
+.marquee:hover .marquee__content {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-100% - var(--marquee-gap)));
+    }
+}
+
+@media (prefers-reduced-motion) {
+    .marquee__content {
+        animation: none;
+        @apply px-4;
+    }
+
+    .marquee__content[aria-hidden="true"] {
+        display: none;
+    }
+}

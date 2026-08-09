@@ -11,11 +11,14 @@ class Common
         add_filter('timber/context', [$this, 'getWidgets']);
         add_filter('the_content', [$this, 'removeEmptyParagraph']);
     }
-    
-    
+
     public function getWidgets($context)
     {
-        $context['aside_widgets'] = Timber::get_widgets('sidebar');
+        global $wp_registered_sidebars;
+
+        foreach (array_keys($wp_registered_sidebars) as $sidebar) {
+            $context['aside_widgets'][$sidebar] = Timber::get_widgets($sidebar);
+        }
         return $context;
     }
 

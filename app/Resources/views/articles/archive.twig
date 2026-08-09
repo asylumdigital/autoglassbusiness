@@ -1,18 +1,13 @@
 {% extends 'layouts/default.twig' %}
 
 {% block content %}
-<div class="container">
-    <div class="flex gap-5">
-        <div class="w-full lg:w-8/12">
-            <h1 class="font-bold text-3xl">{{ term.name }}</h1>
-
-            {% for post in posts %}
-                {% include ["articles/tease-" ~ post.post_type ~ ".twig", "articles/tease.twig"] %}
-            {% endfor %}
-        </div>
-        <div class="w-full lg:w-4/12">
-            {% include "sidebar.twig" %}
-        </div>
+<div class="container pt-30">
+    {{ fn('get_search_form') }}
+    {# <h1 class="font-bold text-3xl">{{ term.name }}</h1> #}
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 sm:w-10/12 sm:mx-auto gap-5">
+        {% for post in posts %}
+            {% include ["articles/teases/tease-" ~ post.post_type ~ ".twig", "articles/teases/tease.twig"] %}
+        {% endfor %}
     </div>
 </div>
 

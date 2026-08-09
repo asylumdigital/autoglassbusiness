@@ -1,36 +1,55 @@
-<section class="py-28">
-    <div class="container">
-        <div class="flex justify-between">
-            <div class="space-y-20">
+{% extends "modules/block/wrapper.twig" %}
 
-                <h1 class="font-condensed font-black text-7xl uppercase flex flex-col">
-                    <span>Reliable.</span>
-                    <span>Resilient.</span>
-                    <span>Responsible.</span>
-                </h1>
+{# {% do addCss('demo') %} #}
+{# {% do addJs('demo') %} #}
 
-                <p class="text-2xl max-w-2xl">We structure our business to guarantee quality. First time, every time. We offer unrivalled operational scale with a service delivered by expertly trained technicians, whilst meeting a mutual duty of care with our partners through safe and sustainable ethics and practices.</p>
+{% set classes = {
+    image: '',
+    content: 'lg:col-start-6 xl:col-start-7 2xl:col-start-6',
+} %}
+
+{% if block.align == 'right' %}
+    {% set classes = {
+        image: 'md:flex md:justify-end lg:col-start-9 xl:col-start-8',
+        content: 'lg:col-start-2 lg:row-start-1 xl:col-start-2 2xl:col-start-2',
+    } %}
+{% endif %}
 
 
-                <div class="flex gap-11 ml-auto">
-                    {% include "components/atoms/button.twig" with {
-                        url: '#',
-                        text: 'Open an account',
-                        arrow: true,
-                    } %}
+{% block content %}
 
-                    {% include "components/atoms/button.twig" with {
-                        url: '#',
-                        text: 'Make an enquiry',
-                        secondary: true,
-                        arrow: true,
-                    } %}
-                </div>
-            </div>
-            <div class="self-end">
-                <img src="https://picsum.photos/850" class="clipped sticky top-0 max-w-112.5" />
+    <div class="grid lg:grid-cols-12 md:w-11/12 md:mx-auto">
+        <div class="space-y-10 xl:space-y-20 col-span-5 xl:col-start-2 xl:col-span-5 lg:col-span-7">
+
+            <h1 class="text-4xl md:text-6xl font-condensed font-black xl:text-7xl uppercase flex flex-col">
+                <span>Reliable.</span>
+                <span>Resilient.</span>
+                <span>Responsible.</span>
+            </h1>
+
+            <p class="text-lg xl:text-2xl max-w-2xl">We structure our business to guarantee quality. First time, every time. We offer unrivalled operational scale with a service delivered by expertly trained technicians, whilst meeting a mutual duty of care with our partners through safe and sustainable ethics and practices.</p>
+
+
+            <div class="md:flex-row flex-col flex gap-4 md:gap-8 lg:gap-4">
+                {% include "components/atoms/button.twig" with {
+                    url: '#',
+                    text: 'Open an account',
+                    arrow: true,
+                } %}
+
+                {% include "components/atoms/button.twig" with {
+                    url: '#',
+                    text: 'Make an enquiry',
+                    secondary: true,
+                    arrow: true,
+                } %}
             </div>
         </div>
-
+        <div class="col-span-5 lg:col-span-4 xl:col-span-5 lg:col-start-9 xl:col-start-8 lg:flex items-end hidden">
+            <img src="https://picsum.photos/850" class="clipped sticky w-full top-0 max-w-112.5" />
+        </div>
     </div>
-</section>
+
+
+{% endblock %}
+
