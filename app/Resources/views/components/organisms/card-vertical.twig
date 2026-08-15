@@ -1,0 +1,22 @@
+<article class="h-full {{ bg == 'dark' ? 'bg-default text-white' }} {{ bg == 'highlight' ? 'highlight' }} {{ not bg ? 'border border-gray-200' }} hover:shadow-lg transition-all card">
+    <a href="{{ post.link }}" title="Read more" class="grid gap-1.5 h-full group">
+        {% include "components/molecules/image.twig" with {
+            image: post.thumbnail.id,
+            class: 'w-full h-full object-cover',
+            aspect: 'square',
+            size: 'verticle-list',
+            lazy: true,
+        } %}
+
+        <div class="p-5 flex flex-col gap-4 flex-1">
+            {% include "components/atoms/card/title.twig" with { title: post.title } %}
+
+            {% include "components/atoms/card/excerpt.twig" with { text: post.excerpt.read_more(false) } %}
+
+            <p class="flex font-bold items-center gap-1.5 mt-auto ml-auto">
+                <span class="sr-only">Read more</span>
+                <span class="w-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 11 9"><path fill="currentColor" d="M5.462 4.833c.246-.246.246-.656 0-.93L1.743.185c-.273-.247-.683-.247-.93 0L.185.813c-.247.274-.247.684 0 .93l2.652 2.652L.185 7.02c-.247.247-.247.657 0 .93l.628.602c.247.273.657.273.93 0zm5.25-.93L6.993.185c-.273-.247-.683-.247-.93 0l-.628.628a.68.68 0 0 0 0 .93l2.652 2.625L5.435 7.02c-.246.247-.246.657 0 .93l.629.602a.63.63 0 0 0 .93 0l3.718-3.719c.246-.246.246-.656 0-.93"/></svg></span>
+            </p>
+        </div>
+    </a>
+</article>

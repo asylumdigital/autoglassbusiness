@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import './components/list.css';
+@import './components/image.css';
 @plugin "@tailwindcss/typography";
 
 @view-transition {
@@ -51,6 +51,8 @@
     --color-highlight: var(--color-surface-lightest);
     --color-default: var(--color-black);
 
+    --color-check: var(--color-primary);
+
     /* Clip paths */
     --clip-square: polygon(100% 0, 100% 70%, 70% 100%, 0 100%, 0 0);
     /* 45° cut — x inset is derived from the 16:9 box so run == rise in px */
@@ -90,4 +92,10 @@
     @apply lg:scroll-m-20;
 }
 
+.bg--swoosh {
+    background-image: url(../img/svg/swoosh.svg);
+}
 
+.bg-default {
+    --color-check: var(--color-tertiary);
+}

@@ -1,9 +1,15 @@
 {% extends 'layouts/default.twig' %}
 
 {% block content %}
-<div class="container pt-30">
-    {{ fn('get_search_form') }}
-    {# <h1 class="font-bold text-3xl">{{ term.name }}</h1> #}
+<div class="container py-12">
+    <div class="sm:w-10/12 sm:mx-auto">
+        {% include "components/atoms/heading/h1.twig" with {
+            text: term.name|default(post.title)
+        } %}
+
+        {{ fn('get_search_form') }}
+    </div>
+
     <div class="grid md:grid-cols-2 lg:grid-cols-3 sm:w-10/12 sm:mx-auto gap-5">
         {% for post in posts %}
             {% include ["articles/teases/tease-" ~ post.post_type ~ ".twig", "articles/teases/tease.twig"] %}

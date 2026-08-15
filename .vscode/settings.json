@@ -1,0 +1,19 @@
+{
+    // Pin the design system to the real v4 entry point so the language server
+    // never resolves a template against the legacy scss/public/app.scss.
+    "tailwindCSS.experimental.configFile": "app/Resources/assets/css/app.css",
+
+    // Twig passes classes around as include params and `set` maps, which are
+    // not `class` attributes, so IntelliSense ignores them without these.
+    "tailwindCSS.experimental.classRegex": [
+        // {% include "..." with { class: '...' } %}  /  { classList: '...' }
+        "class(?:List)?\\s*:\\s*['\"]([^'\"]*)['\"]",
+        // {% set classes = '...' %}
+        "class(?:es|List)?\\s*=\\s*['\"]([^'\"]*)['\"]",
+        // {% set classes = { image: '...', content: '...' } %}
+        [
+            "class(?:es|List)?\\s*=\\s*\\{([^}]*)\\}",
+            "['\"]([^'\"]*)['\"]"
+        ]
+    ]
+}

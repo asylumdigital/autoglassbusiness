@@ -1,0 +1,29 @@
+{% extends 'layouts/default.twig' %}
+
+{% block content %}
+<div class="container py-12">
+    <div class="sm:w-10/12 sm:mx-auto">
+        {% include "components/atoms/accent-title.twig" with {
+            text: "Search results for:"
+        } %}
+        {% include "components/atoms/heading/h1.twig" with {
+            text: search_query|esc_html
+        } %}
+
+        <form action="{{ site.home_url }}">
+            <input type="text" name="s" class="border border-default" /><button type="submit">submit</button>
+        </form>
+        {# {{ fn('get_search_form') }} #}
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 sm:w-10/12 sm:mx-auto gap-5">
+        {% for post in posts %}
+            {% include ["articles/teases/tease-" ~ post.post_type ~ ".twig", "articles/teases/tease.twig"] %}
+        {% else %}
+            <p class="text-3xl my-6">Sorry, nothing to display.</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

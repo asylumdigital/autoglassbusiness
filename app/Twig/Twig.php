@@ -2,9 +2,13 @@
 
 namespace Asylum\Theme\Twig;
 
+use Asylum\Theme\Traits\Registration;
 use Twig\TwigFilter;
+
 class Twig
 {
+    use Registration;
+
     public function __construct()
     {
         add_filter('timber/twig', [$this, 'addFilters']);
@@ -20,6 +24,10 @@ class Twig
         }));
 
         $twig->addFilter(new TwigFilter('html_attributes', 'html_build_attributes'));
+
+        $twig->addFilter(new TwigFilter('sup', function($text) {
+            return $this->superscriptRegMark($text);
+        }));
 
         return $twig;
     }

@@ -1,6 +1,12 @@
 {% extends "modules/block/wrapper.twig" %}
 
 {% block content %}
+    {% include "components/organisms/section-header.twig" with {
+        accent: 'Intro',
+        title: 'Main headline.',
+        intro: 'Deserunt cillum Lorem cupidatat id Lorem elit sint deserunt esse magna fugiat excepteur esse minim. Fugiat enim excepteur minim mollit pariatur ea velit dolor elit. Esse in irure aute ea. Consectetur consectetur aute esse est. Laborum anim labore proident ea sunt occaecat qui enim. Mollit reprehenderit velit pariatur eu eiusmod aliqua eiusmod officia ut proident reprehenderit veniam.',
+        outer: 'text-center mb-8',
+    } %}
     <div class="grid grid-cols-12 sm:w-10/12 mx-auto gap-2.5 xl:gap-6">
         {% for item in 1..3 %}
             {% include "components/molecules/grid-card.twig" with {

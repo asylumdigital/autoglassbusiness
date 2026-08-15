@@ -20,6 +20,8 @@ function copyStaticAssets(dirs) {
 }
 
 export default defineConfig(({ command, mode, isSsrBuild }) => ({
+    // Relative, so CSS url() refs resolve against the stylesheet rather than the domain root.
+    base: './',
     css: {
         postcss: {
             plugins: [
@@ -60,7 +62,9 @@ export default defineConfig(({ command, mode, isSsrBuild }) => ({
                     name = name.replace(/(Css|Js)$/, '')
 
                     if (/png|jpe?g|gif|svg|webp/.test(ext)) {
-                        return `img/${name}.${ext}`
+                        // Keep the source subfolder so the emit lands on the copied file, not beside it
+                        const rel = originalFileName?.replace(/^app\/Resources\/assets\/img\//, '')
+                        return rel ? `img/${rel}` : `img/${name}.${ext}`
                     } else if (/woff|woff2|eot|ttf|otf/.test(ext)) {
                         return `fonts/${name}.${ext}`
                     } else if (ext === 'css') {

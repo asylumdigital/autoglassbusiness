@@ -13,7 +13,7 @@ class Single extends CoreController
 
         return Timber::get_posts([
             'post__not_in' => [$current],
-            'posts_per_page' => 8,
+            'posts_per_page' => 6,
             'tax_query' => [
                 [
                     'taxonomy' => 'category',

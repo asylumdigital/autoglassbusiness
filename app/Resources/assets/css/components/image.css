@@ -1,0 +1,62 @@
+.image-hover {
+    --opacity: 0;
+}
+
+.image-hover__container {
+    width: 24%;
+    position: absolute;
+    height: 200%;
+    right: 0;
+    z-index: 200;
+    background: rgba(255, 255, 255, var(--opacity));
+    top: 0;
+    display: flex;
+    transform: translate(-100%, -10%);
+    margin-right: 3%;
+    rotate: 45deg;
+    padding-left: 1%;
+    padding-right: 1%;
+    opacity: 30%;
+    transition: all 0.4s ease-out;
+    /* @apply h-[200%] absolute opacity-25 w-[24%] flex right-0 rotate-45 translate-x-[-145%] z-50; */
+}
+
+.image-hover__bar {
+    /* height: 100%; */
+    /* flex: 1; */
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.4s ease-out;
+}
+
+.image-hover__bar--primary {
+    @apply bg-primary;
+    width: 65%;
+}
+
+.image-hover__bar--secondary {
+    @apply bg-secondary;
+    width: 35%;
+}
+
+
+
+.image-hover:hover .image-hover__bar,
+.card:hover .image-hover__bar {
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.image-hover img {
+    /* transform-origin: center; */
+    transition: all 700ms ease;
+}
+
+.image-hover:hover,
+.card:hover .image-hover {
+    --opacity: 1;
+
+    img {
+        transform: scale(105%);
+    }
+}

@@ -17,7 +17,12 @@
     <div class="grid lg:grid-cols-12 gap-5">
         <div class="mb-3 sm:mb-6 lg:col-span-4 xl:col-span-5 {{ classes.image }}">
             <div class="2xl:w-11/12">
-                {% include "common/picture.twig" %}
+                {% include "components/molecules/image.twig" with {
+                    image: 269,
+                    class: 'w-full h-full object-cover',
+                    aspect: 'square',
+                    size: 'demo',
+                } %}
             </div>
         </div>
 
@@ -33,23 +38,25 @@
 
                 <p>As part of the Belron Group, we’re proud to be the worldwide leader in VGRRR. We offer unrivalled operational scale with an expertly trained service delivered across both commercial and specialist sectors, including HGV, plant and agricultural vehicles.</p>
 
-                <ul class="list list--ticks">
-                    <li>List item</li>
-                    <li>List item</li>
-                    <li>List item</li>
-                    <li>List item</li>
-                    <li>List item</li>
-                    <li>List item</li>
-                    <li>List item</li>
-                    <li>List item</li>
-                    <li>List item</li>
+                <ul class="list list--ticks pl-0 not-prose space-y-4">
+                    {% for item in 1..10 %}
+                        <li class="flex gap-2 list-none pl-0">
+                            {% include "components/atoms/icons/list-check.twig" with {
+                                type: 'check',
+                            } %}
+                            <span class="flex-1">Elit minim esse aliqua ipsum nisi. Pariatur aute commodo ut magna.</span>
+                        </li>
+                    {% endfor %}
                 </ul>
-            </div>
 
-            {% include "components/atoms/button.twig" with {
-                arrow: true,
-                text: "Find out more",
-            } %}
+                <p>As part of the Belron Group, we’re proud to be the worldwide leader in VGRRR. We offer unrivalled operational scale with an expertly trained service delivered across both commercial and specialist sectors, including HGV, plant and agricultural vehicles.</p>
+            </div>
+            {% include block.align == 'right' ? "components/molecules/button-trail.twig" : '' ignore missing %}
         </div>
     </div>
+
+    {% include block.align == 'left' ? "components/molecules/button-trail.twig" : '' ignore missing %}
+
+
+
 {% endblock %}

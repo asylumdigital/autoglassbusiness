@@ -1,0 +1,14 @@
+<figure{{ parent ? ' class="%s"'|format(parent) }}>
+    <div class="{{ aspect == 'video' ? 'aspect-video clip-video' : (':' in aspect ? aspect : 'aspect-square clip-square') }} relative group image-hover {{ wrapper }}">
+        {{ picture(image|default(0), size, { class: class|default('w-full h-full object-cover'), loading: 'lazy' } ) }}
+
+        <div class="image-hover__container">
+            <div class="image-hover__bar image-hover__bar--secondary"></div>
+            <div class="image-hover__bar image-hover__bar--primary"></div>
+        </div>
+    </div>
+
+    {% if caption %}
+        <figcaption>{{ caption|esc_html }}
+    {% endif %}
+</figure>

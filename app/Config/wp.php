@@ -19,6 +19,8 @@ return [
         'comment-list',
         'gallery',
         'caption',
+        'script',
+        'style',
     ],
     'disable_frontpage_editor' => true
 ];

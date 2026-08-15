@@ -46,7 +46,11 @@
             </div>
         </div>
         <div class="col-span-5 lg:col-span-4 xl:col-span-5 lg:col-start-9 xl:col-start-8 lg:flex items-end hidden">
-            <img src="https://picsum.photos/850" class="clipped sticky w-full top-0 max-w-112.5" />
+            {% include "components/molecules/image.twig" with {
+                image: 326,
+                wrapper: 'max-w-112.5'
+            } %}
+            {# <img src="https://picsum.photos/850" class="clipped sticky w-full top-0 max-w-112.5" /> #}
         </div>
     </div>
 

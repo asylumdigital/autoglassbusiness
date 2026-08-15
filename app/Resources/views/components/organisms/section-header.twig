@@ -1,0 +1,17 @@
+<div class="{{ outer|default('container text-center') }}">
+    {% if accent %}
+        {% include "components/atoms/accent-title.twig" with {
+            text: accent,
+        } %}
+    {% endif %}
+
+    {% include "components/atoms/heading/h2.twig" with {
+        text: title,
+    } %}
+
+    {% if intro %}
+        <div class="text-balance lg:max-w-2/3 mx-auto space-y-4 text-xs sm:text-base md:text-lg">
+            {{ intro|wpautop|wp_kses_post|sup }}
+        </div>
+    {% endif %}
+</div>

@@ -3,6 +3,7 @@
 namespace Asylum\Theme\Block;
 
 use Asylum\Block\BlockController;
+use Asylum\Core\Image\ImageRegistry;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class ContentSection extends BlockController
@@ -19,5 +20,23 @@ class ContentSection extends BlockController
             ]);
         return $fields;
 
+    }
+
+    protected function assets(): void
+    {
+        $assets = [
+            'content_section' => [
+                'md' => [700, 150],
+                'lg' => [700],
+                '2xl' => [240],
+                'sm' => [100],
+                'default' => [400, 30],
+                'xl' => [294],
+            ],
+        ];
+
+        foreach ($assets as $name => $size) {
+            ImageRegistry::addSize($name, $size);
+        }
     }
 }

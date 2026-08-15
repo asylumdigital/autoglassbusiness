@@ -1,0 +1,55 @@
+<script>
+    let ccscript = document.createElement('script');
+	ccscript.type = 'text/javascript';
+	ccscript.src = 'https://cc.cdn.civiccomputing.com/9/cookieControl-9.x.min.js';
+	document.getElementsByTagName('head')[0].appendChild(ccscript);
+
+	ccscript.onload = function () {
+		var config = {
+			apiKey: '7dab0800c327c81d30f092d695549c0e4f894f39',
+			product: 'PRO_MULTISITE',
+			initialState: "OPEN",
+			optionalCookies: [
+				{
+					name: 'analytics',
+					label: 'Analytics cookies',
+					description: "We'd like to set Google Analytics cookies to help us to improve our website by collecting and reporting information on how you use it. The cookies collect information in a way that does not directly identify anyone. For more information on how these cookies work, please see our 'Cookies document'.",
+					cookies: ['_gcl_au', '_ga', '_gid', '_gat', '__utma', '__utmt', '__utmb', '__utmc', '__utmz', '__utmv'],
+					onAccept: function () {
+						gtag('consent', 'update', { 'analytics_storage': 'granted' });
+					},
+					onRevoke: function () {
+						gtag('consent', 'update', { 'analytics_storage': 'denied' });
+					}
+				}
+			],
+			position: 'RIGHT',
+			theme: 'dark',
+			text: {
+				title: 'Our use of cookies',
+				intro: "We use necessary cookies to make our site work. We'd also like to set optional analytics cookies to help us improve it. We won't set optional cookies unless you enable them. Using this tool will set a cookie on your device to remember your preferences.",
+				updated: '19/01/2021'
+			},
+			statement: {
+				description: 'For more detailed information about the cookies we use, see our',
+				name: 'Cookie document',
+				url: '/wp-content/uploads/2022/05/cookie-policy.pdf',
+				updated: '15/07/2021'
+			},
+			necessaryCookies: {
+				necessaryTitle: 'Necessary cookies',
+				necessaryDescription: 'Necessary cookies enable core functionality such as security, network management, and accessibility. You may disable these by changing your browser settings, but this may affect how the website functions.',
+			},
+			branding: {
+				backgroundColor: "#ffb518",
+				fontColor: "#000000",
+				toggleText: "#ffffff",
+				toggleColor: "#000000",
+				toggleBackground: "#e30613",
+				removeAbout: true
+			}
+		};
+
+		CookieControl.load(config);
+	}
+</script>

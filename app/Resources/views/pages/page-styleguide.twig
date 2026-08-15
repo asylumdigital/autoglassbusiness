@@ -1,11 +1,15 @@
 {% extends "layouts/default.twig" %}
 
 {% block content %}
+    {% include "block/hero/image.twig" %}
+
     {% include "block/content/content-section.twig" with {
         block: {
             align: 'left',
         }
     } %}
+
+    {# {% include "block/form/iframed.twig" %} #}
 
     {% include "block/content/content-section.twig" with {
         block: {
@@ -24,6 +28,7 @@
     {% include "block/content/content-section.twig" with {
         block: {
             style: 'highlight',
+            align: 'left',
         }
     } %}
 
@@ -58,26 +63,6 @@
         }
     } %}
 
-
-    <div class="image-test mx-auto w-fit mb-10">
-        <div class="relative aspect-square w-fit overflow-hidden group clip-square">
-            <div class="h-[200%] absolute opacity-25 w-30 flex right-0 rotate-45 translate-x-[-145%] z-50">
-                <div class="bg-secondary w-[50px] transition-all translate-x-full opacity-0 group-hover:opacity-100 group-hover:translate-0  delay-75"></div>
-                <div class="bg-primary w-[70px] transition-all translate-x-full opacity-0 group-hover:opacity-100 group-hover:translate-0"></div>
-            </div>
-            <img src="https://picsum.photos/493/493" class="group-hover:scale-105 transition-all duration-700" />
-        </div>
-    </div>
-
-    <div class="image-test mx-auto w-fit mb-10">
-        <div class="relative aspect-video w-fit overflow-hidden group clip-video">
-            <div class="h-[200%] absolute opacity-25 w-30 flex right-0 rotate-45 translate-x-[-145%] z-50">
-                <div class="bg-secondary w-[50px] transition-all translate-x-full opacity-0 group-hover:opacity-100 group-hover:translate-0  delay-75"></div>
-                <div class="bg-primary w-[70px] transition-all translate-x-full opacity-0 group-hover:opacity-100 group-hover:translate-0"></div>
-            </div>
-            <img src="https://picsum.photos/493/493" class="group-hover:scale-105 transition-all duration-700" />
-        </div>
-    </div>
     {% include "block/hero/standard.twig" %}
 
     {% include "block/slider/carousel.twig" with {
@@ -90,7 +75,17 @@
         }
     } %}
 
-    {# {% include "block/hero/image.twig" %}
+    {% include "block/article/list.twig" with {
+        posts: demo_posts,
+        style: 'horizontal',
+    } %}
+
+    {% include "block/article/list.twig" with {
+        posts: demo_posts,
+        style: 'vertical',
+    } %}
+
+    {#
 
     {% include "block/slider/partner.twig" %}
 
@@ -116,5 +111,5 @@
     <div class="container">
         {% include "components/atoms/button.twig" %}
     </div> #}
-
+    {{ post.content }}
 {% endblock %}

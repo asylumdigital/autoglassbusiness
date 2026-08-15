@@ -11,6 +11,10 @@
 
 
 {% block content %}
+    {% include "components/organisms/section-header.twig" with {
+        accent: 'Working with great partners',
+        outer: 'container text-left mb-8 mt-8',
+    } %}
     <div class="marquee {{ block.reverse ? 'marquee--reverse' }} {{ block.background|default('bg-highlight') }} py-8 {{ color }}">
         <ul class="marquee__content">
             <li>Item 1</li>

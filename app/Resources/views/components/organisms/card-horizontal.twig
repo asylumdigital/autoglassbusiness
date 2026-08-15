@@ -1,0 +1,23 @@
+<article class="h-full {{ bg == 'dark' ? 'bg-default text-white' }} {{ bg == 'highlight' ? 'highlight' }} {{ not bg ? 'border border-gray-200' }} hover:shadow-lg transition-all card">
+    <a href="{{ post.link }}" title="Read more" class="grid sm:grid-cols-12 gap-1.5 sm:gap-0 h-full group">
+
+        {% include "components/molecules/image.twig" with {
+            image: post.thumbnail.id|default(0),
+            class: 'w-full h-full object-cover',
+            aspect: 'aspect-video clip-video lg:aspect-square lg:clip-square',
+            size: 'horizontal-list',
+            parent: 'sm:col-span-5 md:col-span-6 lg:col-span-5'
+        } %}
+
+        <div class="p-5 flex flex-col gap-4 sm:col-span-7 md:col-span-6 lg:col-span-7">
+            {% include "components/atoms/card/title.twig" with { title: post.title } %}
+
+            {% include "components/atoms/card/excerpt.twig" with { text: post.excerpt.read_more(false) } %}
+
+            {# <p class="flex font-bold items-center gap-1.5 mt-auto ml-auto">
+                <span class="sr-only">Read more</span>
+                <span class="w-[17px]"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 11 9"><path fill="currentColor" d="M5.462 4.833c.246-.246.246-.656 0-.93L1.743.185c-.273-.247-.683-.247-.93 0L.185.813c-.247.274-.247.684 0 .93l2.652 2.652L.185 7.02c-.247.247-.247.657 0 .93l.628.602c.247.273.657.273.93 0zm5.25-.93L6.993.185c-.273-.247-.683-.247-.93 0l-.628.628a.68.68 0 0 0 0 .93l2.652 2.625L5.435 7.02c-.246.247-.246.657 0 .93l.629.602a.63.63 0 0 0 .93 0l3.718-3.719c.246-.246.246-.656 0-.93"/></svg></span>
+            </p> #}
+        </div>
+    </a>
+</article>

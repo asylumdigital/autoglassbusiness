@@ -1,0 +1,10 @@
+<div class="flex items-center {{ block.align == 'left' ? 'lg:w-11/12' }}">
+    <div class="{{ block.style != 'dark' ? 'bg-primary' : 'bg-tertiary' }} grow h-1"></div>
+    <div>
+        {% include "components/atoms/button.twig" with {
+            arrow: true,
+            arrow_type: 'chevron',
+            tertiary: block.style == 'dark',
+        } %}
+    </div>
+</div>

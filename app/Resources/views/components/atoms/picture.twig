@@ -1,0 +1,39 @@
+{{ dump(media|reverse) }}
+
+{% set breakpoints = {
+    "2xl" : 1536,
+    "xl" : 1280,
+    "lg" : 1024,
+    "md" : 768,
+    "sm" : 640,
+} %}
+
+{% set id = 21 %}
+
+
+{{ dump(get_image(id).src|towebp|resize(327, 327)) }}
+{#
+{% for k,size in media|reverse %}
+
+    {% if not loop.last %}
+
+        {{ dump(k) }}
+
+
+    {% else %}
+        <img src="" />
+    {% endif %}
+
+{% endfor %} #}
+
+<picture>
+    {% for k,size in media|reverse %}
+
+        {% if not loop.last %}
+            <source srcset="https://picsum.photos/493/493" media="(min-width: {{ breakpoints[k] }}px)" width="493" height="493">
+        {% else %}
+            <img src="" />
+        {% endif %}
+
+    {% endfor %}
+</picture>

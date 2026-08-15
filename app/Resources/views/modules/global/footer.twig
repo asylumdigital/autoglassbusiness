@@ -4,11 +4,11 @@
         {% set menu = 'footer_' ~ i %}
             <h3 class="footer-menu-label">{{ fn('get_field', 'menu_title', menus[menu]) }}</h3>
 
-            {% include 'components/nav.twig' with {
-                nav: menus[menu].get_items,
-                multilevel: false,
-                class: 'footer-nav'
-            } only %}
+            <div class="space-y-4 mb-8">
+                {% for item in menus[menu].get_items %}
+                    <a href="{{ item.link }}" class="block">{{ item.title }}</a>
+                {% endfor %}
+            </div>
 
         {% endfor %}
     </section>
