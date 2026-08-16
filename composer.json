@@ -3,8 +3,8 @@
     "prefer-stable": true,
     "repositories": {
         "asylum/theme": {
-            "type": "path",
-            "url": "/Users/phil/Sites/asylum/wordpress/packages/asylum/wp-theme-core"
+            "type": "vcs",
+            "url": "git@github.com:asylumdigital/wp-theme-core.git"
         },
         "asylum/updater": {
             "type": "vcs",
@@ -19,8 +19,8 @@
             "url": "git@github.com:asylumdigital/asylum-config.git"
         },
         "asylum/block": {
-            "type": "path",
-            "url": "/Users/phil/Sites/asylum/wordpress/packages/asylum/asylum-block"
+            "type": "vcs",
+            "url": "git@github.com:asylumdigital/asylum-block.git"
         },
         "asylum/validation": {
             "type": "vcs",
@@ -29,7 +29,7 @@
 
     },
     "require": {
-        "asylum/theme": "6.0.0",
+        "asylum/theme": "^6.1.0",
         "stoutlogic/acf-builder": "^1.12",
         "illuminate/collections": "^12.20",
         "vlucas/phpdotenv": "5.4"
