@@ -41,6 +41,10 @@
     --color-secondary: rgb(248 220 0);
     --color-tertiary: rgb(148 196 58);
 
+    --color-primary-hover: rgb(from var(--color-primary) calc(r * .8) calc(g * .8) calc(b * .8));
+    --color-secondary-hover: rgb(from var(--color-secondary) calc(r * .9) calc(g * .9) calc(b * .9));
+    --color-tertiary-hover: rgb(from var(--color-tertiary) calc(r * .8) calc(g * .8) calc(b * .8));
+
     --color-brand-dark-grey: rgb(77 74 71);
     --color-brand-light-grey: rgb(198 198 198);
     --color-black: rgb(1 34 51);
