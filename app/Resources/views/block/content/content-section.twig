@@ -36,10 +36,8 @@
             <div class="prose-sm sm:prose md:prose-lg {{ block.style == 'dark' ? ' prose-invert sm:prose-invert md:prose-invert' }}">
                 <p>Autoglass® is the UK’s favourite vehicle glass repair, replacement and recalibration (VGRRR) specialist, with unrivalled expertise in Advanced Driver Assistance Systems (ADAS). We know that every minute off the road costs businesses and customers money, so it’s our priority to get your vehicles back on the road quickly and safely.</p>
 
-                <p>As part of the Belron Group, we’re proud to be the worldwide leader in VGRRR. We offer unrivalled operational scale with an expertly trained service delivered across both commercial and specialist sectors, including HGV, plant and agricultural vehicles.</p>
-
                 <ul class="list list--ticks pl-0 not-prose space-y-4">
-                    {% for item in 1..10 %}
+                    {% for item in 1..4 %}
                         <li class="flex gap-2 list-none pl-0">
                             {% include "components/atoms/icons/list-check.twig" with {
                                 type: 'check',

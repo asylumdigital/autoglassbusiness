@@ -1,30 +1,30 @@
 {% set children = false %}
 
 {% if nav %}
-    <ul class="{{ not isChild ? 'flex flex-col lg:gap-9 lg:flex-row lg:font-semibold' : 'space-y-1.5' }}">
+    <ul class="{{ not isChild ? 'flex flex-col xl:gap-9 xl:flex-row xl:font-semibold' : 'space-y-1.5' }}">
         {% for item in nav %}
             {% set children = item.children ?: false %}
 
             {% set megaClass = ' menu-item-mega-menu' %}
 
-            <li class="py-4 border-b lg:border-0 level-{{ item.level }} menu-item{{ children ? ' has-children' }}{{ megaClass }}{{ item.current ? ' active' }}{{ not isChild ? ' lg:py-0' }}"{{ children ? ' x-data="{ open: false }"' }}>
-                <a {% if item.target %}target="{{ item.target }}" {% endif %}href="{{ item.link }}" class="flex items-center gap-1 {{ not isChild ? 'lg:py-3' }}{{ item.current and not isChild ? ' relative after:absolute after:bottom-0 after:w-full after:h-1 after:bg-secondary' }}"{{ children ? '@click.stop.prevent="open = !open"' }}>
+            <li class="py-4 border-b xl:border-0 level-{{ item.level }} menu-item{{ children ? ' has-children' }}{{ megaClass }}{{ item.current ? ' active' }}{{ not isChild ? ' xl:py-0' }}"{{ children ? ' x-data="{ open: false }"' }}>
+                <a {% if item.target %}target="{{ item.target }}" {% endif %}href="{{ item.link }}" class="flex items-center gap-1 {{ not isChild ? 'xl:py-3' }}{{ item.current and not isChild ? ' relative after:absolute after:bottom-0 after:w-full after:h-1 xl:after:bg-secondary' }}"{{ children ? '@click.stop.prevent="open = !open"' }}>
                     {{ item.title }}
                     {% if children %}
-                        <span class="w-6 ml-auto lg:hidden">
+                        <span class="w-6 ml-auto xl:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path fill="#333" d="M14.804 12.52c.261-.282.261-.75 0-1.062L10.852 7.21c-.29-.281-.726-.281-.988 0l-.668.718c-.261.312-.261.78 0 1.062l2.819 3.029-2.819 2.997c-.261.281-.261.75 0 1.062l.668.687c.262.312.698.312.988 0z"/></svg>
                         </span>
-                        <span class="w-2.5 hidden lg:block" :class="{ '-scale-y-100': open }">
+                        <span class="w-2.5 hidden xl:block" :class="{ '-scale-y-100': open }">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 11 6"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M9.571.5 5.036 5.036.5.5"/></svg>
                         </span>
                     {% endif %}
                 </a>
 
                 {% if children and item.level == 0 %}
-                    <div class="sub-menu-wrapper mega-menu bg-white shadow-2xl absolute top-0 lg:top-full lg:left-0 lg:right-auto w-full font-semibold py-12 transition-all h-full lg:h-auto" :class="open ? 'left-0 lg:block' : 'left-full lg:hidden'" @click.outside="open = false">
-                        <div class="container grid lg:grid-cols-4">
+                    <div class="sub-menu-wrapper mega-menu bg-white shadow-md absolute top-0 xl:top-full xl:left-0 xl:right-auto w-full font-semibold py-12 transition-all h-full xl:h-auto z-10" :class="open ? 'left-0 xl:block' : 'left-full xl:hidden'" @click.outside="open = false">
+                        <div class="container grid xl:grid-cols-4">
                             <div>
-                                <button type="button" class="lg:hidden" @click="open = false">Back</button>
+                                <button type="button" class="xl:hidden" @click="open = false">Back</button>
                                 <p class="text-3xl mb-4">{{ item.title }}</p>
 
                                 {% if item.link != '#' %}

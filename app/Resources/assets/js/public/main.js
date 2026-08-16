@@ -1,18 +1,23 @@
 import Alpine from "alpinejs";
 
+import { ScrollSpy } from './components/jump-links';
 import { Carousel } from "./components/carousel/content";
 
+Alpine.data('jump_links', ScrollSpy);
 Alpine.data('carousel', Carousel);
-
 Alpine.start();
 
-window.addEventListener('message', (e) => {
-    // always verify the sender
-    if (e.origin !== 'https://cloud.email.autoglass.co.uk') return;
+// header height
+const headerHeight = () => {
+    const header = document.querySelector('header');
 
-    console.log(e);
-    // const data = e.data;
-    // if (data?.type !== 'resize') return;
+    const r = document.querySelector(':root');
+    r.style.setProperty('--header-height', `${header.offsetHeight}px`);
 
-    // document.querySelector('#newBusinessEnquiry iframe').style.height = data.height + 'px';
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+    headerHeight();
 });
+
+window.addEventListener('resize', headerHeight);

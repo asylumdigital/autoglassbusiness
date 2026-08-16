@@ -1,5 +1,5 @@
-<div class="flex items-center {{ block.align == 'left' ? 'lg:w-11/12' }}">
-    <div class="{{ block.style != 'dark' ? 'bg-primary' : 'bg-tertiary' }} grow h-1"></div>
+<div class="flex items-center mt-6 lg:mt-8 {{ block.align == 'left' ? 'lg:w-11/12' }}">
+    <div class="{{ block.style != 'dark' ? 'bg-primary' : 'bg-tertiary' }} grow h-1 hidden lg:block"></div>
     <div>
         {% include "components/atoms/button.twig" with {
             arrow: true,

@@ -87,6 +87,10 @@
     clip-path: var(--clip-video);
 }
 
+@utility h-full-header {
+    height: calc(100dvh - var(--header-height));
+}
+
 
 [class*="prose"] h2 {
     @apply lg:scroll-m-20;

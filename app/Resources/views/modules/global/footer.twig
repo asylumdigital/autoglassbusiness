@@ -1,19 +1,20 @@
 <footer class="bg-default text-white text-sm py-12 mt-auto">
-    <section class="container">
+    <section class="container grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {% for i in 1..4 %}
         {% set menu = 'footer_' ~ i %}
-            <h3 class="footer-menu-label">{{ fn('get_field', 'menu_title', menus[menu]) }}</h3>
+            <div>
+                <h3 class="font-condensed font-bold text-xl mb-3">{{ menus[menu].title }}</h3>
 
-            <div class="space-y-4 mb-8">
-                {% for item in menus[menu].get_items %}
-                    <a href="{{ item.link }}" class="block">{{ item.title }}</a>
-                {% endfor %}
+                <div class="space-y-4 mb-8">
+                    {% for item in menus[menu].get_items %}
+                        <a href="{{ item.link }}" class="block">{{ item.title }}</a>
+                    {% endfor %}
+                </div>
             </div>
-
         {% endfor %}
     </section>
     <section class="boilerplate">
-        <div class="container space-y-8">
+        <div class="container space-y-8 border-t border-t-white/15 pt-8">
             <div class="flex flex-col gap-4 md:flex-row md:gap-8">
                 {% for item in menus.legal.get_items %}
                     {% set xfn = (item.xfn ~ (item.target == '_blank' ? ' noopener noreferer' : ''))|trim %}

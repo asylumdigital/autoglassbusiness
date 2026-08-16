@@ -1,0 +1,110 @@
+name: Development Build
+
+concurrency:
+  group: dev_build
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the specified branch
+  push:
+    branches:
+      - "develop"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # Make sure the @v0.5.4 matches the current version of the
+      # action
+      - name: Make build directory
+        run: mkdir -p ./build/${{ github.event.repository.name }}/${{ github.event.repository.name }}
+      - name: Make zip directory
+        run: mkdir -p ./zips/${{ github.event.repository.name }}
+      - name: Make changelog directory
+        run: mkdir -p ./changelog
+      - name: Setup PHP
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "8.3"
+      - name: Install composer
+        uses: "ramsey/composer-install@v3"
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.COMPOSER_AUTH }}"}}'
+        with:
+          composer-options: "--ignore-platform-reqs --no-dev --no-cache"
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Build NPM
+        run: npm i && npm run build
+      - name: Move
+        run: cp *.php ./build/${{ github.event.repository.name }}/${{ github.event.repository.name }}/;
+          cp *.css ./build/${{ github.event.repository.name }}/${{ github.event.repository.name }}/;
+          cp *.md ./build/${{ github.event.repository.name }}/${{ github.event.repository.name }}/;
+          cp *.png ./build/${{ github.event.repository.name }}/${{ github.event.repository.name }}/;
+          cp -R app ./build/${{ github.event.repository.name }}/${{ github.event.repository.name }}/;
+          cp -R dist ./build/${{ github.event.repository.name }}/${{ github.event.repository.name }}/;
+          cp -R vendor ./build/${{ github.event.repository.name }}/${{ github.event.repository.name }}/;
+          cp -R acf-json ./build/${{ github.event.repository.name }}/${{ github.event.repository.name }}/;
+          cp changelog.md ./changelog/dev-${{ github.event.repository.name }}.md;
+      - name: Read package.json
+        id: package
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./build/${{ github.event.repository.name }}/${{ github.event.repository.name }}/style.css
+      - name: Echo package.json
+        run: echo "${{ steps.package.outputs.content }}"
+      - uses: actions-ecosystem/action-regex-match@v2
+        id: regex-match
+        with:
+          text: ${{ steps.package.outputs.content }}
+          regex: '([0-9]+.[0-9]+.[0-9]+)'
+          flags: gm
+      - name: "Echo ver"
+        run: echo ${{ steps.regex-match.outputs.group1 }}
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          # find: "(Version:\\s+[0-9]+.[0-9]+.[0-9]+)"
+          find: "(Version:\\s+[0-9]+.[0-9]+.[0-9]+)"
+          replace: "$1+dev.${{ github.run_number }}"
+          # include: './build/age-gate.php'
+      - uses: vimtor/action-zip@v1
+        with:
+          files: ./build/${{ github.event.repository.name }}
+          dest: ./zips/${{ github.event.repository.name }}/${{ github.event.repository.name }}-${{ steps.regex-match.outputs.group1 }}+dev.${{ github.run_number }}.zip
+      - name: Push Zip to S3
+        uses: jakejarvis/s3-sync-action@v0.3.1
+        env:
+          SOURCE_DIR: './zips'
+          AWS_REGION: 'eu-west-2'
+          AWS_S3_BUCKET: '${{ secrets.AWS_S3_BUCKET }}'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      # - name: API Call
+      #   uses: fjogeleit/http-request-action@v1
+      #   with:
+      #     url: 'https://api.swytchbike.com/api/test/version/${{ github.event.repository.name }}'
+      #     method: 'POST'
+      #     customHeaders: '{"Accept": "application/json"}'
+      #     bearerToken: ${{ secrets.PLUGIN_API_TOKEN }}
+      #     data: '{"version": "${{ steps.regex-match.outputs.group1 }}+dev.${{ github.run_number }}", "type": "theme"}'
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_DEVELOP }}
+          SLACK_TITLE: Build ${{ job.status }}
+          SLACK_FOOTER: ${{ job.status }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: Deployment ${{ github.event.repository.name }} dev.${{ github.run_number }}
+        if: always()
+
+
+    # - name: Print new build number
+    #   run: echo "Build number is $GITHUB_RUN_NUMBER"
+      # Or, if you're on Windows: echo "Build number is ${env:BUILD_NUMBER}"
