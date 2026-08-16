@@ -1,33 +1,33 @@
 {% if posts.pagination.pages is not empty %}
-    <div class="pagination">
-        <ul class="pagination-links">
-        {% if pagination.pages|first and pagination.pages|first.current != true %}
+    <div class="pagination w-fit mx-auto mt-8">
+        <ul class="pagination-links flex items-baseline gap-4">
+        {% if posts.pagination.pages|first and posts.pagination.pages|first.current != true %}
             <li class="item first">
                 <a href="{{ pagination.pages|first.link }}">
-                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
                     <span class="sr-only">First</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 9"><path fill="currentColor" fill-rule="nonzero" d="M5.538 4.833c-.246-.246-.246-.656 0-.93L9.257.185c.273-.247.683-.247.93 0l.628.628c.247.274.247.684 0 .93L8.163 4.395l2.652 2.625c.247.247.247.657 0 .93l-.628.602c-.247.273-.657.273-.93 0zm-5.25-.93L4.007.185c.273-.247.683-.247.93 0l.628.628a.68.68 0 0 1 0 .93L2.913 4.368 5.565 7.02c.246.247.246.657 0 .93l-.629.602a.63.63 0 0 1-.93 0L.289 4.833c-.246-.246-.246-.656 0-.93"/></svg>
                 </a>
             </li>
         {% else %}
             <li class="item first disabled">
-                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
                 <span class="sr-only">First</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 9"><path fill="currentColor" fill-rule="nonzero" d="M5.538 4.833c-.246-.246-.246-.656 0-.93L9.257.185c.273-.247.683-.247.93 0l.628.628c.247.274.247.684 0 .93L8.163 4.395l2.652 2.625c.247.247.247.657 0 .93l-.628.602c-.247.273-.657.273-.93 0zm-5.25-.93L4.007.185c.273-.247.683-.247.93 0l.628.628a.68.68 0 0 1 0 .93L2.913 4.368 5.565 7.02c.246.247.246.657 0 .93l-.629.602a.63.63 0 0 1-.93 0L.289 4.833c-.246-.246-.246-.656 0-.93"/></svg>
             </li>
         {% endif %}
-        {% if pagination.prev %}
+        {% if posts.pagination.prev %}
             <li class="item prev">
-                <a href="{{ pagination.prev.link }}">
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                <a href="{{ posts.pagination.prev.link }}">
                     <span class="sr-only">Previous</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 9"><path fill="currentColor" fill-rule="nonzero" d="M.538 4.833c-.246-.246-.246-.656 0-.93L4.257.185c.273-.247.683-.247.93 0l.628.628c.247.274.247.684 0 .93L3.163 4.395 5.815 7.02c.247.247.247.657 0 .93l-.628.602c-.247.273-.657.273-.93 0z"/></svg>
                 </a>
             </li>
         {% else %}
             <li class="item prev disabled">
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
                 <span class="sr-only">Previous</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 9"><path fill="currentColor" fill-rule="nonzero" d="M.538 4.833c-.246-.246-.246-.656 0-.93L4.257.185c.273-.247.683-.247.93 0l.628.628c.247.274.247.684 0 .93L3.163 4.395 5.815 7.02c.247.247.247.657 0 .93l-.628.602c-.247.273-.657.273-.93 0z"/></svg>
             </li>
         {% endif %}
-        {% for page in pagination.pages %}
+        {% for page in posts.pagination.pages %}
             {% if page.link %}
             <li class="item">
                 <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
@@ -39,29 +39,30 @@
             {% endif %}
         {% endfor %}
 
-        {% if pagination.next %}
+        {% if posts.pagination.next %}
             <li class="item next">
                 <a href="{{ pagination.next.link }}">
                     <span class="sr-only">Next</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 9"><path fill="currentColor" fill-rule="nonzero" d="M5.462 4.833c.246-.246.246-.656 0-.93L1.743.185c-.273-.247-.683-.247-.93 0L.185.813c-.247.274-.247.684 0 .93l2.652 2.652L.185 7.02c-.247.247-.247.657 0 .93l.628.602c.247.273.657.273.93 0z"/></svg>
                 </a>
             </li>
         {% else %}
             <li class="item next disabled">
                 <span class="sr-only">Next</span>
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 9"><path fill="currentColor" fill-rule="nonzero" d="M5.462 4.833c.246-.246.246-.656 0-.93L1.743.185c-.273-.247-.683-.247-.93 0L.185.813c-.247.274-.247.684 0 .93l2.652 2.652L.185 7.02c-.247.247-.247.657 0 .93l.628.602c.247.273.657.273.93 0z"/></svg>
             </li>
         {% endif %}
-        {% if pagination.pages|last and pagination.pages|last.current != true %}
+        {% if posts.pagination.pages|last and posts.pagination.pages|last.current != true %}
             <li class="item last">
-                <a href="{{ pagination.pages|last.link }}">
+                <a href="{{ posts.pagination.pages|last.link }}">
                     <span class="sr-only">Last</span>
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 9"><path fill="currentColor" fill-rule="nonzero" d="M5.462 4.833c.246-.246.246-.656 0-.93L1.743.185c-.273-.247-.683-.247-.93 0L.185.813c-.247.274-.247.684 0 .93l2.652 2.652L.185 7.02c-.247.247-.247.657 0 .93l.628.602c.247.273.657.273.93 0zm5.25-.93L6.993.185c-.273-.247-.683-.247-.93 0l-.628.628a.68.68 0 0 0 0 .93l2.652 2.625L5.435 7.02c-.246.247-.246.657 0 .93l.629.602a.63.63 0 0 0 .93 0l3.718-3.719c.246-.246.246-.656 0-.93"/></svg>
                 </a>
             </li>
         {% else %}
             <li class="item last disabled">
-                <span class="sr-only">Last</span> <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                <span class="sr-only">Last</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 9"><path fill="currentColor" fill-rule="nonzero" d="M5.462 4.833c.246-.246.246-.656 0-.93L1.743.185c-.273-.247-.683-.247-.93 0L.185.813c-.247.274-.247.684 0 .93l2.652 2.652L.185 7.02c-.247.247-.247.657 0 .93l.628.602c.247.273.657.273.93 0zm5.25-.93L6.993.185c-.273-.247-.683-.247-.93 0l-.628.628a.68.68 0 0 0 0 .93l2.652 2.625L5.435 7.02c-.246.247-.246.657 0 .93l.629.602a.63.63 0 0 0 .93 0l3.718-3.719c.246-.246.246-.656 0-.93"/></svg>
             </li>
         {% endif %}
         </ul>

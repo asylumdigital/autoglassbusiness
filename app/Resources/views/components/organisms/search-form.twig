@@ -1,0 +1,10 @@
+<form action="{{ site.url }}" class="flex-col md:flex-row flex gap-2 mb-6">
+    <div class="flex-1">
+        <input type="text" name="s" placeholder="Search" required class="border border-gray-300 px-4 py-2 w-full h-full rounded appearance-none outline-tertiary" value="{{ search_query|esc_attr }}" />
+    </div>
+
+    {% include "components/atoms/button.twig" with {
+        type: 'submit',
+        text: 'Search',
+    } %}
+</form>

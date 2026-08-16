@@ -10,11 +10,13 @@ new Editor\ListStyles;
 
 //
 new Core\Block;
+new Core\Search;
 
 // Admin
 new Admin\Settings;
 new Admin\Settings\Cookies;
 new Admin\Settings\Tracking;
+new Admin\Settings\Media;
 
 // add_action('init', function() {
 //     dd(Helper\Settings::getInstance());

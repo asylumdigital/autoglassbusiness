@@ -7,7 +7,7 @@
             text: term.name|default(post.title)
         } %}
 
-        {{ fn('get_search_form') }}
+        {% include "components/organisms/search-form.twig" %}
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 sm:w-10/12 sm:mx-auto gap-5">
@@ -15,6 +15,8 @@
             {% include ["articles/teases/tease-" ~ post.post_type ~ ".twig", "articles/teases/tease.twig"] %}
         {% endfor %}
     </div>
+
+    {% include "components/pagination.twig" %}
 </div>
 
 

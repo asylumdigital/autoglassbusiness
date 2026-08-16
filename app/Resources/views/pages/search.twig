@@ -6,16 +6,17 @@
         {% include "components/atoms/accent-title.twig" with {
             text: "Search results for:"
         } %}
-        {% include "components/atoms/heading/h1.twig" with {
-            text: search_query|esc_html
-        } %}
+        <div class="flex justify-between items-center">
+            {% include "components/atoms/heading/h1.twig" with {
+                text: search_query|esc_html
+            } %}
 
-        <form action="{{ site.home_url }}">
-            <input type="text" name="s" class="border border-default" /><button type="submit">submit</button>
-        </form>
-        {# {{ fn('get_search_form') }} #}
+            <a href="{{ fn('get_post_type_archive_link', 'post') }}" class="hover:underline">Clear search</a>
+        </div>
+
+        {% include "components/organisms/search-form.twig" %}
+
     </div>
-
     <div class="grid md:grid-cols-2 lg:grid-cols-3 sm:w-10/12 sm:mx-auto gap-5">
         {% for post in posts %}
             {% include ["articles/teases/tease-" ~ post.post_type ~ ".twig", "articles/teases/tease.twig"] %}
@@ -23,6 +24,9 @@
             <p class="text-3xl my-6">Sorry, nothing to display.</p>
         {% endfor %}
     </div>
+
+    {% include "components/pagination.twig" %}
+
 </div>
 
 

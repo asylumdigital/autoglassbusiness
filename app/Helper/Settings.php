@@ -14,10 +14,12 @@ class Settings
 
         foreach ($groups as $group) {
             $data = [];
+
             foreach (acf_get_fields($group['key']) as $setting) {
-                $data[$setting['name']] = get_field($setting['name'], 'option');
+                $this->settings[$setting['name']] = get_field($setting['name'], 'option');
             }
-            $this->settings[$group['settings_key'] ?? $group['key']] = $data;
+
+            // $this->settings[$group['settings_key'] ?? $group['key']] = $data;
         }
     }
 
@@ -28,6 +30,16 @@ class Settings
         }
 
         return self::$instance;
+    }
+
+    public function getGroup(string $key): array
+    {
+        return $this->settings[$key] ?? [];
+    }
+
+    public function getAll(): array
+    {
+        return $this->settings;
     }
 
 }
