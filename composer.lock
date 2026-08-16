@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc78136a76ed6ace5d6e6284d999900a",
+    "content-hash": "22193da490e4e08be93e7b18cd29a361",
     "packages": [
         {
             "name": "asylum/block",
@@ -80,16 +80,16 @@
         },
         {
             "name": "asylum/theme",
-            "version": "6.1.0",
+            "version": "6.1.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:asylumdigital/wp-theme-core.git",
-                "reference": "aa3b37ae71352ae332a7583f808c773663edab4c"
+                "reference": "4fe9be926f9e7beea582dcd593a34238a76f473b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asylumdigital/wp-theme-core/zipball/aa3b37ae71352ae332a7583f808c773663edab4c",
-                "reference": "aa3b37ae71352ae332a7583f808c773663edab4c",
+                "url": "https://api.github.com/repos/asylumdigital/wp-theme-core/zipball/4fe9be926f9e7beea582dcd593a34238a76f473b",
+                "reference": "4fe9be926f9e7beea582dcd593a34238a76f473b",
                 "shasum": ""
             },
             "require": {
@@ -115,10 +115,10 @@
                 }
             },
             "support": {
-                "source": "https://github.com/asylumdigital/wp-theme-core/tree/v6.1.0",
+                "source": "https://github.com/asylumdigital/wp-theme-core/tree/v6.1.1",
                 "issues": "https://github.com/asylumdigital/wp-theme-core/issues"
             },
-            "time": "2026-08-16T09:33:02+00:00"
+            "time": "2026-08-16T20:32:03+00:00"
         },
         {
             "name": "asylum/utility",

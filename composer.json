@@ -29,7 +29,7 @@
 
     },
     "require": {
-        "asylum/theme": "^6.1.0",
+        "asylum/theme": "^6.1.1",
         "stoutlogic/acf-builder": "^1.12",
         "illuminate/collections": "^12.20",
         "vlucas/phpdotenv": "5.4"
