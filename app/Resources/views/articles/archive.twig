@@ -16,7 +16,13 @@
         {% endfor %}
     </div>
 
-    {% include "components/pagination.twig" %}
+    {% include "components/pagination.twig" with {
+        pagination: posts.pagination({
+            show_all: false,
+            mid_size: 2,
+            end_size: 2
+        })
+    } %}
 </div>
 
 
