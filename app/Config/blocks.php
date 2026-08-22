@@ -4,11 +4,29 @@ return [
     // 'widgets' => [
     //     'acf/widget-lead-gen',
     // ]
+    'widgets' => get_field('allowed_widget_block', 'option') ?: [],
+    'page' => get_field('allowed_page_block', 'option') ?: [],
+    'post' => get_field('allowed_post_block', 'option') ?: [],
     'groups' => [
-        // [
-        //     'slug' => 'asylum-code',
-        //     'title' => 'Code',
-        //     'icon' => null,
-        // ]
+        [
+            'slug' => 'asylum-hero',
+            'title' => 'Hero',
+            'icon' => null,
+        ],
+        [
+            'slug' => 'asylum-carousel',
+            'title' => 'Carousel',
+            'icon' => null,
+        ],
+        [
+            'slug' => 'asylum-content',
+            'title' => 'Content',
+            'icon' => null,
+        ],
+        [
+            'slug' => 'asylum-media',
+            'title' => 'Media',
+            'icon' => null,
+        ],
     ]
 ];

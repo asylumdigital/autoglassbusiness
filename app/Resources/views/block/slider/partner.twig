@@ -1,6 +1,7 @@
 {% extends "modules/block/wrapper.twig" %}
 
 {% do addCss('marquee') %}
+
 {% set container = 'container max-w-none px-0' %}
 
 {% set padding = 'p-0' %}
@@ -9,47 +10,38 @@
     {% set color = 'text-white' %}
 {% endif %}
 
+{% set loops = 2 %}
+
+{% if isBlockEditor or fn('is_admin') %}
+    {% set loops = 1 %}
+{% endif %}
 
 {% block content %}
-    {% include "components/organisms/section-header.twig" with {
-        accent: 'Working with great partners',
-    } %}
+    {% if block.eyebrow %}
+        {% include "components/organisms/section-header.twig" with {
+            accent: 'Working with great partners',
+        } %}
+    {% endif %}
     <div class="marquee {{ block.reverse ? 'marquee--reverse' }} {{ block.background|default('bg-highlight') }} py-8 {{ color }}">
-        <ul class="marquee__content">
-            <li>Item 1</li>
-            <li><a href="#">Item 2</a></li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-            <li>Item 5</li>
-            <li>Item 6</li>
-            <li>Item 7</li>
-            <li>Item 8</li>
-            <li>Item 9</li>
-            <li>Item 10</li>
-            <li>Item 11</li>
-            <li>Item 12</li>
-            <li>
-                <img src="{{ 'placeholder/logos/DLine 4.png'|theme }}" class="max-h-10" />
-            </li>
-        </ul>
-        <!-- Mirrors the content above -->
-        <ul class="marquee__content" aria-hidden="true">
-            <li>Item 1</li>
-            <li><a href="#">Item 2</a></li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-            <li>Item 5</li>
-            <li>Item 6</li>
-            <li>Item 7</li>
-            <li>Item 8</li>
-            <li>Item 9</li>
-            <li>Item 10</li>
-            <li>Item 11</li>
-            <li>Item 12</li>
-            <li>
-                <img src="{{ 'placeholder/logos/DLine 4.png'|theme }}" class="max-h-10" />
-            </li>
+        {% for r in 1..loops %}
+            <ul class="marquee__content{{ isBlockEditor or fn('is_admin') ? ' flex list-none items-center' }}"{{ not loop.first ? ' aria-hidden="true"' }}>
+                {% for item in block.items.partners %}
+                    <li>
+                        {% if item.link %}<a href="{{ item.link }}">{% endif %}
+                        {% if item.partner_logo %}
+                            <img src="{{ item.partner_logo.url }}" class="max-h-10 min-h-9" width="{{ item.partner_logo.width }}" height="{{ item.partner_logo.height }}" alt="{{ item.partner_logo.alt|default(item.partner_name)|esc_attr }}" loading="lazy" />
+                        {% else %}
+                            <span class="font-semibold">{{ item.partner_name|esc_html }}</span>
+                        {% endif %}
 
-        </ul>
+                        {% if item.link %}</a>{% endif %}
+                    </li>
+                {% endfor %}
+                {# <li>
+                    <img src="{{ 'placeholder/logos/DLine 4.png'|theme }}" class="max-h-10" />
+                </li> #}
+            </ul>
+        {% endfor %}
+
     </div>
 {% endblock %}

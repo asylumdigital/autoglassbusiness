@@ -22,5 +22,8 @@ return [
         'script',
         'style',
     ],
-    'disable_frontpage_editor' => true
+    'support' => [
+        'align-wide',
+        'align-full'
+    ],
 ];

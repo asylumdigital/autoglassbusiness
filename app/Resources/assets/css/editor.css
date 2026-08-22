@@ -1,0 +1,60 @@
+/*
+ * Block editor canvas styles.
+ *
+ * Loaded through add_editor_style() (see app/Enqueue/Enqueue.php). WordPress
+ * runs this through postcss-prefix-selector before injecting it into the
+ * canvas iframe, so every selector is rewritten to target the wrapper:
+ *
+ *     .image  ->  .editor-styles-wrapper .image
+ *     body    ->  body .editor-styles-wrapper
+ *
+ * Selectors starting with a root token (body, html, :root) are special-cased:
+ * the prefix is inserted *after* the root rather than in front of it, so they
+ * end up matching the wrapper element itself. That is why the @theme custom
+ * properties, emitted on :root, still cascade into the blocks.
+ *
+ * Preflight is included: the Twig markup is written against its reset, so
+ * dropping it throws off heading, list and image spacing across the canvas.
+ * Everything here is scoped to the wrapper, so it cannot reach the admin
+ * chrome; the trade-off is that it also resets the editor's own in-canvas
+ * affordances (appender buttons and similar).
+ */
+
+@import "tailwindcss";
+@import './components/image.css';
+@import "./theme.css";
+
+/*
+ * Canvas root — deliberately OUTSIDE any @layer.
+ *
+ * WordPress ships an editor-only normalisation rule in
+ * wp-includes/css/dist/block-library/reset.css:
+ *
+ *     html :where(.editor-styles-wrapper) {
+ *         font-family: serif; line-height: initial; color: initial;
+ *     }
+ *
+ * It carries no cascade layer, and unlayered declarations outrank layered ones
+ * whatever their specificity. Preflight's html rule is rewritten to
+ * `html .editor-styles-wrapper` (0,1,1), which comfortably out-specifies WP's
+ * `html :where(...)` (0,0,1) — but it sits in @layer base, so it loses anyway
+ * and body copy falls back to serif. (Headings escape it: a font utility
+ * matches the element directly, so inheritance from the root never applies.)
+ *
+ * Unlayered, this rule competes on specificity instead and wins.
+ *
+ * Values mirror the front end: font-family and line-height from preflight's
+ * html rule, colour from app.css's base layer. Font size already matches
+ * (WP's `initial` is the same 16px), and WP's white canvas background is
+ * left alone.
+ */
+body {
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    color: var(--color-body);
+
+    /* main.js measures the real header and sets this; the canvas has neither,
+       so h-full-header would collapse to an invalid calc(). 88px is the height
+       header.twig itself hardcodes (top-22). */
+    --header-height: 88px;
+}

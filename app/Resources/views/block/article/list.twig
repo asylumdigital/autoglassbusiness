@@ -1,16 +1,18 @@
 {% extends "modules/block/wrapper.twig" %}
 
-{% set type = style|default('vertical') %}
+{% set type = style|default(block.style)|default('vertical') %}
 
 {% block content %}
     {% include "components/organisms/section-header.twig" with {
-        accent: 'What do our clients say',
-        title: 'Quality guaranteed.',
-        intro: 'Deserunt cillum Lorem cupidatat id Lorem elit sint deserunt esse magna fugiat excepteur esse minim. Fugiat enim excepteur minim mollit pariatur ea velit dolor elit. Esse in irure aute ea. Consectetur consectetur aute esse est. Laborum anim labore proident ea sunt occaecat qui enim. Mollit reprehenderit velit pariatur eu eiusmod aliqua eiusmod officia ut proident reprehenderit veniam.',
+        accent: block.eyebrow,
+        title: block.title,
+        intro: block.introduction
 
     } %}
     <div class="grid gap-5 {{ type == 'vertical' ? 'sm:grid-cols-2 lg:grid-cols-3' : 'lg:grid-cols-2' }}">
-        {% for post in posts %}
+
+
+        {% for post in block.posts|default(posts) %}
             {% include "components/organisms/card-" ~ type ~ ".twig" with {
 
             } %}

@@ -5,9 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        {# Fonts and preconnects are enqueued in Asylum\Theme\Enqueue\Enqueue #}
         {{ fn('wp_head') }}
     </head>
     <body class="overflow-x-clip {{ bodyClass }}" x-data="{ menu: false }">

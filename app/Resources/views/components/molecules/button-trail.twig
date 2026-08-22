@@ -1,11 +1,14 @@
-<div class="flex items-center mt-6 lg:mt-8 {{ block.align == 'left' ? 'lg:w-11/12' }}">
-    <div class="{{ block.style != 'dark' ? 'bg-primary' : 'bg-tertiary' }} grow h-1 hidden lg:block"></div>
-    <div>
-        {% include "components/atoms/button.twig" with {
-            arrow: true,
-            arrow_type: 'chevron',
-            tertiary: block.style == 'dark',
-            text: 'Find out more',
-        } %}
+{% if block.cta %}
+    <div class="flex items-center mt-6 lg:mt-8 {{ block.align == 'left' ? 'lg:w-11/12' }}">
+        <div class="{{ block.style != 'dark' ? 'bg-primary' : 'bg-tertiary' }} grow h-1 hidden lg:block"></div>
+        <div>
+            {% include "components/atoms/button.twig" with {
+                arrow: true,
+                arrow_type: 'chevron',
+                tertiary: block.style == 'dark',
+                text: block.cta.title,
+                url: block.cta.url,
+            } %}
+        </div>
     </div>
-</div>
+{% endif %}

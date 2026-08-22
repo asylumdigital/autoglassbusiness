@@ -22,32 +22,36 @@
         <div class="space-y-10 xl:space-y-20 col-span-5 xl:col-start-2 xl:col-span-5 lg:col-span-7">
 
             <h1 class="text-4xl md:text-6xl font-condensed font-black xl:text-7xl uppercase flex flex-col">
-                <span>Reliable.</span>
-                <span>Resilient.</span>
-                <span>Responsible.</span>
+                {% for word in block.title|split("\r\n") %}
+                    <span>{{ word|esc_html }}</span>
+                {% endfor %}
             </h1>
 
-            <p class="text-lg xl:text-2xl max-w-2xl">We structure our business to guarantee quality. First time, every time. We offer unrivalled operational scale with a service delivered by expertly trained technicians, whilst meeting a mutual duty of care with our partners through safe and sustainable ethics and practices.</p>
+            <p class="text-lg xl:text-2xl max-w-2xl">{{ block.content|wp_kses_post }}</p>
 
-
-            <div class="md:flex-row flex-col flex gap-4 md:gap-8 lg:gap-4">
-                {% include "components/atoms/button.twig" with {
-                    url: '#',
-                    text: 'Open an account',
-                    arrow: true,
-                } %}
-
-                {% include "components/atoms/button.twig" with {
-                    url: '#',
-                    text: 'Make an enquiry',
-                    secondary: true,
-                    arrow: true,
-                } %}
-            </div>
+            {% if block.buttons.primary.url or block.buttons.secondary.url %}
+                <div class="md:flex-row flex-col flex gap-4 md:gap-8 lg:gap-4">
+                    {% if block.buttons.primary.url %}
+                        {% include "components/atoms/button.twig" with {
+                            url: block.buttons.primary.url,
+                            text: block.buttons.primary.title,
+                            arrow: true,
+                        } %}
+                    {% endif %}
+                    {% if block.buttons.secondary.url %}
+                        {% include "components/atoms/button.twig" with {
+                            url: block.buttons.secondary.url,
+                            text: block.buttons.secondary.title,
+                            secondary: true,
+                            arrow: true,
+                        } %}
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
         <div class="col-span-5 lg:col-span-4 xl:col-span-5 lg:col-start-9 xl:col-start-8 lg:flex items-end hidden">
             {% include "components/molecules/image.twig" with {
-                image: 326,
+                image: block.image,
                 wrapper: 'max-w-112.5'
             } %}
             {# <img src="https://picsum.photos/850" class="clipped sticky w-full top-0 max-w-112.5" /> #}

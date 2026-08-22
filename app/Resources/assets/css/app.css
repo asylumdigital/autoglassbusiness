@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import './components/image.css';
-@plugin "@tailwindcss/typography";
+@import "./theme.css";
 
 @view-transition {
     navigation: auto;
@@ -14,96 +14,4 @@
         flex-direction: column;
         justify-content: flex-start;
     }
-}
-
-@utility container {
-    margin-inline: auto;
-    padding-inline: 1rem;
-
-    @variant lg {
-        padding-inline: 2rem;
-    }
-}
-
-@layer utilities {
-    [class*="prose"] {
-        max-width: none;
-    }
-}
-
-@theme {
-    /* Fonts */
-    --font-sans: "Roboto", sans-serif;
-    --font-condensed: "Roboto Condensed", sans-serif;
-
-    /* Colors */
-    --color-primary: rgb(175 22 21);
-    --color-secondary: rgb(248 220 0);
-    --color-tertiary: rgb(148 196 58);
-
-    --color-primary-hover: rgb(from var(--color-primary) calc(r * .8) calc(g * .8) calc(b * .8));
-    --color-secondary-hover: rgb(from var(--color-secondary) calc(r * .9) calc(g * .9) calc(b * .9));
-    --color-tertiary-hover: rgb(from var(--color-tertiary) calc(r * .8) calc(g * .8) calc(b * .8));
-
-    --color-brand-dark-grey: rgb(77 74 71);
-    --color-brand-light-grey: rgb(198 198 198);
-    --color-black: rgb(1 34 51);
-
-    --color-surface-lightest: rgb(247 248 250);
-
-    --color-body: var(--color-brand-dark-grey);
-    --color-highlight: var(--color-surface-lightest);
-    --color-default: var(--color-black);
-
-    --color-check: var(--color-primary);
-
-    /* Clip paths */
-    --clip-square: polygon(100% 0, 100% 70%, 70% 100%, 0 100%, 0 0);
-    /* 45° cut — x inset is derived from the 16:9 box so run == rise in px */
-    --clip-video: polygon(0% 0%, 100% 0, 100% 50%, calc(100% - 50% * 9 / 16) 100%, 0% 100%);
-    --clip-hero: polygon(calc(100dvh * tan(20deg)) 0, 100% 0, 100% 100%, 0 100%);
-
-    --animate-marquee: marquee 15s linear infinite;
-
-    @keyframes marquee {
-        0% {
-            transform: translateX(0%);
-        }
-
-        100% {
-            transform: translateX(-100%);
-        }
-    }
-
-}
-
-
-.image {
-    /* clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%); */
-    clip-path: var(--clip-hero);
-}
-
-@utility clip-square {
-    clip-path: var(--clip-square);
-}
-
-@utility clip-video {
-    clip-path: var(--clip-video);
-}
-
-@utility h-full-header {
-    height: calc(100dvh - var(--header-height));
-}
-
-
-[class*="prose"] h2 {
-    @apply lg:scroll-m-20;
-}
-
-.bg--swoosh {
-    background-image: url(../img/svg/swoosh.svg);
-}
-
-.bg-default {
-    --color-check: var(--color-tertiary);
 }

@@ -44,6 +44,7 @@ export default defineConfig(({ command, mode, isSsrBuild }) => ({
         rollupOptions: {
             input: {
                 app: './app/Resources/assets/css/app.css',
+                editor: './app/Resources/assets/css/editor.css',
                 carousel: './app/Resources/assets/css/components/carousel.css',
                 marquee: './app/Resources/assets/css/components/marquee.css',
                 main: './app/Resources/assets/js/public/main.js',
@@ -84,6 +85,15 @@ export default defineConfig(({ command, mode, isSsrBuild }) => ({
                     }
                     return `js/${basename}.js`
                 },
+            },
+        },
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                // Terser will otherwise inline the entry function and discard the IIFE
+                // Rollup wrapped it in, leaving the code bare at the top level of the
+                // script. Webpack always emitted its wrapper; keep parity.
+                inline: false,
             },
         },
     },

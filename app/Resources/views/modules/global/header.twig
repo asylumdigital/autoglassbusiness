@@ -1,4 +1,4 @@
-{% set logo = theme.theme_mod('custom_logo') %}
+{# {% set logo = theme.theme_mod('custom_logo') %} #}
 <header class="w-full sticky top-0 bg-white py-3 z-50 border-b border-highlight shadow-md">
     <div class="container flex">
         <div class="flex justify-between items-center w-full xl:w-fit">
@@ -10,20 +10,29 @@
         <div class="flex flex-col xl:flex-row grow xl:items-center absolute bg-white xl:bg-transparent xl:static w-full -right-full top-22 h-[calc(100dvh-88px)] xl:w-auto xl:right-auto xl:top-auto xl:h-auto transition-all p-4 xl:p-0" :class="{'right-0': menu}">
              {% include "modules/global/nav.twig" %}
 
-            <div class="flex flex-col xl:flex-row gap-6 xl:ml-auto mt-auto">
-                {% include "components/atoms/button.twig" with {
-                    url: '#',
-                    text: 'Open an account',
-                    size: 'md',
-                } %}
+            {% if masthead.cta_1.link.url or masthead.cta_1.link.url %}
+                <div class="flex flex-col xl:flex-row gap-6 xl:ml-auto mt-auto">
+                    {% if masthead.cta_1.link.url %}
+                        {% include "components/atoms/button.twig" with {
+                            url: masthead.cta_1.link.url,
+                            text: masthead.cta_1.link.title,
+                            secondary: masthead.cta_1.style == 'secondary',
+                            tertiary: masthead.cta_1.style == 'tertiary',
+                            size: 'md',
+                        } %}
+                    {% endif %}
 
-                {% include "components/atoms/button.twig" with {
-                    url: '#',
-                    text: 'Make an enquiry',
-                    secondary: true,
-                    size: 'md',
-                } %}
-            </div>
+                    {% if masthead.cta_2.link.url %}
+                        {% include "components/atoms/button.twig" with {
+                            url: masthead.cta_2.link.url,
+                            text: masthead.cta_2.link.title,
+                            secondary: masthead.cta_2.style == 'secondary',
+                            tertiary: masthead.cta_2.style == 'tertiary',
+                            size: 'md',
+                        } %}
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
     </div>
 </header>

@@ -39,7 +39,7 @@ class Block
 
             $listType = $matches[1];
 
-            $ul->setAttribute('class', $class . ' pl-0 not-prose');
+            $ul->setAttribute('class', $class . ' pl-0 not-prose space-y-4');
 
             $lis = $document->getElementsByTagName('li');
 

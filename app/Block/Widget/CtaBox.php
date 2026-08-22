@@ -10,6 +10,10 @@ class CtaBox extends WidgetBlockController
 {
     protected ?string $name = 'cta-box';
 
+    protected ?string $label = 'CTA Box';
+
+    protected string $icon = 'button';
+
     /**
      * Allowed post types
      *

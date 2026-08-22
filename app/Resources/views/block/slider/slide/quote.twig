@@ -1,0 +1,30 @@
+{% if block.image or block.content or block.logo %}
+    <div class="swiper-slide">
+        <div class="container grid lg:grid-cols-12 lg:items-center">
+            {% if block.image %}
+                <div class="lg:col-span-5 lg:col-start-2">
+
+                    {% include "components/molecules/image.twig" with {
+                        image: block.image,
+                        class: 'w-full h-full object-cover',
+                        wrapper: 'lg:scale-105 origin-left -translate-y-7 lg:translate-y-0',
+                        aspect: 'aspect-square clip-square sm:aspect-video sm:clip-video lg:aspect-square lg:clip-square',
+                    } %}
+                </div>
+            {% endif %}
+
+            <div class="lg:col-span-5 lg:col-start-8 text-xs sm:text-lg xl:text-2xl">
+                {% if block.content %}
+                    <p>{{ block.content|esc_html|sup }}</p>
+                {% endif %}
+
+
+                {% if block.logo %}
+                    <div class="mt-9 w-fit mx-auto max-w-1/2">
+                        <img src="{{ block.logo.url }}" width="{{ block.logo.width }}" height="{{ block.logo.height }}" alt="{{ block.logo.alt }}" loading="lazy" class="w-full object-contain max-h-20" />
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

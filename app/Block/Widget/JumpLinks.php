@@ -10,6 +10,10 @@ class JumpLinks extends WidgetBlockController
 {
     protected ?string $name = 'jump-links';
 
+    protected ?string $label = 'Jump links';
+
+    protected string $icon = 'list-view';
+
     /**
      * Allowed post types
      *

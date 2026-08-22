@@ -1,23 +1,29 @@
 <?php
 
-namespace Asylum\Theme\Block;
+namespace Asylum\Theme\Block\Content;
 
 use Asylum\Block\BlockController;
 use Asylum\Core\Image\ImageRegistry;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class ContentSection extends BlockController
+class InfoGrid extends BlockController
 {
-    protected ?string $name = 'content-section';
+    protected ?string $name = 'info-grid';
+
+    protected ?string $label = 'Info Grid';
+
+    protected string $category = 'asylum-content';
+
+    protected string $icon = 'grid-view';
 
     public function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields
-            ->addWysiwyg('content', [
-                // Toolbar registered by Asylum\Theme\Editor\ListStyles
-                'toolbar' => 'content',
-                'media_upload' => false,
-            ]);
+            ->addText('eyebrow', [
+                'label' => 'Accent title',
+            ])
+            ->addText('title')
+            ->addTextarea('introduction');
         return $fields;
 
     }
