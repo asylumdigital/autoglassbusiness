@@ -80,16 +80,16 @@
         },
         {
             "name": "asylum/theme",
-            "version": "6.1.1",
+            "version": "6.1.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:asylumdigital/wp-theme-core.git",
-                "reference": "4fe9be926f9e7beea582dcd593a34238a76f473b"
+                "reference": "4d7594384fa6c29ef47fc8aa03ef3f61fe1a68af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asylumdigital/wp-theme-core/zipball/4fe9be926f9e7beea582dcd593a34238a76f473b",
-                "reference": "4fe9be926f9e7beea582dcd593a34238a76f473b",
+                "url": "https://api.github.com/repos/asylumdigital/wp-theme-core/zipball/4d7594384fa6c29ef47fc8aa03ef3f61fe1a68af",
+                "reference": "4d7594384fa6c29ef47fc8aa03ef3f61fe1a68af",
                 "shasum": ""
             },
             "require": {
@@ -115,10 +115,10 @@
                 }
             },
             "support": {
-                "source": "https://github.com/asylumdigital/wp-theme-core/tree/v6.1.1",
+                "source": "https://github.com/asylumdigital/wp-theme-core/tree/v6.1.2",
                 "issues": "https://github.com/asylumdigital/wp-theme-core/issues"
             },
-            "time": "2026-08-16T20:32:03+00:00"
+            "time": "2026-08-22T20:05:20+00:00"
         },
         {
             "name": "asylum/utility",
@@ -433,7 +433,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v12.66.0",
+            "version": "v12.67.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -493,7 +493,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v12.66.0",
+            "version": "v12.67.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -539,7 +539,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v12.66.0",
+            "version": "v12.67.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -587,7 +587,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v12.66.0",
+            "version": "v12.67.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -1975,16 +1975,16 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "v7.4.16",
+            "version": "v7.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bridge.git",
-                "reference": "adc759a2a142f25200a440acb3d12465558067a5"
+                "reference": "413485ee177ad5b321ad9a689a90fd3f2d3fefd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/adc759a2a142f25200a440acb3d12465558067a5",
-                "reference": "adc759a2a142f25200a440acb3d12465558067a5",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/413485ee177ad5b321ad9a689a90fd3f2d3fefd7",
+                "reference": "413485ee177ad5b321ad9a689a90fd3f2d3fefd7",
                 "shasum": ""
             },
             "require": {
@@ -2029,7 +2029,7 @@
                 "symfony/security-core": "^6.4|^7.0|^8.0",
                 "symfony/security-csrf": "^6.4|^7.0|^8.0",
                 "symfony/security-http": "^6.4|^7.0|^8.0",
-                "symfony/serializer": "^6.4.3|^7.0.3|^8.0",
+                "symfony/serializer": "^6.4.44|^7.4.17|^8.1.5",
                 "symfony/stopwatch": "^6.4|^7.0|^8.0",
                 "symfony/translation": "^6.4|^7.0|^8.0",
                 "symfony/validator": "^6.4|^7.0|^8.0",
@@ -2066,7 +2066,7 @@
             "description": "Provides integration for Twig with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/twig-bridge/tree/v7.4.16"
+                "source": "https://github.com/symfony/twig-bridge/tree/v7.4.17"
             },
             "funding": [
                 {
@@ -2086,20 +2086,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-30T13:05:12+00:00"
+            "time": "2026-08-22T09:04:42+00:00"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v7.4.15",
+            "version": "v7.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "04ba4add636a95ff437af3a5a9499bb1d6c6d4bd"
+                "reference": "53712df8727da1744490202eeb9cb50d4b95419d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/04ba4add636a95ff437af3a5a9499bb1d6c6d4bd",
-                "reference": "04ba4add636a95ff437af3a5a9499bb1d6c6d4bd",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/53712df8727da1744490202eeb9cb50d4b95419d",
+                "reference": "53712df8727da1744490202eeb9cb50d4b95419d",
                 "shasum": ""
             },
             "require": {
@@ -2153,7 +2153,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v7.4.15"
+                "source": "https://github.com/symfony/var-dumper/tree/v7.4.17"
             },
             "funding": [
                 {
@@ -2173,7 +2173,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-21T15:13:06+00:00"
+            "time": "2026-08-21T12:09:28+00:00"
         },
         {
             "name": "tgmpa/tgm-plugin-activation",
