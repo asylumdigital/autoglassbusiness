@@ -1,4 +1,4 @@
-<div class="w-full aspect-video bg-default relative overflow-clip" x-data="{{ provider }}('{{ video }}')">
+<div class="w-full aspect-video bg-default relative overflow-clip" x-data="{{ provider }}('{{ provider != 'direct' ? video : '' }}')">
     {# {{ dump() }} #}
     {# poster #}
     <button type="button" class="cursor-pointer w-full h-full block group absolute top-0 left-0" x-ref="button" {{ not fn('is_admin') ? '@click="play" :class="{ hidden: state === \'playing\'}"' }}>
