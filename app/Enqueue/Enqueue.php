@@ -24,7 +24,6 @@ class Enqueue
         // Fires for the front end and inside the editor iframe alike.
         add_action('enqueue_block_assets', [$this, 'fonts']);
         add_filter('wp_resource_hints', [$this, 'resourceHints'], 10, 2);
-        add_filter('theme_file_uri', [$this, 'themeFileUri']);
     }
 
     public function editor()
@@ -36,29 +35,6 @@ class Enqueue
     public function fonts()
     {
         wp_enqueue_style(THEME_SLUG . '-fonts', self::FONTS, [], null);
-    }
-
-    /**
-     * Force theme file URLs absolute.
-     *
-     * WP_CONTENT_URL is root-relative ('/assets'), so get_theme_file_uri()
-     * hands the block editor a root-relative baseURL for editor.css. The
-     * editor feeds that to postcss-urlrebase as `new URL(ref, base)`, which
-     * requires an absolute base and throws on a relative one — discarding
-     * the whole stylesheet, not just the offending url().
-     *
-     * No-op once the URL is already absolute.
-     *
-     * @param string $url
-     * @return string
-     */
-    public function themeFileUri(string $url): string
-    {
-        if (preg_match('~^(https?:)?//~', $url)) {
-            return $url;
-        }
-
-        return home_url($url);
     }
 
     public function resourceHints($hints, $relation)
