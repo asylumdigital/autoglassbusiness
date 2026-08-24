@@ -1,7 +1,7 @@
 <div class="w-full aspect-video bg-default relative overflow-clip" x-data="{{ provider }}('{{ video }}')">
     {# {{ dump() }} #}
     {# poster #}
-    <button type="button" class="cursor-pointer w-full h-full block group absolute top-0 left-0" x-ref="button" @click="play" :class="{ hidden: state === 'playing' }">
+    <button type="button" class="cursor-pointer w-full h-full block group absolute top-0 left-0" x-ref="button" {{ not fn('is_admin') ? '@click="play" :class="{ hidden: state === \'playing\'}"' }}>
         <img src="{{ poster.url }}" width="{{ poster.width }}" height="{{ poster.height }}" alt="{{ poster.alt }}" loading="lazy" class="w-full h-full object-cover" />
         <div class="z-10 absolute aspect-square w-2/12 top-1/2 left-1/2 -translate-1/2 opacity-15 group-hover:opacity-100 transition-opacity">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="white"><path d="M128 80L128 560L560 320L128 80z"/></svg>

@@ -22,19 +22,24 @@ class Enqueue
         add_action('after_setup_theme', [$this, 'editor']);
 
         // Fires for the front end and inside the editor iframe alike.
-        add_action('enqueue_block_assets', [$this, 'fonts']);
+        add_action('enqueue_block_assets', [$this, 'block']);
         add_filter('wp_resource_hints', [$this, 'resourceHints'], 10, 2);
     }
 
     public function editor()
     {
-        add_theme_support('editor-styles');
-        add_editor_style('dist/css/editor.css');
+        // add_theme_support('editor-styles');
+        // add_editor_style('dist/css/editor.css');
     }
 
-    public function fonts()
+    public function block()
     {
         wp_enqueue_style(THEME_SLUG . '-fonts', self::FONTS, [], null);
+
+        if (is_admin()) {
+            wp_enqueue_style(THEME_SLUG, THEME_ABS_PATH . '/dist/css/editor.css', [], THEME_VERSION, 'all');
+
+        }
     }
 
     public function resourceHints($hints, $relation)
