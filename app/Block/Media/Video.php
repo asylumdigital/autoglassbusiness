@@ -9,7 +9,7 @@ class Video extends BlockController
 {
     protected ?string $name = 'video';
 
-    protected string $category = 'media';
+    protected string $category = 'asylum-media';
 
     protected string $icon = 'video-alt3';
 

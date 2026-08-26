@@ -9,6 +9,8 @@ class Iframed extends BlockController
 {
     protected ?string $name = 'iframed';
 
+    protected ?string $label = 'iFramed Form';
+
     protected string $category = 'asylum-form';
 
     protected function fields(FieldsBuilder $fields): FieldsBuilder
