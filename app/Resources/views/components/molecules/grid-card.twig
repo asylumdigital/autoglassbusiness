@@ -1,11 +1,18 @@
 
 <div class="@container {{ span|default('col-span-4') }}">
-    <div class="p-4 bg-white flex flex-col gap-2 lg:gap-x-4 2xl:gap-x-5 items-center text-center {{ not stacked ? '@2xs:flex-row @2xs:text-left' }}">
-            <div class="aspect-square max-w-16 w-full">
-                {% if icon %}
-                    <img src="{{ icon.url }}" class="w-full h-full object-contain" alt="{{ icon.alt }}" loading="lazy" width="{{ icon.width }}" height="{{ icon.height }}" />
-                {% endif %}
-            </div>
+
+    {% if 'primary' in style or 'default' in style or 'tertiary' in style %}
+        {% set color = 'text-white ' %}
+    {% endif %}
+
+
+
+    <div class="p-4 {{ style }} {{ color }}flex flex-col gap-2 lg:gap-x-4 2xl:gap-x-5 items-center text-center {{ not stacked ? '@2xs:flex-row @2xs:text-left' }}">
+        <div class="aspect-square max-w-16 w-full">
+            {% if icon %}
+                <img src="{{ icon.url }}" class="w-full h-full object-contain" alt="{{ icon.alt }}" loading="lazy" width="{{ icon.width }}" height="{{ icon.height }}" />
+            {% endif %}
+        </div>
 
 
         <div class="text-xs md:text-base text-balance">

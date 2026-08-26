@@ -7,6 +7,7 @@ new Enqueue\Enqueue;
 new Enqueue\ThirdParty;
 new Twig\Twig;
 new Editor\ListStyles;
+new Editor\BlockParents;
 
 //
 new Core\Block;

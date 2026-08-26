@@ -9,6 +9,10 @@ class Settings
     public function __construct()
     {
         add_action('acf/init', [$this, 'register']);
+
+        add_action('init', function() {
+            remove_action('admin_notices', 'wap_client_maybe_show_https_notice');
+        });
     }
 
     public function register()

@@ -44,7 +44,7 @@ class Video extends BlockController
                 'choices' => [
                     'centre' => 'Central',
                     'left' => 'Video Left',
-                    'righr' => 'Video Right',
+                    'right' => 'Video Right',
                 ]
             ])
                 ->setWidth(50)

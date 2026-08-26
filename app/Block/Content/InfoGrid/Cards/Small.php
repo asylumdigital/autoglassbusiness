@@ -18,6 +18,16 @@ class Small extends BlockController
                 'mime_types' => 'svg',
             ])
             ->addText('content')
+            ->addSelect('background', [
+                'choices' => [
+                    'bg-white' => 'White',
+                    'bg-highlight' => 'Highlight',
+                    'bg-default' => 'Dark',
+                    'bg-primary' => 'Primary (red)',
+                    'bg-secondary' => 'Secondary (yellow)',
+                    'bg-tertiary' => 'Tertiary (Green)',
+                ]
+            ])
             ->addTrueFalse('stack', [
                 'ui' => true,
             ]);

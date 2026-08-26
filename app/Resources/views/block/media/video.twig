@@ -1,7 +1,7 @@
 {% extends "modules/block/wrapper.twig" %}
 
 {% block content %}
-    <div class="{{ block.layout != 'centre' ? 'flex' }} md:w-11/12 md:mx-auto">
+    <div class="{{ block.layout != 'centre' ? 'flex' }}{{ block.layout == 'left' ? ' flex-row-reverse gap-9 ' }} md:w-11/12 md:mx-auto">
         <div{{ block.layout != 'centre' ? ' class="w-5/12"' }}>
             {% include "components/organisms/section-header.twig" with {
                 accent: block.eyebrow,
