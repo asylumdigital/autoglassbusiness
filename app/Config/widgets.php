@@ -13,7 +13,7 @@ return [
     [
         'name'          => 'Sticky items',
         'id'            => 'sticky-sidebar',
-        'before_widget' => '<div id="%1$s" class="sticky top-20 hidden md:block widget %2$s">',
+        'before_widget' => '<div id="%1$s" class="sticky top-22 hidden md:block widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h4 class="widget-title">',
         'after_title'   => '</h4>'
