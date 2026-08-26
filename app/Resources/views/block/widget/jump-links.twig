@@ -1,8 +1,10 @@
 {% if block.links %}
     <div x-data="jump_links">
-        <div class="mb-3 pt-4 font-condensed font-bold text-xxs">{{ block.title }}</div>
         <nav class="space-y-1">
-            <h3>In this article</h3>
+            {% if block.title %}
+                <h3 class="mb-3 pt-4 font-condensed font-bold text-xxs">{{ block.title }}</h3>
+            {% endif %}
+
             {% for link in block.links %}
                 <a href="#{{ link.id }}" class="block py-1 text-xs transition" :class="isActive('{{ link.id }}')
                         ? 'text-black font-semibold'
