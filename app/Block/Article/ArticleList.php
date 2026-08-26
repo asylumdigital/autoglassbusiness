@@ -88,7 +88,7 @@ class ArticleList extends BlockController
 
         if (($data['selection'] ?? false) === 'manual') {
             $query['post__in'] = $data['posts'];
-            $query['posts_per_page'] = count($data['posts'] ?? []);
+            $query['posts_per_page'] = count(($data['posts'] ?? false) ?: []);
             $args['post_type'] = 'any';
         } else {
             $query['posts_per_page'] = (int) ($data['count'] ?? 6);
