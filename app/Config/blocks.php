@@ -28,5 +28,10 @@ return [
             'title' => 'Media',
             'icon' => null,
         ],
+        [
+            'slug' => 'asylum-form',
+            'title' => 'Forms',
+            'icon' => null,
+        ],
     ]
 ];

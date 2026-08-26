@@ -42,7 +42,7 @@ class Enqueue
         }
     }
 
-    public function resourceHints($hints, $relation)
+    public function resourceHints(array $hints, string $relation)
     {
         if ($relation === 'preconnect') {
             $hints[] = 'https://fonts.googleapis.com';

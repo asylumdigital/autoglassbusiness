@@ -1,13 +1,12 @@
 {% extends "modules/block/wrapper.twig" %}
 
-{% block content %}
-    <div class="tabs" x-data="{ active: 1 }">
-        <div id="newBusinessEnquiry" class="selected-form" x-show="active == 1">
-            <iframe src="https://cloud.email.autoglass.co.uk/business-account-enquiry-webform" width="100%" height="2750" type="text/html" frameborder="0" allowTransparency="true" style="border: 0" sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation"></iframe>
-        </div>
+{% set iframeHeight = {
+    'business-account-opening-webform': 2870,
+    'business-account-enquiry-webform': 1500,
+} %}
 
-        <div id="accountOpening" class="selected-form" x-show="active == 2">
-            <iframe src="https://cloud.email.autoglass.co.uk/business-account-opening-webform" width="100%" height="1375" type="text/html" frameborder="0" allowTransparency="true" style="border: 0" sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation"></iframe>
-        </div>
+{% block content %}
+    <div class="form-container max-w-232.5 mx-auto" id="{{ block.form }}">
+        <iframe src="https://cloud.email.autoglass.co.uk/{{ block.form }}" width="100%" height="{{ block.height|default(iframeHeight[block.form]) }}" type="text/html" frameborder="0" allowTransparency="true" style="border: 0" sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation"></iframe>
     </div>
 {% endblock %}
