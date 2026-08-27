@@ -51,16 +51,18 @@ class Block
             $blockContent = $document->saveHTML();
         }
 
+        if ($listType === 'ticks') {
 
+            $blockContent = preg_replace('/(<li>)(.*)(<\/li>)/', '$1%s<span>$2</span>$3', $blockContent);
 
-        $blockContent = preg_replace('/(<li>)(.*)(<\/li>)/', '$1%s<span>$2</span>$3', $blockContent);
+            // switch this base on the class
+            $icon = Timber::compile('components/atoms/icons/list-check.twig');
 
-        // switch this base on the class
-        $icon = Timber::compile('components/atoms/icons/list-check.twig');
+            $blockContent = preg_replace('/(<li(.*)>)(.*)(<\/li>)/', '$1{icon}<span>$3</span>$4', $blockContent);
 
-        $blockContent = preg_replace('/(<li(.*)>)(.*)(<\/li>)/', '$1{icon}<span>$3</span>$4', $blockContent);
+            $blockContent = str_replace('{icon}', $icon, $blockContent);
+        }
 
-        $blockContent = str_replace('{icon}', $icon, $blockContent);
 
         return $blockContent;
     }

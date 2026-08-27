@@ -17,13 +17,13 @@ return [
             'slug' => 'ticks',
             'label' => 'Ticks',
         ],
-        [
-            'slug' => 'arrows',
-            'label' => 'Arrows',
-        ],
-        [
-            'slug' => 'columns',
-            'label' => 'Columns',
-        ],
+        // [
+        //     'slug' => 'arrows',
+        //     'label' => 'Arrows',
+        // ],
+        // [
+        //     'slug' => 'columns',
+        //     'label' => 'Columns',
+        // ],
     ],
 ];
