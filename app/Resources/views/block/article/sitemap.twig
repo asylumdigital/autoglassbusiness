@@ -1,0 +1,16 @@
+{% extends "modules/block/wrapper.twig" %}
+
+{% block content %}
+    {% for section in block.sitemap %}
+        {% if section.title %}
+            <h2 class="mb-6 text-2xl font-condensed font-bold">{{ section.title }}</h2>
+        {% endif %}
+
+        {% include "components/molecules/post-list.twig" with { posts: section.items } %}
+        {# <ul class="mb-10 space-y-4">
+            {% for item in section.items %}
+                <li><a href="{{ item.link }}" class="hover:underline">{{ item.title }}</a></li>
+            {% endfor %}
+        </ul> #}
+    {% endfor %}
+{% endblock %}

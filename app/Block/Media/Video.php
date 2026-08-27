@@ -20,7 +20,7 @@ class Video extends BlockController
                 'label' => 'Accent title',
             ])
             ->addText('title')
-            ->addTextarea('introduction')
+            ->addWysiwyg('introduction')
             ->addSelect('provider', [
                 'choices' => [
                     'youtube' => 'YouTube',

@@ -10,7 +10,7 @@
                 outer: block.layout != 'centre' ? 'text-left',
             } %}
         </div>
-        <div class="flex-1">
+        <div class="flex-1{{ block.layout == 'centre' ? ' md:w-7/12 mx-auto' }}">
             {% include "components/organisms/video.twig" with {
                 provider: block.provider,
                 poster: block.poster,

@@ -1,5 +1,20 @@
+{% set color = 'bg-primary hover:bg-primary-hover text-white' %}
 
-{% set classList = (secondary ? 'bg-secondary hover:bg-secondary-hover' : (tertiary ? 'bg-tertiary hover:bg-tertiary-hover text-white' : 'bg-primary hover:bg-primary-hover text-white')) ~ ' gap-5 flex items-center shadow-md hover:shadow-lg cursor-pointer font-condensed font-bold text-lg xl:text-xl py-4 px-6 leading-none tracking-wide justify-between transition-all' %}
+{% if secondary %}
+    {% set color = 'bg-secondary hover:bg-secondary-hover' %}
+{% endif %}
+
+{% if white %}
+    {% set color = 'bg-white hover:bg-primary-hover hover:text-white text-default' %}
+{% endif %}
+
+{% if tertiary %}
+    {% set color = 'bg-tertiary hover:bg-tertiary-hover text-white' %}
+{% endif %}
+
+
+
+{% set classList = color ~ ' gap-5 flex items-center shadow-md hover:shadow-lg cursor-pointer font-condensed font-bold text-lg xl:text-xl py-4 px-6 leading-none tracking-wide justify-between transition-all' %}
 
 {% set classList = classList ~ ' ' ~ width|default('w-full sm:w-fit') %}
 

@@ -1,0 +1,34 @@
+{% extends "modules/block/wrapper.twig" %}
+
+{% if block.inner_color == 'dark' %}
+    {% set inner = ' bg-default text-white' %}
+{% endif %}
+
+{% if block.inner_color == 'highlight' %}
+    {% set inner = ' bg-highlight' %}
+{% endif %}
+
+{% if block.inner_color == 'primary' %}
+    {% set inner = ' bg-primary text-white' %}
+{% endif %}
+{% if block.inner_color == 'secondary' %}
+    {% set inner = ' bg-secondary' %}
+{% endif %}
+
+{% block content %}
+    <div class="{{ inner }} p-12 space-y-6">
+
+        <h2 class="font-condensed font-bold text-4xl text-balance">Enim aliqua deserunt esse dolore magna culpa occaecat.</h2>
+
+        <p>Dolore anim amet sit anim occaecat quis.</p>
+
+        {% include "components/atoms/button.twig" with {
+            arrow: true,
+            arrow_type: 'chevron',
+            white: block.inner_color == 'primary' or block.style == 'primary'
+                or block.inner_color == 'secondary' or block.style == 'secondary',
+            text: block.cta.title,
+            url: block.cta.url,
+        } %}
+    </div>
+{% endblock %}

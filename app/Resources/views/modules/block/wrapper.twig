@@ -1,4 +1,19 @@
-<section class="{{ padding|default('py-16') }} {{ block.style == 'dark' ? ' bg-default text-white' }}{{ block.style == 'highlight' ? ' bg-highlight' }}" {{ block.section_id ? ' id="%s"'|format(block.section_id) }} {{ sectionAttributes ? sectionAttributes|html_attributes }}>
+{% if block.style == 'dark' %}
+    {% set sectionColor = ' bg-default text-white' %}
+{% endif %}
+
+{% if block.style == 'highlight' %}
+    {% set sectionColor = ' bg-highlight' %}
+{% endif %}
+
+{% if block.style == 'primary' %}
+    {% set sectionColor = ' bg-primary text-white' %}
+{% endif %}
+{% if block.style == 'secondary' %}
+    {% set sectionColor = ' bg-secondary' %}
+{% endif %}
+
+<section class="{{ padding|default('py-16') }}{{ sectionColor }}" {{ block.section_id ? ' id="%s"'|format(block.section_id) }} {{ sectionAttributes ? sectionAttributes|html_attributes }}>
     <div class="{{ container|default('container') }}">
         {% block content %}{% endblock %}
     </div>

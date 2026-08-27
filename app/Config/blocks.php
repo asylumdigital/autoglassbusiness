@@ -24,6 +24,11 @@ return [
             'icon' => null,
         ],
         [
+            'slug' => 'asylum-callout',
+            'title' => 'Callout / CTA',
+            'icon' => null,
+        ],
+        [
             'slug' => 'asylum-media',
             'title' => 'Media',
             'icon' => null,
