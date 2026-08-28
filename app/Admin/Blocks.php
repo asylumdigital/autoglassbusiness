@@ -10,7 +10,8 @@ class Blocks
     private $types = [
         'page',
         'post',
-        'widget'
+        'widget',
+        'template-policy',
     ];
 
     public function __construct()

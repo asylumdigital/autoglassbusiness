@@ -16,6 +16,10 @@ class InfoGrid extends BlockController
 
     protected string $icon = 'grid-view';
 
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
+
     public function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields

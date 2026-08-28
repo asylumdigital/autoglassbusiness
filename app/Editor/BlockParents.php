@@ -30,7 +30,7 @@ class BlockParents
     public function __construct()
     {
         // add_filter('allowed_block_types_all', function())
-        // add_action('current_screen', [$this, 'setConstraints']);
+        add_action('current_screen', [$this, 'setConstraints']);
     }
 
     /**
@@ -45,9 +45,19 @@ class BlockParents
      */
     public function setConstraints(WP_Screen $screen): void
     {
-
         if ($screen->base !== 'post' || !$screen->is_block_editor()) {
             return;
+        }
+
+        //
+        if (
+            isset($_GET['post'])
+            && $template = get_post_meta((int) $_GET['post'], '_wp_page_template', true)
+        ) {
+            // hacky, should check this better but ok as only have one!
+            if (basename($template) === 'template-policy.twig') {
+                return;
+            }
         }
 
         $registry = WP_Block_Type_Registry::get_instance();

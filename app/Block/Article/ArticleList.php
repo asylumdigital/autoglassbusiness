@@ -18,6 +18,10 @@ class ArticleList extends BlockController
 
     protected string $icon = 'list-view';
 
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
+
     protected function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $postTypes = ['any' => 'Any'] + array_map(fn($type) => $type->label, get_post_types(['public' => true], 'objects'));

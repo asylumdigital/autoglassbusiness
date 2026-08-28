@@ -10,6 +10,12 @@ class Sitemap extends BlockController
 {
     protected ?string $name = 'sitemap';
 
+    protected ?string $label = 'Sitemap';
+
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
+
     protected function transform(&$data, array $args = []): void
     {
         $data['sitemap']['pages'] = [

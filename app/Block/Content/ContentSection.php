@@ -16,6 +16,10 @@ class ContentSection extends BlockController
 
     protected string $icon = 'admin-post';
 
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
+
     protected function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields

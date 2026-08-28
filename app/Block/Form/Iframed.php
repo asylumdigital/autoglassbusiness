@@ -13,6 +13,10 @@ class Iframed extends BlockController
 
     protected string $category = 'asylum-form';
 
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
+
     protected function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields

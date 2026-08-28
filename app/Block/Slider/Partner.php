@@ -17,6 +17,10 @@ class Partner extends BlockController
 
     protected string $icon = 'image-flip-horizontal';
 
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
+
     protected function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields

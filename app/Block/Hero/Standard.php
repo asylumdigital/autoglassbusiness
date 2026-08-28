@@ -15,6 +15,10 @@ class Standard extends BlockController
 
     protected string $icon = 'cover-image';
 
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
+
     protected function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields

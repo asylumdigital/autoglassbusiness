@@ -15,6 +15,10 @@ class Video extends BlockController
 
     protected string $icon = 'video-alt3';
 
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
+
     protected function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields

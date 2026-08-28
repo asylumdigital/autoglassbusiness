@@ -13,4 +13,8 @@ class Prose extends BlockController
     protected string $category = 'asylum-content';
 
     protected string $icon = 'text-page';
+
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
 }

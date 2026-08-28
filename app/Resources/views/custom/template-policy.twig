@@ -4,6 +4,17 @@
 #}
 {% extends 'layouts/default.twig' %}
 {% block content %}
-    <h1>{{ post.title }}</h1>
-    {{ post.content }}
+    <div class="container py-16">
+        <div class="lg:max-w-8/12 mx-auto">
+            <div class="prose">
+                <h1>{{ post.title }}</h1>
+                {{ post.content }}
+            </div>
+
+            <p class="py-8">
+                Last updated: <date class="text-sm font-bold" datetime="{{ post.post_modified }}">{{ post.modified_date }}</date>
+            </p>
+
+        </div>
+    </div>
 {% endblock %}

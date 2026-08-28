@@ -1,4 +1,6 @@
 <?php
+
+
 return [
     // 'widgets' => [
     //     'acf/widget-lead-gen',
@@ -6,9 +8,7 @@ return [
     'widgets' => get_field('allowed_widget_block', 'option') ?: [],
     'page' => get_field('allowed_page_block', 'option') ?: [],
     'post' => get_field('allowed_post_block', 'option') ?: [],
-    'template-policy' => [
-        'core/paragraph',
-    ],
+    'template-policy' => get_field('allowed_template-policy_block', 'option') ?: get_field('allowed_page_block', 'option') ?: [],
     'groups' => [
         [
             'slug' => 'asylum-hero',

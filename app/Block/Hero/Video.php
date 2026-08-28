@@ -15,4 +15,8 @@ class Video extends BlockController
     protected ?string $template = 'block/hero/video';
 
     protected string $icon = 'format-video';
+
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
 }
