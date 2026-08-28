@@ -17,6 +17,10 @@ class ManualCards extends BlockController
 
     protected string $icon = 'list-view';
 
+    protected array $disallowedTemplates = [
+        'template-policy.twig',
+    ];
+
     protected function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields
