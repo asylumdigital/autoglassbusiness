@@ -1,11 +1,11 @@
 {% if posts %}
-    <ul class="pl-4">
+    <ul class="pl-4 {{ child ? 'pt-4' : 'mb-8' }}">
         {% for item in posts %}
-            <li>
+            <li class="mb-4 last-of-type:mb-0">
                 <a href="{{ item.link }}" class="hover:underline">{{ item.title }}</a>
 
                 {% if item.children({'post_type': item.post_type}) %}
-                    {% include "components/molecules/post-list.twig" with { posts: item.children({'post_type': item.post_type}) } %}
+                    {% include "components/molecules/post-list.twig" with { child: true, posts: item.children({'post_type': item.post_type}) } %}
                 {% endif %}
             </li>
         {% endfor %}
