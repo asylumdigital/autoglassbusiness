@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import './components/image.css';
 @import "./theme.css";
+@import "./components/list.css";
 
 @view-transition {
     navigation: auto;
@@ -15,3 +16,4 @@
         justify-content: flex-start;
     }
 }
+

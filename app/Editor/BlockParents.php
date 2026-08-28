@@ -14,14 +14,23 @@ class BlockParents
      */
     private array $constraints = [
         'page' => [
-            'core/paragraph' => ['parent' => ['acf/content-section']],
-            'core/list' => ['parent' => ['acf/content-section']],
+            'core/paragraph' => [
+                'parent' => [
+                    'acf/content-section'
+                ],
+            ],
+            'core/list' => [
+                'parent' => [
+                    'acf/content-section'
+                ]
+            ],
         ],
     ];
 
     public function __construct()
     {
-        add_action('current_screen', [$this, 'setConstraints']);
+        // add_filter('allowed_block_types_all', function())
+        // add_action('current_screen', [$this, 'setConstraints']);
     }
 
     /**

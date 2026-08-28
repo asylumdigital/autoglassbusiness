@@ -10,7 +10,8 @@ new Editor\ListStyles;
 new Editor\BlockParents;
 
 //
-new Core\Block;
+// new Core\ListStyle\Block;
+// new Core\ListStyle\Wysiwyg;
 new Core\Search;
 
 // Admin

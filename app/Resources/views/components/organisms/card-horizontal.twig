@@ -1,4 +1,4 @@
-<article class="h-full {{ bg == 'dark' ? 'bg-default text-white' }} {{ bg == 'highlight' ? 'highlight' }} {{ not bg ? 'border border-gray-200' }} hover:shadow-lg transition-all card">
+<article class="h-full {{ bg == 'dark' ? 'bg-default text-white' }} {{ bg == 'highlight' ? 'bg-highlight' }} {{ not bg ? 'border border-gray-200' }} hover:shadow-lg transition-all card">
     <a href="{{ post.link }}" title="Read more" class="grid sm:grid-cols-12 gap-1.5 sm:gap-0 h-full group">
 
         {% include "components/molecules/image.twig" with {

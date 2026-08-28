@@ -10,11 +10,9 @@
 
     } %}
     <div class="grid gap-5 {{ type == 'vertical' ? 'sm:grid-cols-2 lg:grid-cols-3' : 'lg:grid-cols-2' }}">
-
-
         {% for post in block.posts|default(posts) %}
             {% include "components/organisms/card-" ~ type ~ ".twig" with {
-
+                bg: block.card_color|default('white')
             } %}
         {% endfor %}
     </div>

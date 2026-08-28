@@ -12,6 +12,8 @@
     'use strict';
 
     var PREFIX = 'list--';
+    // Styled lists opt out of the typography plugin's descendant rules.
+    var NOT_PROSE = 'not-prose';
 
     window.tinymce.PluginManager.add('asylum_list_styles', function (editor) {
         var styles = editor.settings.asylum_list_styles || [];
@@ -53,8 +55,11 @@
                         }
                     });
 
+                    editor.dom.removeClass(list, NOT_PROSE);
+
                     if (value) {
                         editor.dom.addClass(list, value);
+                        editor.dom.addClass(list, NOT_PROSE);
                     }
                 });
 

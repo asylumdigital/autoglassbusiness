@@ -9,6 +9,8 @@ class Video extends BlockController
 {
     protected ?string $name = 'video';
 
+    protected ?string $label = 'Video player';
+
     protected string $category = 'asylum-media';
 
     protected string $icon = 'video-alt3';
@@ -32,8 +34,8 @@ class Video extends BlockController
             ])
             ->addText('youtube_id')
                 ->conditional('provider', '==', 'youtube')
-            ->addText('vimeo_id')
-                ->conditional('provider', '==', 'vimeo')
+            // ->addText('vimeo_id')
+            //     ->conditional('provider', '==', 'vimeo')
             ->addFile('video_file', [
                 'mime_types' => 'mp4,webm',
             ])

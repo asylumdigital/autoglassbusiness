@@ -1,4 +1,4 @@
-<article class="h-full {{ bg == 'dark' ? 'bg-default text-white' }} {{ bg == 'highlight' ? 'highlight' }} {{ not bg ? 'border border-gray-200' }} hover:shadow-lg transition-all card">
+<article class="h-full {{ bg == 'dark' ? 'bg-default text-white' }} {{ bg == 'highlight' ? 'bg-highlight' }} {{ not bg ? 'border border-gray-200' }} hover:shadow-lg transition-all card">
     <a href="{{ post.link }}" title="Read more" class="grid gap-1.5 h-full group">
         {% include "components/molecules/image.twig" with {
             image: post.thumbnail.id,
@@ -10,8 +10,7 @@
 
         <div class="p-5 flex flex-col gap-4 flex-1">
             {% include "components/atoms/card/title.twig" with { title: post.title } %}
-
-            {% include "components/atoms/card/excerpt.twig" with { text: post.excerpt.read_more(false) } %}
+            {% include "components/atoms/card/excerpt.twig" with { text: post.preview|default(post.excerpt.read_more(false)) } %}
 
             <p class="flex font-bold items-center gap-1.5 mt-auto ml-auto">
                 <span class="sr-only">Read more</span>

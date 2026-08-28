@@ -21,6 +21,8 @@
     var BLOCK = 'core/list';
     var ATTRIBUTE = 'listStyle';
     var PREFIX = 'list--';
+    // Styled lists opt out of the typography plugin's descendant rules.
+    var NOT_PROSE = 'not-prose';
 
     // Leading empty value clears whichever class is currently set.
     var options = [{ label: 'Default', value: '' }].concat(
@@ -30,7 +32,7 @@
     );
 
     function className(value) {
-        return value ? PREFIX + value : '';
+        return value ? PREFIX + value + ' ' + NOT_PROSE : '';
     }
 
     /**

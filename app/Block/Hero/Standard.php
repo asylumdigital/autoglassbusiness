@@ -18,6 +18,9 @@ class Standard extends BlockController
     protected function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields
+            ->addText('eyebrow', [
+                'label' => 'Accent title',
+            ])
             ->addTextarea('title')
             ->addTextarea('content')
             ->addGroup('buttons')
