@@ -26,4 +26,9 @@ return [
         'align-wide',
         'align-full'
     ],
+    'post_type_support' => [
+        'page' => [
+            'excerpt',
+        ],
+    ]
 ];
