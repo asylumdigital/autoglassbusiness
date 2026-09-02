@@ -29,7 +29,7 @@
                     <li>
                         {% if item.link %}<a href="{{ item.link }}">{% endif %}
                         {% if item.partner_logo %}
-                            <img src="{{ item.partner_logo.url }}" class="max-h-10 min-h-9" width="{{ item.partner_logo.width }}" height="{{ item.partner_logo.height }}" alt="{{ item.partner_logo.alt|default(item.partner_name)|esc_attr }}" loading="lazy" />
+                            <img src="{{ item.partner_logo.url }}" class="max-h-10 min-h-9 w-auto" width="{{ item.partner_logo.width }}" height="{{ item.partner_logo.height }}" alt="{{ item.partner_logo.alt|default(item.partner_name)|esc_attr }}" loading="lazy" />
                         {% else %}
                             <span class="font-semibold">{{ item.partner_name|esc_html }}</span>
                         {% endif %}
