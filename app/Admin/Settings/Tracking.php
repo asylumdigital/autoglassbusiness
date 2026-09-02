@@ -26,8 +26,24 @@ class Tracking
                 ->addText('gtm', [
                     'label' => 'Tag Manager ID'
                 ])
+                ->addSelect('gtm_location', [
+                    'label' => 'GTM Script location',
+                    'choices' => [
+                        'head' => 'Head',
+                        'footer' => 'Footer',
+                    ],
+                    'default_value' => 'footer',
+                ])
                 ->addText('ga', [
                     'label' => 'Google Analytics ID',
+                ])
+                ->addSelect('ga_location', [
+                    'label' => 'GA Script Location',
+                    'choices' => [
+                        'head' => 'Head',
+                        'footer' => 'Footer',
+                    ],
+                    'default_value' => 'footer',
                 ])
                 ->endGroup()
             ->setLocation('options_page', '==', Settings::PAGE_SLUG);

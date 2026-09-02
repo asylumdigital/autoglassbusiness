@@ -11,6 +11,7 @@ class Common
     {
         add_filter('timber/context', [$this, 'getWidgets']);
         add_filter('timber/context', [$this, 'getMasthead']);
+        add_filter('timber/context', [$this, 'getFooter']);
         // add_filter('asylum/context', [$this, 'getFallbackImage']);
         add_filter('default_post_metadata', [$this, 'getFallbackImage'], 10, 4);
         add_filter('the_content', [$this, 'removeEmptyParagraph']);
@@ -60,5 +61,11 @@ class Common
         $settings = Settings::getInstance()->getGroup('media');
 
         return ($settings['fallback_image'] ?? false) ?: null;
+    }
+
+    public function getFooter(array $context): array
+    {
+        $context['footer'] = Settings::getInstance()->getGroup('footer');
+        return $context;
     }
 }

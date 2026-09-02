@@ -17,6 +17,7 @@ new Core\Search;
 // Admin
 new Admin\Settings;
 new Admin\Settings\Masthead;
+new Admin\Settings\Footer;
 new Admin\Settings\Cookies;
 new Admin\Settings\Tracking;
 new Admin\Settings\Media;
