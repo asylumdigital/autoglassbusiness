@@ -49,7 +49,7 @@ class ManualCards extends BlockController
                 'layout' => 'row',
             ])
                 ->addText('title')
-                ->addTextarea('preview')
+                ->addTextarea('preview_text')
                 ->addImage('thumbnail')
                 ->addPostObject('link')
                 ->endRepeater();

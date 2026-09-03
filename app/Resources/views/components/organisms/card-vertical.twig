@@ -10,7 +10,7 @@
 
         <div class="p-5 flex flex-col gap-4 flex-1">
             {% include "components/atoms/card/title.twig" with { title: post.title } %}
-            {% include "components/atoms/card/excerpt.twig" with { text: post.preview|default(post.excerpt).read_more(false) } %}
+            {% include "components/atoms/card/excerpt.twig" with { text: post.preview_text ?: post.excerpt.read_more(false) } %}
 
             <p class="flex font-bold items-center gap-1.5 mt-auto ml-auto">
                 <span class="sr-only">Read more</span>
