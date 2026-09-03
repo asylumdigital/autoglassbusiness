@@ -1,0 +1,666 @@
+{# ============================================================
+   HERO CONCEPTS — CLIENT REVIEW
+   6 stacked concepts, self-contained styling (no Tailwind build
+   dependency) so they render as designed.
+   Swap --red for the exact brand red before build.
+   Video + image sources are placeholders.
+   ============================================================ #}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+.agb {
+    --red: #E4002B;
+    --ink: #111110;
+    --muted: #4D4A47;
+    --paper: #F6F4F1;
+    --line: rgba(17,17,16,.14);
+    --cond: 'Barlow Condensed', 'Oswald', 'Arial Narrow', sans-serif;
+    --body: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: var(--body);
+    color: var(--ink);
+    position: relative;
+    isolation: isolate;
+}
+.agb * { box-sizing: border-box; }
+.agb h1, .agb h2 { margin: 0; }
+.agb p { margin: 0; }
+.agb ul { margin: 0; padding: 0; list-style: none; }
+
+/* ---- review chrome (delete before build) ---- */
+.agb-tag {
+    position: absolute; z-index: 30; top: 0; left: 0;
+    display: flex; align-items: baseline; gap: .65rem;
+    background: var(--ink); color: #fff;
+    padding: .55rem 1.1rem .6rem;
+    font-family: var(--cond); text-transform: uppercase;
+    letter-spacing: .08em; font-size: .82rem; font-weight: 700;
+}
+.agb-tag b { color: var(--red); font-size: 1rem; }
+.agb-tag i { font-style: normal; opacity: .55; letter-spacing: .12em; font-size: .68rem; }
+
+/* ---- shared atoms ---- */
+.agb-eyebrow {
+    display: flex; align-items: center; gap: .85rem;
+    font-family: var(--cond); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .16em; font-size: clamp(.72rem,.9vw,.86rem);
+}
+.agb-eyebrow::before {
+    content: ""; width: clamp(28px,4vw,56px); height: 2px;
+    background: var(--red); flex: none;
+}
+.agb-h1 {
+    font-family: var(--cond); font-weight: 900; text-transform: uppercase;
+    line-height: .86; letter-spacing: -.005em; text-wrap: balance;
+}
+.agb-lede { font-size: clamp(1rem,1.15vw,1.3rem); line-height: 1.55; color: var(--muted); max-width: 46ch; }
+.agb-btns { display: flex; flex-wrap: wrap; gap: .9rem; }
+.agb-btn {
+    display: inline-flex; align-items: center; gap: .8rem;
+    font-family: var(--cond); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .09em; font-size: 1rem;
+    padding: 1.05rem 1.6rem; border: 2px solid var(--red);
+    background: var(--red); color: #fff; text-decoration: none;
+    transition: background .25s, color .25s, border-color .25s, transform .25s;
+}
+.agb-btn svg { transition: transform .25s; }
+.agb-btn:hover { transform: translateY(-2px); }
+.agb-btn:hover svg { transform: translateX(4px); }
+.agb-btn--ghost { background: transparent; color: var(--ink); border-color: currentColor; }
+.agb-btn--ghost:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.agb-btn--light { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
+.agb-btn--light:hover { background: #fff; color: var(--ink); border-color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+    .agb *, .agb *::before, .agb *::after { animation: none !important; transition: none !important; }
+}
+
+/* ============================================================
+   01 — KINETIC SPLIT   (video)
+   ============================================================ */
+.hv1 { background: var(--paper); overflow: hidden; }
+.hv1-grid {
+    display: grid; grid-template-columns: 1fr; align-items: stretch;
+    min-height: min(92vh, 900px);
+}
+.hv1-content {
+    padding: clamp(4.5rem,7vw,7rem) clamp(1.5rem,5vw,5.5rem) clamp(2.5rem,4vw,4rem);
+    display: flex; flex-direction: column; justify-content: center; gap: clamp(1.4rem,2vw,2.2rem);
+    position: relative; z-index: 2;
+}
+.hv1 .agb-h1 { font-size: clamp(3.4rem,7.4vw,7.6rem); display: flex; flex-direction: column; }
+.hv1 .agb-h1 span { display: block; animation: hv1Rise .9s cubic-bezier(.2,.8,.2,1) backwards; }
+.hv1 .agb-h1 span:nth-child(2) { animation-delay: .1s; padding-left: .09em; }
+.hv1 .agb-h1 span:nth-child(3) { animation-delay: .2s; color: var(--red); padding-left: .18em; }
+@keyframes hv1Rise { from { opacity: 0; transform: translateY(.5em); } }
+.hv1-stats {
+    display: flex; flex-wrap: wrap; gap: clamp(1.5rem,3vw,3rem);
+    border-top: 1px solid var(--line); padding-top: 1.4rem; margin-top: .6rem;
+}
+.hv1-stats b {
+    display: block; font-family: var(--cond); font-weight: 900;
+    font-size: clamp(1.9rem,2.6vw,2.6rem); line-height: 1;
+}
+.hv1-stats span { font-size: .78rem; text-transform: uppercase; letter-spacing: .11em; color: var(--muted); }
+.hv1-media { position: relative; min-height: 46vh; }
+.hv1-media video, .hv1-media img.hv1-fallback {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.hv1-media::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(200deg, rgba(17,17,16,0) 45%, rgba(17,17,16,.55));
+}
+.hv1-card {
+    position: absolute; z-index: 3; left: clamp(1rem,2vw,2rem); bottom: clamp(1rem,2vw,2rem);
+    background: rgba(255,255,255,.94); backdrop-filter: blur(6px);
+    padding: 1.1rem 1.4rem; max-width: 15rem; border-left: 3px solid var(--red);
+}
+.hv1-card b { display: block; font-family: var(--cond); font-weight: 900; font-size: 2.2rem; line-height: 1; }
+.hv1-card span { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+@media (min-width: 1024px) {
+    .hv1-grid { grid-template-columns: 1.02fr 1fr; }
+    .hv1-media { clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%); margin-left: -6%; }
+    .hv1-content { padding-right: 3rem; }
+}
+
+/* ============================================================
+   02 — CINEMATIC FULL-BLEED   (video)
+   ============================================================ */
+.hv2 { position: relative; min-height: min(94vh,940px); display: flex; align-items: flex-end; overflow: hidden; background: var(--ink); }
+.hv2-bg, .hv2-bg video, .hv2-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hv2-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+        linear-gradient(90deg, rgba(10,10,10,.92) 0%, rgba(10,10,10,.62) 42%, rgba(10,10,10,.15) 78%),
+        linear-gradient(0deg, rgba(10,10,10,.85), rgba(10,10,10,0) 55%);
+}
+.hv2-inner {
+    position: relative; z-index: 2; color: #fff; width: 100%;
+    padding: clamp(6rem,10vw,9rem) clamp(1.5rem,5vw,5.5rem) 0;
+    display: flex; flex-direction: column; gap: clamp(1.3rem,2vw,2rem);
+}
+.hv2 .agb-eyebrow { color: #fff; }
+.hv2 .agb-h1 { font-size: clamp(3.6rem,10vw,10.5rem); max-width: 14ch; }
+.hv2 .agb-h1 em { font-style: normal; color: var(--red); }
+.hv2 .agb-lede { color: rgba(255,255,255,.78); }
+.hv2-bar {
+    position: relative; z-index: 2; width: 100%;
+    margin-top: clamp(2.5rem,5vw,4.5rem);
+    border-top: 1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.05); backdrop-filter: blur(10px);
+    display: grid; grid-template-columns: repeat(2,1fr);
+}
+.hv2-bar li {
+    padding: 1.3rem clamp(1.5rem,4vw,3rem);
+    border-right: 1px solid rgba(255,255,255,.14);
+    border-bottom: 1px solid rgba(255,255,255,.14);
+    color: #fff;
+}
+.hv2-bar li:last-child { border-right: 0; }
+.hv2-bar b { display: block; font-family: var(--cond); font-weight: 900; font-size: clamp(1.8rem,2.4vw,2.5rem); line-height: 1; }
+.hv2-bar span { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; opacity: .62; }
+@media (min-width: 900px) {
+    .hv2-bar { grid-template-columns: repeat(4,1fr); }
+    .hv2-bar li { border-bottom: 0; }
+    .hv2-inner { padding-bottom: 0; }
+}
+
+/* ============================================================
+   03 — EDITORIAL MOSAIC   (images)
+   ============================================================ */
+.hv3 { background: #fff; padding: clamp(4.5rem,7vw,7rem) clamp(1.5rem,5vw,5rem) clamp(3rem,5vw,5rem); }
+.hv3-grid { display: grid; grid-template-columns: repeat(12,1fr); gap: clamp(.9rem,1.4vw,1.5rem); align-items: end; }
+.hv3-head { grid-column: 1 / -1; }
+.hv3 .agb-h1 { font-size: clamp(3.2rem,9.2vw,9rem); margin-top: 1.2rem; }
+.hv3 .agb-h1 u { text-decoration: none; -webkit-text-stroke: 2px var(--ink); color: transparent; }
+.hv3 .agb-h1 em { font-style: normal; color: var(--red); }
+.hv3-tile { position: relative; overflow: hidden; background: var(--paper); }
+.hv3-tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+.hv3-tile:hover img { transform: scale(1.05); }
+.hv3-tile figcaption {
+    position: absolute; left: 0; bottom: 0; z-index: 2;
+    background: var(--ink); color: #fff;
+    font-family: var(--cond); font-weight: 700; text-transform: uppercase; letter-spacing: .12em;
+    font-size: .72rem; padding: .5rem .85rem;
+}
+.hv3-a { grid-column: 1 / -1; aspect-ratio: 16/10; }
+.hv3-b { grid-column: 1 / span 6; aspect-ratio: 4/5; }
+.hv3-c { grid-column: 7 / span 6; aspect-ratio: 4/5; }
+.hv3-copy { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 1.5rem; padding-top: .5rem; }
+.hv3-note {
+    grid-column: 1 / -1; background: var(--red); color: #fff;
+    padding: clamp(1.4rem,2.5vw,2.2rem); display: flex; flex-direction: column; justify-content: flex-end; min-height: 10rem;
+}
+.hv3-note b { font-family: var(--cond); font-weight: 900; font-size: clamp(2.4rem,3.6vw,3.6rem); line-height: .95; display: block; }
+.hv3-note span { font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; opacity: .85; margin-top: .4rem; display: block; }
+@media (min-width: 900px) {
+    .hv3-head { grid-column: 1 / span 8; }
+    .hv3-a { grid-column: 1 / span 5; aspect-ratio: 3/4; }
+    .hv3-b { grid-column: 6 / span 4; aspect-ratio: 1/1; }
+    .hv3-c { grid-column: 10 / span 3; aspect-ratio: 3/4; }
+    .hv3-copy { grid-column: 6 / span 4; }
+    .hv3-note { grid-column: 10 / span 3; }
+}
+
+/* ============================================================
+   04 — TYPE STACK + MARQUEE   (no imagery)
+   ============================================================ */
+.hv4 { background: var(--ink); color: #fff; overflow: hidden; padding: clamp(5rem,8vw,8rem) 0 0; }
+.hv4-inner { padding: 0 clamp(1.5rem,5vw,5.5rem); display: flex; flex-direction: column; gap: clamp(1.6rem,2.5vw,2.4rem); }
+.hv4 .agb-eyebrow { color: #fff; }
+.hv4 .agb-h1 { font-size: clamp(3.4rem,12.5vw,13rem); line-height: .82; }
+.hv4 .agb-h1 span { display: block; }
+.hv4 .agb-h1 u {
+    text-decoration: none; color: transparent;
+    -webkit-text-stroke: clamp(1px,.16vw,2px) rgba(255,255,255,.72);
+}
+.hv4 .agb-h1 em { font-style: normal; color: var(--red); }
+.hv4-row { display: flex; flex-wrap: wrap; gap: clamp(1.5rem,4vw,4rem); align-items: flex-end; justify-content: space-between; }
+.hv4 .agb-lede { color: rgba(255,255,255,.7); }
+.hv4-marquee {
+    margin-top: clamp(2.5rem,5vw,4.5rem);
+    background: var(--red); color: #fff;
+    display: flex; overflow: hidden; white-space: nowrap;
+    border-top: 1px solid rgba(255,255,255,.2);
+}
+.hv4-track {
+    display: flex; flex: none; align-items: center; gap: 2.5rem;
+    padding: .95rem 1.25rem;
+    font-family: var(--cond); font-weight: 800; text-transform: uppercase;
+    letter-spacing: .14em; font-size: clamp(.9rem,1.3vw,1.15rem);
+    animation: hv4Slide 26s linear infinite;
+}
+.hv4-track span { display: inline-flex; align-items: center; gap: 2.5rem; }
+.hv4-track span::after { content: ""; width: 6px; height: 6px; background: rgba(255,255,255,.6); border-radius: 50%; }
+@keyframes hv4Slide { to { transform: translateX(-100%); } }
+
+/* ============================================================
+   05 — THROUGH THE WINDSCREEN   (image + glass motif)
+   ============================================================ */
+.hv5 { position: relative; min-height: min(94vh,940px); background: var(--ink); overflow: hidden; display: flex; align-items: center; }
+.hv5-bg { position: absolute; inset: 0; }
+.hv5-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hv5-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(105deg, rgba(8,10,14,.9) 0%, rgba(8,10,14,.55) 55%, rgba(8,10,14,.25) 100%);
+}
+.hv5-glass {
+    position: absolute; inset: clamp(.75rem,2vw,1.75rem);
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: clamp(18px,3vw,44px);
+    background: linear-gradient(160deg, rgba(255,255,255,.11), rgba(255,255,255,0) 42%);
+    pointer-events: none; overflow: hidden;
+}
+.hv5-wipe {
+    position: absolute; left: -30%; top: -60%; width: 55%; height: 220%;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.16), rgba(255,255,255,0));
+    transform: skewX(-14deg);
+    animation: hv5Wipe 7s cubic-bezier(.5,0,.3,1) infinite;
+}
+@keyframes hv5Wipe {
+    0%, 62% { transform: translateX(0) skewX(-14deg); }
+    100% { transform: translateX(320%) skewX(-14deg); }
+}
+.hv5-crack { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.hv5-crack path {
+    fill: none; stroke: rgba(255,255,255,.75); stroke-width: 1.4;
+    stroke-dasharray: 620; stroke-dashoffset: 620;
+    animation: hv5Heal 7s ease-in-out infinite;
+}
+@keyframes hv5Heal {
+    0% { stroke-dashoffset: 620; opacity: 0; }
+    18% { stroke-dashoffset: 0; opacity: .9; }
+    58% { stroke-dashoffset: 0; opacity: .9; }
+    76%, 100% { stroke-dashoffset: -620; opacity: 0; }
+}
+.hv5-inner {
+    position: relative; z-index: 3; color: #fff;
+    padding: clamp(5rem,8vw,7rem) clamp(2.5rem,7vw,7rem);
+    display: flex; flex-direction: column; gap: clamp(1.3rem,2vw,2rem); max-width: 60rem;
+}
+.hv5 .agb-eyebrow { color: #fff; }
+.hv5 .agb-h1 { font-size: clamp(3.4rem,8.4vw,8.5rem); }
+.hv5 .agb-h1 em { font-style: normal; color: var(--red); display: block; }
+.hv5 .agb-lede { color: rgba(255,255,255,.76); }
+.hv5-foot {
+    position: relative; z-index: 3; margin-top: clamp(1.5rem,3vw,2.5rem);
+    display: flex; flex-wrap: wrap; gap: 1.4rem 2.4rem; align-items: center;
+    padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,.2);
+}
+.hv5-foot li { display: flex; align-items: center; gap: .6rem; color: rgba(255,255,255,.82); font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; }
+.hv5-foot li::before { content: ""; width: 7px; height: 7px; background: var(--red); flex: none; }
+</style>
+
+
+{# ============================================================
+   01 — KINETIC SPLIT
+   ============================================================ #}
+<section class="agb hv1">
+    <div class="agb-tag"><b>01</b> Kinetic Split <i>video · split screen</i></div>
+    <div class="hv1-grid">
+        <div class="hv1-content">
+            <p class="agb-eyebrow">Nearly 50 years of great partnerships</p>
+
+            <h1 class="agb-h1">
+                <span>Keeping</span>
+                <span>your business</span>
+                <span>moving</span>
+            </h1>
+
+            <p class="agb-lede">Great business relationships are all about teamwork. For nearly 50 years we&rsquo;ve been working with Fleet and Insurance clients to deliver the market leading key-to-key service they need.</p>
+
+            <div class="agb-btns">
+                <a class="agb-btn" href="#">Open an account
+                    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+                </a>
+                <a class="agb-btn agb-btn--ghost" href="#">Make an enquiry
+                    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+                </a>
+            </div>
+
+            <ul class="hv1-stats">
+                <li><b>50</b><span>Years of service</span></li>
+                <li><b>24/7</b><span>Mobile fitting</span></li>
+                <li><b>UK</b><span>Nationwide network</span></li>
+            </ul>
+        </div>
+
+        <div class="hv1-media">
+            <video autoplay muted loop playsinline poster="https://picsum.photos/seed/agb-hero-a/1400/1600">
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4">
+            </video>
+            <div class="hv1-card">
+                <b>4.2 hrs</b>
+                <span>Average key-to-key turnaround</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{# ============================================================
+   02 — CINEMATIC FULL-BLEED
+   ============================================================ #}
+<section class="agb hv2">
+    <div class="agb-tag"><b>02</b> Cinematic <i>video · full bleed</i></div>
+
+    <div class="hv2-bg">
+        <video autoplay muted loop playsinline poster="https://picsum.photos/seed/agb-hero-b/1920/1080">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="hv2-inner">
+        <p class="agb-eyebrow">Nearly 50 years of great partnerships</p>
+
+        <h1 class="agb-h1">Keeping your business <em>moving</em></h1>
+
+        <p class="agb-lede">Great business relationships are all about teamwork. For nearly 50 years we&rsquo;ve been working with Fleet and Insurance clients to deliver the market leading key-to-key service they need.</p>
+
+        <div class="agb-btns">
+            <a class="agb-btn" href="#">Open an account
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+            </a>
+            <a class="agb-btn agb-btn--light" href="#">Make an enquiry
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+            </a>
+        </div>
+
+        <ul class="hv2-bar">
+            <li><b>1976</b><span>Trusted since</span></li>
+            <li><b>Key&ndash;to&ndash;key</b><span>Managed end to end</span></li>
+            <li><b>Fleet</b><span>&amp; insurance specialists</span></li>
+            <li><b>ADAS</b><span>Calibration included</span></li>
+        </ul>
+    </div>
+</section>
+
+
+{# ============================================================
+   03 — EDITORIAL MOSAIC
+   ============================================================ #}
+<section class="agb hv3">
+    <div class="agb-tag"><b>03</b> Editorial Mosaic <i>images · magazine grid</i></div>
+
+    <div class="hv3-grid">
+        <div class="hv3-head">
+            <p class="agb-eyebrow">Nearly 50 years of great partnerships</p>
+            <h1 class="agb-h1">Keeping <u>your business</u> <em>moving</em></h1>
+        </div>
+
+        <figure class="hv3-tile hv3-a">
+            <img src="https://picsum.photos/seed/agb-m1/900/1200" alt="">
+            <figcaption>01 &nbsp;Fleet</figcaption>
+        </figure>
+
+        <figure class="hv3-tile hv3-b">
+            <img src="https://picsum.photos/seed/agb-m2/900/900" alt="">
+            <figcaption>02 &nbsp;Insurance</figcaption>
+        </figure>
+
+        <figure class="hv3-tile hv3-c">
+            <img src="https://picsum.photos/seed/agb-m3/700/1000" alt="">
+            <figcaption>03 &nbsp;Mobile</figcaption>
+        </figure>
+
+        <div class="hv3-copy">
+            <p class="agb-lede">Great business relationships are all about teamwork. For nearly 50 years we&rsquo;ve been working with Fleet and Insurance clients to deliver the market leading key-to-key service they need.</p>
+            <div class="agb-btns">
+                <a class="agb-btn" href="#">Open an account
+                    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+                </a>
+                <a class="agb-btn agb-btn--ghost" href="#">Make an enquiry
+                    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="hv3-note">
+            <b>50 yrs</b>
+            <span>Of keeping fleets on the road</span>
+        </div>
+    </div>
+</section>
+
+
+{# ============================================================
+   04 — TYPE STACK + MARQUEE
+   ============================================================ #}
+<section class="agb hv4">
+    <div class="agb-tag"><b>04</b> Type Stack <i>typographic · no imagery</i></div>
+
+    <div class="hv4-inner">
+        <p class="agb-eyebrow">Nearly 50 years of great partnerships</p>
+
+        <h1 class="agb-h1">
+            <span>Keeping</span>
+            <span><u>your business</u></span>
+            <span><em>moving</em></span>
+        </h1>
+
+        <div class="hv4-row">
+            <p class="agb-lede">Great business relationships are all about teamwork. For nearly 50 years we&rsquo;ve been working with Fleet and Insurance clients to deliver the market leading key-to-key service they need.</p>
+
+            <div class="agb-btns">
+                <a class="agb-btn" href="#">Open an account
+                    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+                </a>
+                <a class="agb-btn agb-btn--light" href="#">Make an enquiry
+                    <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="hv4-marquee" aria-hidden="true">
+        <div class="hv4-track">
+            <span>Fleet</span><span>Insurance</span><span>Key-to-key</span><span>Mobile fitting</span><span>ADAS calibration</span><span>Nationwide</span>
+            <span>Fleet</span><span>Insurance</span><span>Key-to-key</span><span>Mobile fitting</span><span>ADAS calibration</span><span>Nationwide</span>
+        </div>
+        <div class="hv4-track">
+            <span>Fleet</span><span>Insurance</span><span>Key-to-key</span><span>Mobile fitting</span><span>ADAS calibration</span><span>Nationwide</span>
+            <span>Fleet</span><span>Insurance</span><span>Key-to-key</span><span>Mobile fitting</span><span>ADAS calibration</span><span>Nationwide</span>
+        </div>
+    </div>
+</section>
+
+
+{# ============================================================
+   05 — THROUGH THE WINDSCREEN
+   ============================================================ #}
+<section class="agb hv5">
+    <div class="agb-tag"><b>05</b> Through the Windscreen <i>image · glass motif</i></div>
+
+    <div class="hv5-bg">
+        <img src="https://picsum.photos/seed/agb-hero-e/1920/1200" alt="">
+    </div>
+
+    <div class="hv5-glass" aria-hidden="true">
+        <div class="hv5-wipe"></div>
+        <svg class="hv5-crack" viewBox="0 0 1200 700" preserveAspectRatio="none">
+            <path d="M880 120 L845 210 L905 246 L858 300 L900 372 L820 402 L866 470"/>
+            <path d="M845 210 L770 190 M905 246 L975 222 M858 300 L780 318 M900 372 L985 400 M820 402 L764 452"/>
+        </svg>
+    </div>
+
+    <div class="hv5-inner">
+        <p class="agb-eyebrow">Nearly 50 years of great partnerships</p>
+
+        <h1 class="agb-h1">Keeping your business <em>moving</em></h1>
+
+        <p class="agb-lede">Great business relationships are all about teamwork. For nearly 50 years we&rsquo;ve been working with Fleet and Insurance clients to deliver the market leading key-to-key service they need.</p>
+
+        <div class="agb-btns">
+            <a class="agb-btn" href="#">Open an account
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+            </a>
+            <a class="agb-btn agb-btn--light" href="#">Make an enquiry
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+            </a>
+        </div>
+
+        <ul class="hv5-foot">
+            <li>Repair first, replace second</li>
+            <li>Vehicle off road, minimised</li>
+            <li>One account, one invoice</li>
+        </ul>
+    </div>
+</section>
+
+
+{# ============================================================
+   06 — VIDEO KNOCKOUT
+   Video plays inside the letterforms via mix-blend-mode.
+   Fallback where blend modes are unsupported: solid black
+   panel, white type — still fully legible.
+   ============================================================ #}
+<style>
+.hv6 { background: #0B0B0B; color: #fff; padding: clamp(4.5rem,7vw,6.5rem) 0 clamp(2.5rem,4vw,4rem); overflow: hidden; }
+.hv6-top {
+    display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between;
+    padding: 0 clamp(1.5rem,5vw,5.5rem) clamp(2rem,3.5vw,3rem);
+}
+.hv6 .agb-eyebrow { color: #fff; }
+.hv6-reel {
+    display: inline-flex; align-items: center; gap: .8rem;
+    border: 1px solid rgba(255,255,255,.28); border-radius: 999px;
+    padding: .5rem .5rem .5rem 1.15rem; color: #fff; text-decoration: none;
+    font-family: var(--cond); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .12em; font-size: .78rem;
+    transition: border-color .25s, background .25s;
+}
+.hv6-reel:hover { border-color: #fff; background: rgba(255,255,255,.07); }
+.hv6-reel i {
+    display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%;
+    background: var(--red); font-style: normal;
+}
+.hv6-reel i svg { margin-left: 2px; }
+
+/* --- the knockout stage --- */
+.hv6-stage { position: relative; isolation: isolate; background: #0B0B0B; }
+.hv6-stage video {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.02); transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+.hv6-stage:hover video { transform: scale(1.09); }
+.hv6-knock {
+    position: relative; z-index: 2;
+    background: #0B0B0B; mix-blend-mode: multiply;
+    padding: clamp(.5rem,1.5vw,1.5rem) clamp(1.5rem,5vw,5.5rem);
+}
+.hv6-knock h1 {
+    font-family: var(--cond); font-weight: 900; text-transform: uppercase;
+    color: #fff; margin: 0;
+    font-size: clamp(3.6rem,13.6vw,14.5rem); line-height: .82; letter-spacing: -.01em;
+}
+.hv6-knock h1 span { display: block; }
+.hv6-knock h1 span:nth-child(2) { text-indent: .06em; }
+.hv6-knock h1 span:nth-child(3) { text-indent: .12em; }
+/* red seam that sits above the blended layer */
+.hv6-seam { position: absolute; z-index: 3; left: 0; bottom: 0; height: 4px; width: 38%; background: var(--red); }
+
+.hv6-bottom {
+    display: flex; flex-wrap: wrap; gap: clamp(1.6rem,4vw,4rem);
+    align-items: flex-end; justify-content: space-between;
+    padding: clamp(2.2rem,4vw,3.5rem) clamp(1.5rem,5vw,5.5rem) 0;
+}
+.hv6 .agb-lede { color: rgba(255,255,255,.72); }
+.hv6-meta {
+    display: flex; gap: clamp(1.4rem,3vw,2.8rem); flex-wrap: wrap;
+    font-size: .74rem; text-transform: uppercase; letter-spacing: .13em; color: rgba(255,255,255,.5);
+}
+.hv6-meta b { color: #fff; font-weight: 600; }
+@supports not (mix-blend-mode: multiply) {
+    .hv6-stage video { display: none; }
+}
+</style>
+
+<section class="agb hv6">
+    <div class="agb-tag"><b>06</b> Video Knockout <i>video · type mask</i></div>
+
+    <div class="hv6-top">
+        <p class="agb-eyebrow">Nearly 50 years of great partnerships</p>
+        <a class="hv6-reel" href="#">Watch the showreel
+            <i><svg width="10" height="12" viewBox="0 0 10 12" fill="none" aria-hidden="true"><path d="M9 6 0 11.2V.8L9 6Z" fill="currentColor"/></svg></i>
+        </a>
+    </div>
+
+    <div class="hv6-stage">
+        <video autoplay muted loop playsinline poster="https://picsum.photos/seed/agb-hero-f/1920/1080">
+            <source src="https://cdn.pixabay.com/video/2019/02/15/21438-317457608_large.mp4" type="video/mp4">
+        </video>
+        <div class="hv6-knock">
+            <h1>
+                <span>Keeping</span>
+                <span>your business</span>
+                <span>moving</span>
+            </h1>
+        </div>
+        <div class="hv6-seam" aria-hidden="true"></div>
+    </div>
+
+    <div class="hv6-bottom">
+        <p class="agb-lede">Great business relationships are all about teamwork. For nearly 50 years we&rsquo;ve been working with Fleet and Insurance clients to deliver the market leading key-to-key service they need.</p>
+
+        <div class="agb-btns">
+            <a class="agb-btn" href="#">Open an account
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+            </a>
+            <a class="agb-btn agb-btn--light" href="#">Make an enquiry
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="hv6-meta" style="padding: clamp(1.8rem,3vw,2.6rem) clamp(1.5rem,5vw,5.5rem) 0;">
+        <span><b>Fleet</b> &amp; insurance specialists</span>
+        <span><b>Key-to-key</b> managed end to end</span>
+        <span><b>Nationwide</b> mobile network</span>
+    </div>
+</section>
+
+<section class="agb hv6">
+    <div class="agb-tag"><b>06</b> Image Knockout <i>Image · type mask</i></div>
+
+    <div class="hv6-top">
+        <p class="agb-eyebrow">Nearly 50 years of great partnerships</p>
+        <a class="hv6-reel" href="#">Watch the showreel
+            <i><svg width="10" height="12" viewBox="0 0 10 12" fill="none" aria-hidden="true"><path d="M9 6 0 11.2V.8L9 6Z" fill="currentColor"/></svg></i>
+        </a>
+    </div>
+
+    <div class="hv6-stage">
+        <video autoplay muted loop playsinline poster="https://picsum.photos/seed/agb-hero-f/1920/1080">
+
+        </video>
+        <div class="hv6-knock">
+            <h1>
+                <span>Keeping</span>
+                <span>your business</span>
+                <span>moving</span>
+            </h1>
+        </div>
+        <div class="hv6-seam" aria-hidden="true"></div>
+    </div>
+
+    <div class="hv6-bottom">
+        <p class="agb-lede">Great business relationships are all about teamwork. For nearly 50 years we&rsquo;ve been working with Fleet and Insurance clients to deliver the market leading key-to-key service they need.</p>
+
+        <div class="agb-btns">
+            <a class="agb-btn" href="#">Open an account
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+            </a>
+            <a class="agb-btn agb-btn--light" href="#">Make an enquiry
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6h13M9.5 1 14.5 6l-5 5" stroke="currentColor" stroke-width="2"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="hv6-meta" style="padding: clamp(1.8rem,3vw,2.6rem) clamp(1.5rem,5vw,5.5rem) 0;">
+        <span><b>Fleet</b> &amp; insurance specialists</span>
+        <span><b>Key-to-key</b> managed end to end</span>
+        <span><b>Nationwide</b> mobile network</span>
+    </div>
+</section>
