@@ -33,8 +33,12 @@ class Video extends BlockController
                 ->addLink('primary')
                 ->addLink('secondary')
                 ->endGroup()
-            ->addImage('mobile')
-            ->addImage('big');
+            ->addImage('mobile', [
+                'preview_size' => 'thumbnail',
+            ])
+            ->addImage('large', [
+                'preview_size' => 'thumbnail',
+            ]);
         return $fields;
     }
 
@@ -42,7 +46,7 @@ class Video extends BlockController
     {
         add_action('wp_head', function() use ($data) {
             $small = $data['mobile']['url'];
-            $large = $data['big']['url'];
+            $large = $data['large']['url'];
             echo <<<HTML
                 <style>
                     :root {
