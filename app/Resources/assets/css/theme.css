@@ -103,3 +103,6 @@
     @apply w-full h-full object-cover;
 }
 
+.hero-bg {
+    background-image: var(--header-bg);
+}
