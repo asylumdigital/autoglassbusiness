@@ -38,28 +38,35 @@ class Video extends BlockController
             ])
             ->addImage('large', [
                 'preview_size' => 'thumbnail',
+            ])
+            ->addTrueFalse('left_gradient', [
+                'ui' => true,
+                'default_value' => false,
             ]);
         return $fields;
     }
 
     protected function transform(&$data, array $args = []): void
     {
-        add_action('wp_head', function() use ($data) {
-            $small = $data['mobile']['url'];
-            $large = $data['large']['url'];
-            echo <<<HTML
-                <style>
-                    :root {
-                        --header-bg: url($small);
-                    }
+        $count = static::$blockCount;
+        $small = $data['mobile']['url'];
+        $large = $data['large']['url'];
+        $style = <<<HTML
+            <style>
+                .hero-bg--{$count} {
+                    --header-bg: url($small);
+                }
 
-                    @media (width >= 1024px) {
-                        :root {
-                            --header-bg: url($large);
-                        }
+                @media (width >= 1024px) {
+                    .hero-bg--{$count} {
+                        --header-bg: url($large);
                     }
-                </style>
-            HTML;
+                }
+            </style>
+        HTML;
+
+        add_action('wp_head', function() use ($style) {
+            echo $style;
         });
     }
 }

@@ -13,6 +13,8 @@ class Sitemap extends BlockController
 
     protected ?string $label = 'Sitemap';
 
+    protected string $category = 'asylum-content';
+
     protected array $disallowedTemplates = [
         'template-policy.twig',
     ];

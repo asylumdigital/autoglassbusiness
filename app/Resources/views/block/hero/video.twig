@@ -1,4 +1,4 @@
-<section class="relative hero-bg bg-cover bg-top-right bg-no-repeat">
+<section class="relative hero-bg bg-cover bg-top-right bg-no-repeat hero-bg--{{ block.block_position }}">
     <div class="container flex lg:block items-end lg:items-center h-full-header lg:h-auto">
         <div class="lg:w-1/2 2xl:w-[43%] lg:py-12 py-8 relative z-10">
 
@@ -44,4 +44,8 @@
         </div>
     </div>
     <div class="lg:hidden absolute w-full h-[88%] bg-linear-to-t from-white via-25% via-white/90 to-transparent bottom-0"></div>
+    {% if block.left_gradient %}
+        <div class="hidden lg:block absolute w-full h-full bg-linear-to-r from-white/95 via-25% to-60% via-white/90 to-transparent bottom-0"></div>
+    {% endif %}
+
 </section>
