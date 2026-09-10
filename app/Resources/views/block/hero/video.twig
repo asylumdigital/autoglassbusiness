@@ -21,24 +21,17 @@
 
             <p class="text-sm sm:text-base md:text-lg xl:text-2xl text-[#4D4A47]">{{ block.content|esc_html }}</p>
 
-            {% if block.buttons.primary.url or block.buttons.secondary.url %}
+            {% if block.buttons %}
                 <div class="flex flex-col gap-4 sm:flex-row lg:gap-11 lg:ml-auto mt-6 xl:mt-20">
-                    {% if block.buttons.primary.url %}
+                    {% for button in block.buttons %}
                         {% include "components/atoms/button.twig" with {
-                            url: block.buttons.primary.url,
-                            text: block.buttons.primary.title,
+                            url: button.link.url,
+                            text: button.link.title,
+                            secondary: button.style == 'secondary',
+                            tertiary: button.style == 'tertiary',
                             arrow: true,
                         } %}
-                    {% endif %}
-
-                    {% if block.buttons.secondary.url %}
-                        {% include "components/atoms/button.twig" with {
-                            url: block.buttons.secondary.url,
-                            text: block.buttons.secondary.title,
-                            secondary: true,
-                            arrow: true,
-                        } %}
-                    {% endif %}
+                    {% endfor %}
                 </div>
             {% endif %}
         </div>
