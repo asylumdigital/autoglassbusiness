@@ -1,6 +1,6 @@
 {% extends "modules/block/wrapper.twig" %}
 
-{% set container = 'max-w-none' %}
+{% set container = 'max-w-none relative' %}
 
 {% set sectionAttributes = {
     'x-data': "carousel",
@@ -27,5 +27,32 @@
                 <InnerBlocks allowedBlocks="{{ ['acf/quote-slide']|json_encode|e('html_attr') }}" />
             </div>
         </div>
+
+        {% if block.pagination or block.navigation %}
+            <div class="flex items-center gap-4 absolute bottom-0 right-0 z-10 {{ not block.navigation ? 'px-4 py-1' }}">
+                {% if block.pagination %}
+                    <div>
+                        <div class="swiper-pagination" x-ref="pagination"></div>
+                    </div>
+                {% endif %}
+
+                {% if block.navigation %}
+                    <div class="flex">
+                        <button type="button" aria-label="Previous" class="swiper-button--prev aspect-square w-8 bg-secondary cursor-pointer flex items-center justify-center" x-ref="prev">
+                            <span class="w-4 block">
+                                {% include "components/atoms/icons/svg/chevron-left.svg" %}
+                            </span>
+                            <span class="sr-only">Prev</span>
+                        </button>
+                        <button type="button" aria-label="Next" class="swiper-button--next aspect-square w-8 bg-secondary cursor-pointer flex items-center justify-center" x-ref="next">
+                            <span class="w-4 block">
+                                {% include "components/atoms/icons/svg/chevron.svg" %}
+                            </span>
+                            <span class="sr-only">Next</span>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

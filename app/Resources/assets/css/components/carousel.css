@@ -1,6 +1,16 @@
 @import "swiper/swiper.css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+:root {
+    --swiper-pagination-color: var(--color-primary);
+}
 
 .swiper {
     overflow: clip;
     overflow-y: visible;
+}
+
+.swiper-pagination {
+    position: static;
 }

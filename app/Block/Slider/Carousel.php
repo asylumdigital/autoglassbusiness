@@ -33,7 +33,15 @@ class Carousel extends BlockController
                     'light' => 'Light'
                 ],
                 'default_value' => 'light',
-            ]);
+            ])
+            ->addTrueFalse('pagination', [
+                'ui' => true,
+            ])
+                ->setWidth(50)
+            ->addTrueFalse('navigation', [
+                'ui' => true,
+            ])
+                ->setWidth(50);
         return $fields;
     }
 }
