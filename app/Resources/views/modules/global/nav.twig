@@ -1,4 +1,4 @@
-<nav class="global-nav">
+<nav class="global-nav" x-data="{ open: null }">
     {% include 'components/nav.twig' with {
         nav: menus.global.get_items,
         multilevel: true,

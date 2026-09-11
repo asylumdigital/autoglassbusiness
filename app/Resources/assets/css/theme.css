@@ -106,3 +106,7 @@
 .hero-bg {
     background-image: var(--header-bg);
 }
+
+::selection {
+    @apply bg-tertiary text-white;
+}
