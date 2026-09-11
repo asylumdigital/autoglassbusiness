@@ -24,7 +24,7 @@
                     <div class="sub-menu-wrapper mega-menu bg-white shadow-md absolute top-0 xl:top-full xl:left-0 xl:right-auto w-full font-semibold py-12 transition-all h-full xl:h-auto z-10" :class="open == {{ item.id }} ? 'left-0 xl:block' : 'left-full xl:hidden'" @click.outside="open = null">
                         <div class="container grid xl:grid-cols-4">
                             <div>
-                                <button type="button" class="xl:hidden" @click="open = null">Back</button>
+
                                 <p class="text-3xl mb-4">{{ item.title }}</p>
 
                                 {% if item.link != '#' %}
@@ -43,6 +43,10 @@
 
                 {# closing for mega/super menu #}
                 {% if item.level == 0 and children %}
+                    <button type="button" class="xl:hidden bg-primary size-10 p-3 text-white mt-4" aria-label="Back" @click="open = null">
+                        {% include "components/atoms/icons/svg/chevron-left.svg" %}
+                        <span class="sr-only">Back</span>
+                    </button>
                     </div></div>
                 {% endif %}
             </li>
