@@ -1,7 +1,7 @@
 {% extends "modules/block/wrapper.twig" %}
 
 {% block content %}
-    <div class="prose lg:w-10/12 lg:mx-auto">
-        <InnerBlocks allowedBlocks="{{ ['core/paragraph', 'acf/image']|json_encode|e('html_attr') }}" />
+    <div class="prose lg:w-10/12 lg:mx-auto 2xl:w-8/12">
+        <InnerBlocks allowedBlocks="{{ ['acf/image']|json_encode|e('html_attr') }}" />
     </div>
 {% endblock %}
