@@ -22,9 +22,10 @@
                 {% endfor %}
             </div>
 
+            {% include "modules/social-nav.twig" with { with_title: false } %}
+
             {{ footer.footer_details|esc_html|wpautop|sup }}
 
-            {% include "modules/social-nav.twig" with { with_title: false } %}
         </div>
     </section>
 </footer>
