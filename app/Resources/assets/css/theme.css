@@ -107,6 +107,12 @@
     background-image: var(--header-bg);
 }
 
+.social-nav {
+    svg {
+        fill: currentColor;
+    }
+}
+
 ::selection {
     @apply bg-tertiary text-white;
 }

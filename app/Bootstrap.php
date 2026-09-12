@@ -16,6 +16,7 @@ new Core\Search;
 
 // Admin
 new Admin\Settings;
+new Admin\Fields\Menu;
 new Admin\Settings\Masthead;
 new Admin\Settings\Footer;
 new Admin\Settings\Cookies;

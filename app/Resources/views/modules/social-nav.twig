@@ -1,16 +1,22 @@
-{% set items = menus.social.get_items %}
+{% set items = menus.social_nav.get_items %}
 
-<ul class="social-nav">
-  {% for item in items %}
-    {% spaceless %}
-    <li>
-      <a href="{{ item.link }}">
-        {% if item.custom['menu-icons'] %}
-        <i class="fa {{ item.custom['menu-icons'].icon }}" aria-hidden="true"></i>
-        {% endif %}
-        <span class="nav-label{{ item.custom['menu-icons'].hide_label ? ' assistive-text' }}">{{ item.title }}</span>
-      </a>
-    </li>
-    {% endspaceless %}
-  {% endfor %}
-</ul>
+<div>
+    {% if with_title %}
+        <h3 class="font-condensed font-bold text-xl mb-3">{{ menus.social_nav.title }}</h3>
+    {% endif %}
+    <nav class="social-nav text-white flex items-center gap-4">
+        {% for item in items %}
+            <a href="{{ item.link }}"{{ item.attr_title ? ' title="%s"'|format(item.attr_title) }}{{ item.xfn ? ' rel="%s"'|format(item.xfn) }} target="{{ link.target }}">
+                {% if item.meta('icon') %}
+                    <span class="w-8 block">
+                        {% include get_image(item.meta('icon')).file_loc ignore missing %}
+                        <span class="sr-only">{{ item.title }}</span>
+                    </span>
+                {% else %}
+                    <span>{{ item.title }}</span>
+                {% endif %}
+            </a>
+
+        {% endfor %}
+    </nav>
+</div>
