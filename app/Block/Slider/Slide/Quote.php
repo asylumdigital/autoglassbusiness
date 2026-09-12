@@ -20,6 +20,7 @@ class Quote extends BlockController
                 'return_format' => 'id',
             ])
             ->addTextarea('content')
+            ->addText('citation')
             ->addImage('logo', [
                 'label' => 'Logo',
                 'preview_size' => 'thumbnail',

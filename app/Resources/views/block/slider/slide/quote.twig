@@ -1,6 +1,6 @@
 {% if block.image or block.content or block.logo %}
     <div class="swiper-slide">
-        <div class="container grid lg:grid-cols-12 lg:items-center">
+        <div class="container grid pb-9 lg:pb-0 lg:grid-cols-12 lg:items-center">
             {% if block.image %}
                 <div class="lg:col-span-5 lg:col-start-2">
 
@@ -13,14 +13,28 @@
                 </div>
             {% endif %}
 
-            <div class="lg:col-span-5 lg:col-start-8 text-xs sm:text-lg xl:text-2xl">
+            <div class="lg:col-span-5 lg:col-start-8 text-xs sm:text-lg xl:text-2xl lg:flex lg:flex-col lg:h-full">
                 {% if block.content %}
-                    <p>{{ block.content|esc_html|sup }}</p>
+                        {% if block.citation %}
+                            <figure class="mt-auto">
+                                <blockquote>
+                        {% else %}
+                            <div class="mt-auto">
+                        {% endif %}
+                            {{ block.content|esc_html|sup|wpautop }}
+                        {% if block.citation %}
+                                </blockquote>
+                                <cite class="mt-4 block text-sm not-italic font-semibold">{{ block.citation }}</cite>
+                            </figure>
+                        {% else %}
+                            </div>
+                        {% endif %}
+
                 {% endif %}
 
 
                 {% if block.logo %}
-                    <div class="mt-9 w-fit mx-auto max-w-1/2">
+                    <div class="pt-9 lg:mb-9 w-fit mt-auto mx-auto max-w-1/2">
                         <img src="{{ block.logo.url }}" width="{{ block.logo.width }}" height="{{ block.logo.height }}" alt="{{ block.logo.alt }}" loading="lazy" class="w-full object-contain max-h-20" />
                     </div>
                 {% endif %}
