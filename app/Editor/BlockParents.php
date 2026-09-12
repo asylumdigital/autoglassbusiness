@@ -16,13 +16,30 @@ class BlockParents
         'page' => [
             'core/paragraph' => [
                 'parent' => [
-                    'acf/content-section'
+                    'acf/content-section',
+                    'acf/prose',
                 ],
             ],
             'core/list' => [
                 'parent' => [
-                    'acf/content-section'
+                    'acf/content-section',
+                    'acf/prose',
                 ]
+            ],
+            'core/heading' => [
+                'parent' => [
+                    'acf/prose',
+                ],
+            ],
+            'core/image' => [
+                'parent' => [
+                    'acf/prose',
+                ],
+            ],
+            'core/accordion' => [
+                'parent' => [
+                    'acf/prose',
+                ],
             ],
         ],
     ];
@@ -31,6 +48,30 @@ class BlockParents
     {
         // add_filter('allowed_block_types_all', function())
         add_action('current_screen', [$this, 'setConstraints']);
+
+        add_filter('block_type_metadata', function (array $metadata): array
+        {
+            if ( 'core/heading' === $metadata['name'] ) {
+                $metadata['attributes']['levelOptions']['default'] = [ 2, 3, 4, 5, 6 ];
+            }
+
+            return $metadata;
+        } );
+    }
+
+    /**
+     * Remove the H1 option from the header
+     *
+     * @param array $metadata
+     * @return array
+     */
+    public function disabledHeaderOne(array $metadata): array
+    {
+        if ($metadata['name'] === 'core/heading') {
+            $metadata['attributes']['levelOptions']['default'] = [2, 3, 4, 5, 6];
+        }
+
+        return $metadata;
     }
 
     /**
