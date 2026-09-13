@@ -31,11 +31,6 @@ class BlockParents
                     'acf/prose',
                 ],
             ],
-            'core/image' => [
-                'parent' => [
-                    'acf/prose',
-                ],
-            ],
             'core/accordion' => [
                 'parent' => [
                     'acf/prose',

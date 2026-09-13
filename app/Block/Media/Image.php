@@ -27,6 +27,7 @@ class Image extends BlockController
                 ->setWidth(50)
             ->addText('image_alt', [
                 'label' => 'Alternative text',
+                'instructions' => 'Override the media library alt text',
             ])
                 ->setWidth(50)
             ->addSelect('aspect', [
@@ -39,6 +40,7 @@ class Image extends BlockController
             ])
             ->addTrueFalse('max_width', [
                 'ui' => true,
+                'instructions' => 'Restrict the image width to it\'s maximum size',
             ]);
         return $fields;
     }
