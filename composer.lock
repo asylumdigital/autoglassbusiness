@@ -80,16 +80,16 @@
         },
         {
             "name": "asylum/theme",
-            "version": "6.1.3",
+            "version": "6.1.4",
             "source": {
                 "type": "git",
                 "url": "git@github.com:asylumdigital/wp-theme-core.git",
-                "reference": "5e0f660a0015003cdfceec0a3a36542945daf896"
+                "reference": "5505dce1b0da38be5560ba3a26837f37a0f78817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asylumdigital/wp-theme-core/zipball/5e0f660a0015003cdfceec0a3a36542945daf896",
-                "reference": "5e0f660a0015003cdfceec0a3a36542945daf896",
+                "url": "https://api.github.com/repos/asylumdigital/wp-theme-core/zipball/5505dce1b0da38be5560ba3a26837f37a0f78817",
+                "reference": "5505dce1b0da38be5560ba3a26837f37a0f78817",
                 "shasum": ""
             },
             "require": {
@@ -115,10 +115,10 @@
                 }
             },
             "support": {
-                "source": "https://github.com/asylumdigital/wp-theme-core/tree/v6.1.3",
+                "source": "https://github.com/asylumdigital/wp-theme-core/tree/v6.1.4",
                 "issues": "https://github.com/asylumdigital/wp-theme-core/issues"
             },
-            "time": "2026-08-26T07:15:36+00:00"
+            "time": "2026-09-13T09:58:58+00:00"
         },
         {
             "name": "asylum/utility",

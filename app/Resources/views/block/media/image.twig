@@ -1,0 +1,10 @@
+{% include "components/molecules/image.twig" with {
+    aspect: block.aspect == 'natural' ? 'sm:aspect-auto aspect-auto' : block.aspect,
+    caption: block.caption,
+    atts: {
+        alt: block.image_alt
+    },
+    image: block.image.id,
+    parent: block.max_width ? 'max-w-fit' : null,
+} %}
+
