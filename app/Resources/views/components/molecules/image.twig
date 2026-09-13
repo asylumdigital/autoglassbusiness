@@ -4,7 +4,7 @@
         loading: 'lazy',
     } %}
 
-    {% set attributes = attributes|merge(atts) %}
+    {% set attributes = attributes|merge(atts|default({})) %}
 
     <figure{{ parent ? ' class="%s"'|format(parent) }}>
         {% set ratio = aspect == 'video' ? 'aspect-video clip-video' : (':' in aspect ? aspect : 'aspect-square clip-square') %}
