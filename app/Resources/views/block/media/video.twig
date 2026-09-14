@@ -1,16 +1,30 @@
 {% extends "modules/block/wrapper.twig" %}
 
 {% block content %}
-    <div class="{{ block.layout != 'centre' ? 'md:flex' }}{{ block.layout == 'left' ? ' flex-row-reverse ' }} {{ block.layout != 'centre' ? ' gap-9 ' }} md:w-11/12 md:mx-auto">
-        <div{{ block.layout != 'centre' ? ' class="md:w-5/12"' }}>
+    <div class="{{ block.layout != 'centre' ? 'lg:flex' }}{{ block.layout == 'left' ? ' flex-row-reverse ' }} {{ block.layout != 'centre' ? ' gap-9 ' }} lg:w-11/12 lg:mx-auto">
+        <div{{ block.layout != 'centre' ? ' class="lg:w-5/12"' }}>
             {% include "components/organisms/section-header.twig" with {
                 accent: block.eyebrow,
                 title: block.title,
                 intro: block.introduction,
-                outer: block.layout != 'centre' ? 'text-center md:text-left',
+                outer: block.layout != 'centre' ? 'text-center lg:text-left',
             } %}
+
+            {% if block.buttons %}
+                <div class="flex-row flex gap-4 lg:gap-4 justify-center mb-8 {{ block.layout != 'centre' ? ' lg:justify-start lg:mb-0' }}">
+                    {% for button in block.buttons %}
+                        {% include "components/atoms/button.twig" with {
+                            url: button.link.url,
+                            text: button.link.title,
+                            secondary: button.style == 'secondary',
+                            tertiary: button.style == 'tertiary',
+                            arrow: true,
+                        } %}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
-        <div class="flex-1{{ block.layout == 'centre' ? ' md:w-7/12 mx-auto' }}">
+        <div class="flex-1{{ block.layout == 'centre' ? ' lg:w-9/12 2xl:w-7/12 mx-auto' }}">
             {% include "components/organisms/video.twig" with {
                 provider: block.provider,
                 poster: block.poster,

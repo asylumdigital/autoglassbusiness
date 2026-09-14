@@ -64,6 +64,19 @@ class Video extends BlockController
                 ]
             ])
                 ->setWidth(50)
+            ->addRepeater('buttons', [
+                'layout' => 'block',
+                'max' => 2
+            ])
+                ->addLink('link')
+                ->addSelect('style', [
+                    'choices' => [
+                        'primary' => 'Primary',
+                        'secondary' => 'Secondary',
+                        'tertiary' => 'Tertiary'
+                    ]
+                ])
+                ->endRepeater()
             ;
         return $fields;
     }
