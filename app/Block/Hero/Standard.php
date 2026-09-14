@@ -27,10 +27,19 @@ class Standard extends BlockController
             ])
             ->addTextarea('title')
             ->addTextarea('content')
-            ->addGroup('buttons')
-                ->addLink('primary')
-                ->addLink('secondary')
-                ->endGroup()
+            ->addRepeater('buttons', [
+                'layout' => 'block',
+                'max' => 2
+            ])
+                ->addLink('link')
+                ->addSelect('style', [
+                    'choices' => [
+                        'primary' => 'Primary',
+                        'secondary' => 'Secondary',
+                        'tertiary' => 'Tertiary'
+                    ]
+                ])
+                ->endRepeater()
             ->addImage('image', [
                 'preview_size' => 'thumbnail',
                 'return_format' => 'id'
