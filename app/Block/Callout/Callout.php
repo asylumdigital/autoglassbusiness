@@ -25,14 +25,22 @@ class Callout extends BlockController
             ->addSelect('style', [
                 'choices' => [
                     'none' => 'None',
-                    'dark' => 'dark',
-                    'highlight' => 'highlight',
-                    'primary' => 'primary',
-                    'secondary' => 'secondary',
+                    'dark' => 'Dark',
+                    'highlight' => 'Highlight',
+                    'primary' => 'Primary',
+                    'secondary' => 'Secondary',
                 ],
                 'default_value' => 'primary',
             ])
-            ->addTrueFalse('inner_only');
+            ->addTrueFalse('inner_only', [
+                'ui' => true,
+            ])
+            ->addText('eyebrow', [
+                'label' => 'Accent title',
+            ])
+            ->addText('title')
+            ->addTextarea('content')
+            ->addLink('button');
         return $fields;
     }
 

@@ -17,18 +17,25 @@
 
 {% block content %}
     <div class="{{ inner }} p-12 space-y-6">
+        {% if block.eyebrow %}
+            <p class="uppercase text-sm font-bold leading-7 md:text-xl md:mb-4">{{ block.eyebrow }}</p>
+        {% endif %}
 
-        <h2 class="font-condensed font-bold text-4xl text-balance">Enim aliqua deserunt esse dolore magna culpa occaecat.</h2>
+        {% if block.title %}
+            <h2 class="font-condensed font-bold text-4xl text-balance">{{ block.title }}</h2>
+        {% endif %}
 
-        <p>Dolore anim amet sit anim occaecat quis.</p>
+        {{ block.content|esc_html|wpautop|wp_kses_post }}
 
-        {% include "components/atoms/button.twig" with {
-            arrow: true,
-            arrow_type: 'chevron',
-            white: block.inner_color == 'primary' or block.style == 'primary'
-                or block.inner_color == 'secondary' or block.style == 'secondary',
-            text: block.cta.title,
-            url: block.cta.url,
-        } %}
+        {% if block.button.url %}
+            {% include "components/atoms/button.twig" with {
+                arrow: true,
+                arrow_type: 'chevron',
+                white: block.inner_color == 'primary' or block.style == 'primary'
+                    or block.inner_color == 'secondary' or block.style == 'secondary',
+                text: block.button.title,
+                url: block.button.url,
+            } %}
+        {% endif %}
     </div>
 {% endblock %}
