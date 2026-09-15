@@ -80,16 +80,16 @@
         },
         {
             "name": "asylum/theme",
-            "version": "6.1.4",
+            "version": "6.1.6",
             "source": {
                 "type": "git",
                 "url": "git@github.com:asylumdigital/wp-theme-core.git",
-                "reference": "5505dce1b0da38be5560ba3a26837f37a0f78817"
+                "reference": "e3a1dd5ddeb86728c5a496e2a337c36c3305f6fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asylumdigital/wp-theme-core/zipball/5505dce1b0da38be5560ba3a26837f37a0f78817",
-                "reference": "5505dce1b0da38be5560ba3a26837f37a0f78817",
+                "url": "https://api.github.com/repos/asylumdigital/wp-theme-core/zipball/e3a1dd5ddeb86728c5a496e2a337c36c3305f6fb",
+                "reference": "e3a1dd5ddeb86728c5a496e2a337c36c3305f6fb",
                 "shasum": ""
             },
             "require": {
@@ -115,10 +115,10 @@
                 }
             },
             "support": {
-                "source": "https://github.com/asylumdigital/wp-theme-core/tree/v6.1.4",
+                "source": "https://github.com/asylumdigital/wp-theme-core/tree/v6.1.6",
                 "issues": "https://github.com/asylumdigital/wp-theme-core/issues"
             },
-            "time": "2026-09-13T09:58:58+00:00"
+            "time": "2026-09-15T12:18:15+00:00"
         },
         {
             "name": "asylum/utility",
@@ -1975,16 +1975,16 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "v7.4.17",
+            "version": "v7.4.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bridge.git",
-                "reference": "413485ee177ad5b321ad9a689a90fd3f2d3fefd7"
+                "reference": "10d369dd3845bb650a9450e643d6d9027e8a86af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/413485ee177ad5b321ad9a689a90fd3f2d3fefd7",
-                "reference": "413485ee177ad5b321ad9a689a90fd3f2d3fefd7",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/10d369dd3845bb650a9450e643d6d9027e8a86af",
+                "reference": "10d369dd3845bb650a9450e643d6d9027e8a86af",
                 "shasum": ""
             },
             "require": {
@@ -2066,7 +2066,7 @@
             "description": "Provides integration for Twig with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/twig-bridge/tree/v7.4.17"
+                "source": "https://github.com/symfony/twig-bridge/tree/v7.4.19"
             },
             "funding": [
                 {
@@ -2086,7 +2086,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-22T09:04:42+00:00"
+            "time": "2026-09-14T12:19:06+00:00"
         },
         {
             "name": "symfony/var-dumper",

@@ -12,3 +12,5 @@
 ---
 
 ## [Unreleased] - yyyy-mm-dd
+
+- Initital release
