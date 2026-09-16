@@ -22,7 +22,7 @@
             accent: 'Working with great partners',
         } %}
     {% endif %}
-    <div class="marquee {{ block.reverse ? 'marquee--reverse' }} {{ block.background|default('bg-highlight') }} py-8 {{ color }}">
+    <div class="marquee {{ block.reverse ? 'marquee--reverse' }} {{ block.background|default('bg-highlight') }} py-8 {{ color }}"{{ block.duration ? 'style="--marquee-speed:%ss"'|format(block.duration) }}>
         {% for r in 1..loops %}
             <ul class="marquee__content{{ isBlockEditor or fn('is_admin') ? ' flex list-none items-center' }}"{{ not loop.first ? ' aria-hidden="true"' }}>
                 {% for item in block.items.partners %}

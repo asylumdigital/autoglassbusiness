@@ -17,7 +17,7 @@
     justify-content: space-around;
     min-width: 100%;
     gap: var(--marquee-gap);
-    animation: scroll 30s linear infinite;
+    animation: scroll var(--marquee-speed, 30s) linear infinite;
 }
 
 .marquee--reverse .marquee__content {

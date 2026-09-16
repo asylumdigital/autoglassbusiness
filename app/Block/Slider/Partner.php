@@ -37,6 +37,9 @@ class Partner extends BlockController
                 ],
                 'default_value' => 'highlight',
             ])
+            ->addNumber('duration', [
+                'instructions' => 'Duration in seconds',
+            ])
             ->addTrueFalse('reverse', [
                 'label' => 'Reverse direction',
                 'ui' => true,
