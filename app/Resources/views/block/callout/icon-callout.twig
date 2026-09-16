@@ -1,0 +1,38 @@
+{% extends "modules/block/wrapper.twig" %}
+
+{% block content %}
+    {% include "components/organisms/section-header.twig" with {
+        accent: block.eyebrow,
+        title: block.title,
+        intro: block.introduction,
+    } %}
+    <div class="flex flex-wrap justify-center">
+        {% for item in block.items %}
+            <div class="p-2 {{ block.items|length > 3 ? 'w-1/2' : 'w-full' }} md:w-1/3">
+                <div class="p-6 flex flex-col gap-2 lg:gap-x-4 2xl:gap-x-5 items-center text-center ">
+                    {% if item.icon.url %}
+                        <div class="aspect-square max-w-24 w-full">
+                            <img decoding="async" src="{{ item.icon.url }}" class="w-full h-full object-contain" alt="{{ item.icon.alt }}" loading="lazy" width="{{ item.icon.width }}" height="{{ item.icon.height }}">
+                        </div>
+                    {% endif %}
+                    <div class="text-xs md:text-base">
+                        <p class="{{ block.caps ? 'uppercase ' }}font-bold md:text-xl text-balance">{{ item.label }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    {% if block.call_to_action.link.url %}
+        <div class="flex justify-center mt-8">
+            {% include "components/atoms/button.twig" with {
+                url: block.call_to_action.link.url,
+                text: block.call_to_action.link.title,
+                secondary: block.call_to_action.style == 'secondary',
+                tertiary: block.call_to_action.style == 'tertiary',
+                arrow: true,
+            } %}
+        </div>
+    {% endif %}
+
+{% endblock %}
