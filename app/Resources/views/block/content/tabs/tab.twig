@@ -3,6 +3,32 @@
         <h2 class="font-condensed uppercase text-2xl sm:text-4xl lg:text-5xl font-black md:mb-5">{{ block.title }}</h2>
 
         {{ block.description|wpautop|wp_kses_post }}
+
+        {% if block.callout %}
+            <div class="bg-highlight p-5 mt-8 space-y-6 {{ block.callout.hide_on_mobile ? 'hidden lg:block' }}">
+            {% if block.callout.eyebrow %}
+                <p class="uppercase text-sm font-bold leading-7 md:text-xl md:mb-4">{{ block.callout.eyebrow }}</p>
+            {% endif %}
+
+            {% if block.callout.title %}
+                <h3 class="font-condensed font-bold text-3xl text-balance">{{ block.callout.title }}</h3>
+            {% endif %}
+
+            {{ block.callout.content|esc_html|wpautop|wp_kses_post }}
+
+            {% if block.callout.button.url %}
+                {% include "components/atoms/button.twig" with {
+                    arrow: true,
+                    arrow_type: 'chevron',
+                    white: block.callout.inner_color == 'primary' or block.callout.style == 'primary'
+                        or block.callout.inner_color == 'secondary' or block.callout.style == 'secondary',
+                    text: block.callout.button.title,
+                    url: block.callout.button.url,
+                } %}
+            {% endif %}
+        </div>
+        {% endif %}
+
     </div>
     <div class="flex-1">
         <InnerBlocks allowedBlocks="{{ ['acf/iframed']|json_encode|e('html_attr') }}" />

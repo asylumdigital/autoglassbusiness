@@ -15,7 +15,16 @@ class Tab extends BlockController
     {
         $fields
             ->addText('title')
-            ->addTextarea('description');
+            ->addTextarea('description')
+            ->addGroup('callout')
+                ->addText('title')
+                ->addTextarea('content')
+                ->addLink('button')
+                ->addTrueFalse('hide_on_mobile', [
+                    'default_value' => true,
+                    'ui' => true
+                ])
+                ->endGroup();
 
         return $fields;
     }

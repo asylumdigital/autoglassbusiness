@@ -18,6 +18,10 @@
 
 {% set classList = classList ~ ' ' ~ width|default('w-full sm:w-fit') %}
 
+{% if 'mailto:' in url %}
+    {% set url = 'mailto:' ~ fn('antispambot', url|replace({'mailto:': ''})) %}
+{% endif %}
+
 {% if url %}
     <a href="{{ url }}" class="{{ classList }}">
         {{ text|default('Click') }}
