@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "asylum/block",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "git@github.com:asylumdigital/asylum-block.git",
-                "reference": "eb5dbc929924a7253a81dcc9367fd4958c4fdfeb"
+                "reference": "1254d03ceca3cc05b1a049e14f82d679721d6bfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asylumdigital/asylum-block/zipball/eb5dbc929924a7253a81dcc9367fd4958c4fdfeb",
-                "reference": "eb5dbc929924a7253a81dcc9367fd4958c4fdfeb",
+                "url": "https://api.github.com/repos/asylumdigital/asylum-block/zipball/1254d03ceca3cc05b1a049e14f82d679721d6bfc",
+                "reference": "1254d03ceca3cc05b1a049e14f82d679721d6bfc",
                 "shasum": ""
             },
             "require": {
@@ -39,10 +39,10 @@
             "description": "Wordpress block bulder functionality.",
             "homepage": "https://asylum.digital",
             "support": {
-                "source": "https://github.com/asylumdigital/asylum-block/tree/v1.0.3",
+                "source": "https://github.com/asylumdigital/asylum-block/tree/v1.0.4",
                 "issues": "https://github.com/asylumdigital/asylum-block/issues"
             },
-            "time": "2026-08-28T17:13:21+00:00"
+            "time": "2026-09-17T09:59:55+00:00"
         },
         {
             "name": "asylum/config",

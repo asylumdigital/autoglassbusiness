@@ -1,6 +1,7 @@
 import Alpine from "alpinejs";
 
 import { ScrollSpy } from './components/jump-links';
+import { Tabs } from "./components/tabs";
 import { Carousel } from "./components/carousel/content";
 
 import { YouTube, Local } from "./components/video";
@@ -10,6 +11,7 @@ Alpine.data('carousel', Carousel);
 
 Alpine.data('youtube', YouTube);
 Alpine.data('direct', Local);
+Alpine.data('tabs', Tabs);
 // Alpine.data('vimeo', VimeoPlayer);
 
 Alpine.start();

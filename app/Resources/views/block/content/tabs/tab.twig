@@ -1,0 +1,11 @@
+<div class="flex flex-col lg:flex-row" x-show="tab == '{{ block.title|slugify }}'">
+    <div class="lg:w-1/3 xl:w-1/4 pt-8">
+        <h2 class="font-condensed uppercase text-2xl sm:text-4xl lg:text-5xl font-black md:mb-5">{{ block.title }}</h2>
+
+        {{ block.description|wpautop|wp_kses_post }}
+    </div>
+    <div class="flex-1">
+        <InnerBlocks allowedBlocks="{{ ['acf/iframed']|json_encode|e('html_attr') }}" />
+        {% include "modules/fake-form.twig" %}
+    </div>
+</div>

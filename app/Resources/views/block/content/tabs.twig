@@ -1,0 +1,14 @@
+{% extends "modules/block/wrapper.twig" %}
+
+{% block content %}
+    <div class="lg:w-10/12 lg:mx-auto" x-data="tabs('{{ block.titles[0].slug }}')">
+        <div class="flex mb-4 border-b border-brand-light-grey gap-4">
+            {% for tab in block.titles %}
+                <button type="button" class="-mb-px cursor-pointer p-4" :class="{ 'border-b-2 font-bold text-primary hover:text-primary border-primary': tab === '{{ tab.slug }}' }" @click="tab = '{{ tab.slug }}'">{{ tab.name }}</button>
+            {% endfor %}
+        </div>
+        <div>
+            <InnerBlocks allowedBlocks="{{ ['acf/tab']|json_encode|e('html_attr') }}" />
+        </div>
+    </div>
+{% endblock %}

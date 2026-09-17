@@ -11,6 +11,10 @@ class IconCallout extends BlockController
 
     protected ?string $label = 'Icon callout';
 
+    protected string $category = 'asylum-callout';
+
+    protected string $icon = 'columns';
+
     protected function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields
@@ -53,4 +57,6 @@ class IconCallout extends BlockController
             ]);
         return $fields;
     }
+
+
 }
