@@ -5,9 +5,9 @@
     "main": "webpack.config.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "NODE_ENV=development vite build",
-        "watch": "NODE_ENV=development vite build --watch",
-        "build": "vite build --mode=prod",
+        "dev": "NODE_ENV=development node build.mjs",
+        "watch": "NODE_ENV=development node build.mjs --watch",
+        "build": "node build.mjs --mode=prod",
         "production": "npm run build"
     },
     "author": "Phil Baker",

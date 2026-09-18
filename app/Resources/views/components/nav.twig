@@ -8,7 +8,7 @@
             {% set megaClass = ' menu-item-mega-menu' %}
 
             <li class="py-4 border-b xl:border-0 level-{{ item.level }} menu-item{{ children ? ' has-children' }}{{ megaClass }}{{ item.current ? ' active' }}{{ not isChild ? ' xl:py-0' }}">
-                <a {% if item.target %}target="{{ item.target }}" {% endif %}href="{{ item.link }}" class="flex items-center gap-1 {{ not isChild ? 'xl:py-3' }}{{ item.current and not isChild ? ' relative after:absolute after:bottom-0 after:w-full after:h-1 xl:after:bg-secondary' }}"{{ children ? '@click.stop.prevent="open = open == %1$s ? null : %1$s"'|format(item.id) }}>
+                <a {% if item.target %}target="{{ item.target }}" {% endif %}href="{{ item.link }}" class="flex items-center gap-1 {{ not isChild ? 'xl:py-3' }}{{ item.current and not isChild or item.current_item_ancestor and not isChild ? ' relative after:absolute after:bottom-0 after:w-full after:h-1 xl:after:bg-secondary' }}"{{ children ? '@click.stop.prevent="open = open == %1$s ? null : %1$s"'|format(item.id) }}>
                     {{ item.title }}
                     {% if children %}
                         <span class="w-6 ml-auto xl:hidden">
