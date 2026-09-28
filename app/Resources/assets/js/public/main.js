@@ -3,8 +3,8 @@ import Alpine from "alpinejs";
 import { ScrollSpy } from './components/jump-links';
 import { Tabs } from "./components/tabs";
 import { Carousel } from "./components/carousel/content";
-
 import { YouTube, Local } from "./components/video";
+import { Form } from './components/form';
 
 Alpine.data('jump_links', ScrollSpy);
 Alpine.data('carousel', Carousel);
@@ -12,6 +12,7 @@ Alpine.data('carousel', Carousel);
 Alpine.data('youtube', YouTube);
 Alpine.data('direct', Local);
 Alpine.data('tabs', Tabs);
+Alpine.data('form', Form);
 // Alpine.data('vimeo', VimeoPlayer);
 
 Alpine.start();
@@ -30,3 +31,5 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('resize', headerHeight);
+
+

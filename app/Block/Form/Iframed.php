@@ -20,18 +20,25 @@ class Iframed extends BlockController
     protected function fields(FieldsBuilder $fields): FieldsBuilder
     {
         $fields
-            ->addSelect('form', [
-                'choices' => [
-                    'business-account-enquiry-webform' => 'Account Enquiry',
-                    'business-account-opening-webform' => 'Account Opening',
-                ],
-            ])
-                ->setWidth(50)
-            ->addNumber('height', [
-                'instructions' => 'Useful is the inner forms change. Will be set to 1500px for Account Enquiry and 2900px for Account Opening'
-            ])
-                ->setWidth(50);
+            ->addUrl('form');
 
         return $fields;
+    }
+
+    protected function transform(&$data, array $args = []): void
+    {
+        if (empty($data['form'])) {
+            return;
+        }
+
+        $data['is_child'] = isset($args['ctx']['parent_fields']);
+        $url = filter_var($data['form'], FILTER_VALIDATE_URL);
+        $urlData = parse_url($url);
+
+        $data['form'] = add_query_arg([
+            'source' => esc_url(site_url()),
+        ], $data['form']);
+
+        $data['path'] = base64_encode($urlData['path'] ?? '/');
     }
 }

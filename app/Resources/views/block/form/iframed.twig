@@ -1,12 +1,12 @@
 {% extends "modules/block/wrapper.twig" %}
 
-{% set iframeHeight = {
-    'business-account-opening-webform': 2870,
-    'business-account-enquiry-webform': 1500,
-} %}
+{% set container = block.is_child ? 'lg:pl-8' : null %}
+{% set padding = block.is_child ? 'py-0' : null %}
 
 {% block content %}
-    <div class="form-container max-w-232.5 mx-auto" id="{{ block.form }}">
-        <iframe src="https://cloud.email.autoglass.co.uk/{{ block.form }}" width="100%" height="{{ block.height|default(iframeHeight[block.form]) }}" type="text/html" frameborder="0" allowTransparency="true" style="border: 0" sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation"></iframe>
+    <div class="form-container" x-data="form('{{ block.path }}')" id="{{ block.form }}">
+        <div class="text-3xl" x-text="height"></div>
+
+        <iframe src="{{ block.form|esc_url }}" type="text/html" frameborder="0" allowTransparency="true" style="border: 0"  width="100%" :height="height"></iframe>
     </div>
 {% endblock %}
