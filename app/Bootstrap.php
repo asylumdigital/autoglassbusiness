@@ -24,6 +24,8 @@ new Admin\Settings\Tracking;
 new Admin\Settings\Media;
 new Admin\Blocks;
 
+new Update\Updater;
+
 // add_action('init', function() {
 //     dd(Helper\Settings::getInstance());
 // }, PHP_INT_MAX);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22193da490e4e08be93e7b18cd29a361",
+    "content-hash": "2b7e53659c922f242d4e29c7c5bec0ed",
     "packages": [
         {
             "name": "asylum/block",
@@ -79,6 +79,47 @@
             "time": "2026-07-27T19:45:49+00:00"
         },
         {
+            "name": "asylum/internal",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asylumdigital/asylum-internal.git",
+                "reference": "c9b73940d72c03afbf42a7b135d0c801f072f34b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asylumdigital/asylum-internal/zipball/c9b73940d72c03afbf42a7b135d0c801f072f34b",
+                "reference": "c9b73940d72c03afbf42a7b135d0c801f072f34b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/collections": "^12.69"
+            },
+            "require-dev": {
+                "asylum/validation": "dev-master",
+                "symfony/var-dumper": "^7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Asylum\\Internal\\": "src"
+                },
+                "files": [
+                    "./src/Functions/Init.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Update functionality WordPress plugins.",
+            "homepage": "https://asylum.digital",
+            "support": {
+                "source": "https://github.com/asylumdigital/asylum-internal/tree/v1.0.0",
+                "issues": "https://github.com/asylumdigital/asylum-internal/issues"
+            },
+            "time": "2026-09-22T18:55:37+00:00"
+        },
+        {
             "name": "asylum/theme",
             "version": "6.1.6",
             "source": {
@@ -119,6 +160,46 @@
                 "issues": "https://github.com/asylumdigital/wp-theme-core/issues"
             },
             "time": "2026-09-15T12:18:15+00:00"
+        },
+        {
+            "name": "asylum/update",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:asylumdigital/asylum-update.git",
+                "reference": "58678237da3e1882bcf47469abe11ae4a8347ec2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asylumdigital/asylum-update/zipball/58678237da3e1882bcf47469abe11ae4a8347ec2",
+                "reference": "58678237da3e1882bcf47469abe11ae4a8347ec2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/collections": "^12.69"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "^7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Asylum\\Update\\": "src"
+                },
+                "files": [
+                    "src/Functions/Init.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Update functionality WordPress plugins.",
+            "homepage": "https://asylum.digital",
+            "support": {
+                "source": "https://github.com/asylumdigital/asylum-update/tree/v1.0.0",
+                "issues": "https://github.com/asylumdigital/asylum-update/issues"
+            },
+            "time": "2026-09-22T18:49:50+00:00"
         },
         {
             "name": "asylum/utility",
@@ -2354,16 +2435,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.28.0",
+            "version": "v3.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "597c12ed286fb9d1701a36684ce6e0cbe28ebc8b"
+                "reference": "8c737079b726af72ff8ef3c595be9f6a810ea1ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/597c12ed286fb9d1701a36684ce6e0cbe28ebc8b",
-                "reference": "597c12ed286fb9d1701a36684ce6e0cbe28ebc8b",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/8c737079b726af72ff8ef3c595be9f6a810ea1ef",
+                "reference": "8c737079b726af72ff8ef3c595be9f6a810ea1ef",
                 "shasum": ""
             },
             "require": {
@@ -2418,7 +2499,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.28.0"
+                "source": "https://github.com/twigphp/Twig/tree/v3.30.0"
             },
             "funding": [
                 {
@@ -2430,7 +2511,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-03T20:44:34+00:00"
+            "time": "2026-09-25T13:20:01+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

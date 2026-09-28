@@ -25,11 +25,20 @@
         "asylum/validation": {
             "type": "vcs",
             "url": "git@github.com:asylumdigital/validation.git"
+        },
+        "asylum/internal": {
+            "type": "vcs",
+            "url": "git@github.com:asylumdigital/asylum-internal.git"
+        },
+        "asylum/update": {
+            "type": "vcs",
+            "url": "git@github.com:asylumdigital/asylum-update.git"
         }
-
     },
     "require": {
         "asylum/theme": "^6.1.1",
+        "asylum/internal": "^1.0.0",
+        "asylum/update": "^1.0.0",
         "stoutlogic/acf-builder": "^1.12",
         "illuminate/collections": "^12.20",
         "vlucas/phpdotenv": "5.4"
