@@ -77,7 +77,7 @@ jobs:
       - uses: vimtor/action-zip@v1
         with:
           files: ./build/${{ github.event.repository.name }}
-          dest: ./zips/${{ github.event.repository.name }}/${{ github.event.repository.name }}-${{ steps.regex-match.outputs.group1 }}+dev.${{ github.run_number }}.zip
+          dest: ./zips/${{ github.event.repository.name }}/${{ github.event.repository.name }}-v${{ steps.regex-match.outputs.group1 }}+dev.${{ github.run_number }}.zip
       - name: Push Zip to S3
         uses: jakejarvis/s3-sync-action@v0.3.1
         env:
@@ -86,14 +86,14 @@ jobs:
           AWS_S3_BUCKET: '${{ secrets.AWS_S3_BUCKET }}'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      # - name: API Call
-      #   uses: fjogeleit/http-request-action@v1
-      #   with:
-      #     url: 'https://api.swytchbike.com/api/test/version/${{ github.event.repository.name }}'
-      #     method: 'POST'
-      #     customHeaders: '{"Accept": "application/json"}'
-      #     bearerToken: ${{ secrets.PLUGIN_API_TOKEN }}
-      #     data: '{"version": "${{ steps.regex-match.outputs.group1 }}+dev.${{ github.run_number }}", "type": "theme"}'
+      - name: API Call
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://api.asylum.digital/v1/version/${{ github.event.repository.name }}'
+          method: 'POST'
+          customHeaders: '{"Accept": "application/json"}'
+          bearerToken: ${{ secrets.ASYLUM_API_KEY }}
+          data: '{"version": "v${{ steps.regex-match.outputs.group1 }}+dev.${{ github.run_number }}", "type": "theme"}'
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
