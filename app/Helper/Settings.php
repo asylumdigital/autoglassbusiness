@@ -10,6 +10,12 @@ class Settings
 
     private function __construct()
     {
+        // fix during activation
+        if (!function_exists('acf_get_field_groups')) {
+
+            return;
+        }
+
         $groups = acf_get_field_groups(['options_page' => 'theme-settings']);
 
         foreach ($groups as $group) {
