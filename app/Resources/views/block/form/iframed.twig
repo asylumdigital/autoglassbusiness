@@ -5,8 +5,6 @@
 
 {% block content %}
     <div class="form-container" x-data="form('{{ block.path }}')" id="{{ block.form }}">
-        <div class="text-3xl" x-text="height"></div>
-
         <iframe src="{{ block.form|esc_url }}" type="text/html" frameborder="0" allowTransparency="true" style="border: 0"  width="100%" :height="height"></iframe>
     </div>
 {% endblock %}
