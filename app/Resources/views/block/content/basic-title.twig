@@ -1,0 +1,8 @@
+{% extends "modules/block/wrapper.twig" %}
+
+{% block content %}
+    {% include "components/atoms/accent-title.twig" with {
+        text: block.eyebrow,
+    } %}
+    <h1 class="text-4xl md:text-6xl font-condensed font-black xl:text-7xl flex flex-col">{{ block.title }}</h1>
+{% endblock %}

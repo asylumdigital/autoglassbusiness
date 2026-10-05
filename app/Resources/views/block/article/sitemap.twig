@@ -1,11 +1,13 @@
 {% extends "modules/block/wrapper.twig" %}
 
 {% block content %}
-    {% for section in block.sitemap %}
-        {% if section.title %}
-            <h2 class="mb-6 text-2xl font-condensed font-bold">{{ section.title }}</h2>
-        {% endif %}
+    <div class="md:w-10/12 mx-auto">
+        {% for section in block.sitemap %}
+            {% if section.title %}
+                <h2 class="mb-6 text-2xl font-condensed font-bold">{{ section.title }}</h2>
+            {% endif %}
 
-        {% include "components/molecules/post-list.twig" with { posts: section.items } %}
-    {% endfor %}
+            {% include "components/molecules/post-list.twig" with { posts: section.items } %}
+        {% endfor %}
+    </div>
 {% endblock %}
