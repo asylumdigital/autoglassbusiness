@@ -4,7 +4,8 @@
 
         {{ block.description|wpautop|wp_kses_post }}
 
-        {% if block.callout %}
+
+        {% if block.callout.title or block.callout.content or block.callout.button %}
             <div class="bg-highlight p-5 mt-8 space-y-6 {{ block.callout.hide_on_mobile ? 'hidden lg:block' }}">
                 {% if block.callout.eyebrow %}
                     <p class="uppercase text-sm font-bold leading-7 md:text-xl md:mb-4">{{ block.callout.eyebrow }}</p>
