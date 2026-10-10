@@ -11,6 +11,6 @@
 
 ---
 
-## [Unreleased] - yyyy-mm-dd
+## [1.0.0] - yyyy-mm-dd
 
 - Initital release
